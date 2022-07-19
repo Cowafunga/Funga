@@ -31,7 +31,7 @@ function App() {
 						sx={{
 							background: "#070e11",
 							width: "min(100vw, 1440px)",
-							overflow: "hidden",
+							overflow: "visible",
 						}}
 					>
 						{/* <Box sx={{ position: "relative" }}> */}

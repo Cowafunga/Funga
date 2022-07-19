@@ -53,8 +53,15 @@ function Frame() {
 					src="/mintinfo4.png"
 					alt="Mint info"
 				/>
+				{/* Mushrooms */}
+
 				<Box
-					sx={{ zIndex: 300, position: "absolute", top: "100%", left: "100%" }}
+					sx={{
+						zIndex: 15,
+						position: "absolute",
+						bottom: "-25%",
+						left: "80%",
+					}}
 				>
 					<img
 						style={{ width: 250, height: 250, transform: "rotate(80deg)" }}
@@ -69,13 +76,13 @@ function Frame() {
 					/>
 				</Box>
 			</Box>
-			{/* Mushrooms */}
 
 			<Star />
 
 			{/* Shadow */}
 			<Box
 				className="Green shadow"
+				id="green"
 				sx={{
 					position: "absolute",
 					width: "0%",

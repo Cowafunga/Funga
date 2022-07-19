@@ -140,9 +140,9 @@ function BottomPart() {
 			<Box
 				sx={{
 					width: "100vw",
-					height: "130px",
+					height: "50px",
 					left: 0,
-					background: "black",
+					background: "linear-gradient(0deg, #070e11, #24251954)",
 					position: "absolute",
 					bottom: 0,
 					zIndex: 20,
