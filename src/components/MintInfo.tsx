@@ -8,7 +8,6 @@ import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import appendDublicate from "../utils/appendDublicate";
 
 export default function MintInfo() {
-	const { custom, palette } = useTheme();
 	return (
 		<Stack
 			justifyContent="space-between"
@@ -35,7 +34,7 @@ export default function MintInfo() {
 				>
 					<MintInfoDetails />
 				</Grid>
-				<Grid xs={12}>
+				<Grid xs={12} item>
 					<GrassHorizontal />
 				</Grid>
 			</Grid>
@@ -76,6 +75,7 @@ function Frame() {
 
 			{/* Shadow */}
 			<Box
+				className="Green shadow"
 				sx={{
 					position: "absolute",
 					width: "0%",
@@ -154,7 +154,7 @@ function MintInfoDetails() {
 					{ text: "Free min", icon: <AccountBalanceWalletIcon /> },
 				].map((item) => {
 					return (
-						<Grid sx={{ display: "flex", my: 1 }} key={item.text} xs={6}>
+						<Grid item sx={{ display: "flex", my: 1 }} key={item.text} xs={6}>
 							<Stack
 								sx={{ fontSize: "20px", svg: { fontSize: "28px" } }}
 								gap={3}

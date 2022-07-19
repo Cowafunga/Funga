@@ -6,7 +6,7 @@ import { Box, Stack, ThemeProvider } from "@mui/material";
 import Hero from "./components/Hero";
 import MintInfo from "./components/MintInfo";
 import JoinDiscord from "./components/JoinDiscord";
-import Roadmap from "./components/Roadmap";
+// import Roadmap from "./components/Roadmap";
 
 function App() {
 	return (
@@ -75,7 +75,7 @@ function App() {
 									transform: "traslateX(-50%) translateY(-20%)",
 									color: "white",
 								}}
-								href="#"
+								href="/#"
 							>
 								Privacy & Terms
 							</a>

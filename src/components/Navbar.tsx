@@ -1,7 +1,6 @@
 import React from "react";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
-import Box from "@mui/material/Box";
 import { INNER_WIDTH } from "../constants";
 
 export default function Navbar() {
@@ -19,7 +18,7 @@ export default function Navbar() {
 			justifyContent={"space-between"}
 			direction="row"
 		>
-			<a href="#">
+			<a href="/#">
 				<img src="/logo.png" alt="" />
 			</a>
 			<Stack gap={3} direction="row" alignItems={"center"}>
