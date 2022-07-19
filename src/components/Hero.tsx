@@ -22,7 +22,7 @@ function TopPart() {
 				alignItems: "center",
 				justifyContent: "center",
 				height: 644,
-				overflow: "hidden",
+				// overflow: "hidden",
 				position: "relative",
 				zIndex: 9,
 			}}
@@ -95,6 +95,7 @@ function TopPart() {
 				The Festiverse™️, and steward a music-focused lifestyle brand,
 				LivingThings™️.
 			</Typography>
+
 			<Box
 				sx={{
 					position: "absolute",
@@ -103,7 +104,7 @@ function TopPart() {
 					transform: "translateX(-50%)",
 					width: "2050.93px",
 					height: 644 * 1.03,
-					background: `linear-gradient(33.27deg, #754F64 28.97%, #320A62 75.98%);`,
+					background: `linear-gradient(33.27deg, #754F64 28.97%, #320A62 75.98%, rgba(255, 255, 255, 0) 100%);`,
 					overflow: "hidden",
 					filter: "blur(45.827px)",
 				}}

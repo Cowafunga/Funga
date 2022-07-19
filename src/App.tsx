@@ -12,7 +12,11 @@ function App() {
 	return (
 		<div className="App">
 			<ThemeProvider theme={theme}>
-				<Stack alignItems="center">
+				<Stack
+					alignItems="center"
+					maxWidth="1440px"
+					sx={{ mx: "auto", overflow: "hidden" }}
+				>
 					<Layout sx={{ mx: "auto" }}>
 						<Box
 							sx={{ mx: "auto", zIndex: 100, position: "relative" }}
