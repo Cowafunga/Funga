@@ -31,7 +31,7 @@ function Content() {
 				width: "100%",
 				justifyContent: "center",
 				position: "relative",
-				top: -323,
+				top: -353,
 				zIndex: 30,
 			}}
 			direction="row"
@@ -45,7 +45,7 @@ function Content() {
 							text: `0 0 14px ${"white"}`,
 							times: 50,
 						}),
-						fontSize: "120px",
+						fontSize: "90px",
 					}}
 					color={palette.info.main}
 					variant="h1"
@@ -59,7 +59,7 @@ function Content() {
 							text: `0 0 14px ${"white"}`,
 							times: 50,
 						}),
-						fontSize: "120px",
+						fontSize: "90px",
 					}}
 					color={palette.info.main}
 					variant="h1"
@@ -72,9 +72,9 @@ function Content() {
 					startIcon={<img src="/discord-simple.png" alt="Discord" />}
 					sx={{
 						mt: 8,
-						height: "84px",
+						height: "44px",
 						borderRadius: "8px",
-						fontSize: "24px",
+						fontSize: "15px",
 						// background: custom.purple.main,
 						// border: "5px solid",
 						// background: palette.info.main,
@@ -88,7 +88,11 @@ function Content() {
 				</Button>
 			</Stack>
 			<Box sx={{ position: "relative", top: "100px", left: "120px" }}>
-				<img src="/mushroom man.png" alt="" />
+				<img
+					style={{ transform: "scale(0.8)", transformOrigin: "50% 100%" }}
+					src="/mushroom man.png"
+					alt=""
+				/>
 			</Box>
 		</Stack>
 	);

@@ -62,7 +62,35 @@ function App() {
 								"linear-gradient(180deg, rgba(23,18,12,0.6811099439775911) 0%, rgba(23,18,12,1) 29%, rgba(23,18,12,1) 100%)",
 						}}
 					>
+						<Box>
+							<a
+								style={{
+									position: "absolute",
+									top: "43%",
+									left: "45%",
+									transform: "traslateX(-50%) translateY(-20%)",
+									color: "white",
+								}}
+								href="#"
+							>
+								Privacy & Terms
+							</a>
+						</Box>
 						<Navbar />
+						<p
+							style={{
+								// position: "absolute",
+								bottom: 0,
+								color: "white",
+								opacity: 0.6,
+								left: "50%",
+								textAlign: "center",
+								// transform: "translateX(-50%)",
+							}}
+						>
+							{" "}
+							Funga™️ 2022. All rights reserved
+						</p>
 					</Box>
 				</Stack>
 			</ThemeProvider>

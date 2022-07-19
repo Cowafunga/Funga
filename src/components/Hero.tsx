@@ -39,7 +39,7 @@ function TopPart() {
 				<Typography
 					sx={{
 						// use multiple shadows to simulate spread effect, otherwise, shadow will be blurry
-						fontSize: "132px",
+						fontSize: "112px",
 						textShadow: appendDublicate({
 							text: `0 0 14px ${palette.secondary.dark}`,
 							times: 10,
@@ -56,7 +56,7 @@ function TopPart() {
 						position: "relative",
 						zIndex: 5,
 						my: -6.5,
-						fontSize: "92px",
+						fontSize: "82px",
 						textShadow: appendDublicate({
 							text: `0 0 14px ${palette.secondary.dark}`,
 							times: 10,
@@ -68,7 +68,7 @@ function TopPart() {
 				</Typography>
 				<Typography
 					sx={{
-						fontSize: "132px",
+						fontSize: "112px",
 						textShadow: appendDublicate({
 							text: `0 0 14px ${palette.secondary.dark}`,
 							times: 10,

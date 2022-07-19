@@ -49,7 +49,7 @@ function Frame() {
 	return (
 		<Box sx={{ position: "relative" }}>
 			<img
-				style={{ width: 470, height: 470, position: "relative", zIndex: 15 }}
+				style={{ width: 370, height: 370, position: "relative", zIndex: 15 }}
 				src="/mintinfo4.png"
 				alt="Mint info"
 			/>
@@ -107,7 +107,7 @@ function MintInfoDetails() {
 					fontFamily: "Geska Rolling",
 					width: "100%",
 					whiteSpace: "nowrap",
-					fontSize: "120px",
+					fontSize: "90px",
 					// transform: "translateX(-50%)",
 					textShadow: appendDublicate({
 						text: `0 0 14px ${"#4BAD90"}`,
@@ -121,7 +121,7 @@ function MintInfoDetails() {
 			</Typography>
 
 			<Grid
-				sx={{ mt: 5, transform: "translateX(10%)" }}
+				sx={{ transform: "translateX(10%)" }}
 				justifyContent="center"
 				container
 			>
@@ -137,7 +137,7 @@ function MintInfoDetails() {
 					return (
 						<Grid sx={{ display: "flex", my: 1 }} key={item.text} xs={6}>
 							<Stack
-								sx={{ fontSize: "24px", svg: { fontSize: "38px" } }}
+								sx={{ fontSize: "20px", svg: { fontSize: "28px" } }}
 								gap={3}
 								direction="row"
 							>
@@ -153,16 +153,16 @@ function MintInfoDetails() {
 			<Button
 				sx={{
 					mx: "auto",
-					fontSize: "24px",
-					width: "325px",
-					height: "84px",
+					fontSize: "17px",
+					width: "275px",
+					height: "54px",
 					borderRadius: "8px",
 				}}
 				startIcon={<LocalHospitalIcon />}
 				variant="contained"
 				size="large"
 			>
-				Minitng page
+				Mintng page
 			</Button>
 		</Stack>
 	);
@@ -200,7 +200,7 @@ function GrassHorizontal() {
 	return (
 		<Box
 			sx={{
-				height: 200,
+				height: 150,
 				width: "100%",
 				overflow: "visible",
 				zIndex: 15,
@@ -208,7 +208,12 @@ function GrassHorizontal() {
 			}}
 		>
 			<Box
-				sx={{ position: "absolute", top: "50%", transform: "translateY(-50%)" }}
+				sx={{
+					position: "absolute",
+					top: "50%",
+
+					transform: "translateY(-50%) scaleY(0.8)",
+				}}
 			>
 				<img src="grass front.png" alt="Grass" />
 			</Box>
