@@ -105,7 +105,11 @@ function Background() {
 			<Box sx={{ position: "relative", zIndex: 2 }}>
 				<Box style={{ position: "absolute", top: 0, left: 0 }}>
 					{/* placeholder image */}
-					<img src="/sunset.png" alt="visual illustration" />
+					<img
+						style={{ visibility: "hidden" }}
+						src="/sunset.png"
+						alt="visual illustration"
+					/>
 					{/* <img
 						style={{
 							position: "absolute",
@@ -118,7 +122,13 @@ function Background() {
 						alt="visual illustration"
 					/> */}
 					<video
-						style={{ width: "100%", position: "absolute", top: 0, left: 0 }}
+						style={{
+							width: "70%",
+							position: "absolute",
+							top: 0,
+							left: "50%",
+							transform: "translateX(-50%)",
+						}}
 						muted
 						autoPlay
 						loop
@@ -126,7 +136,13 @@ function Background() {
 					></video>
 				</Box>
 				<img
-					style={{ position: "relative", zIndex: 113 }}
+					style={{
+						width: "70%",
+						display: "block",
+						margin: "auto",
+						position: "relative",
+						zIndex: 113,
+					}}
 					src="/sunset cover.png"
 					alt="visual illustration"
 				/>

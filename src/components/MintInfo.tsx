@@ -53,9 +53,20 @@ function Frame() {
 				src="/mintinfo4.png"
 				alt="Mint info"
 			/>
-			<Star />
-			{/* Shadow */}
+			{/* Mushrooms */}
+			{/* <Box>
+				<img
+					style={{ width: 250, height: 250, transform:"rotate(45deg)" }}
+					src="/Green Numen.png"
+					alt=""
+				/>
 
+				<img src="/mushroom2.png" alt="" />
+			</Box> */}
+
+			<Star />
+
+			{/* Shadow */}
 			<Box
 				sx={{
 					position: "absolute",
@@ -200,7 +211,7 @@ function GrassHorizontal() {
 	return (
 		<Box
 			sx={{
-				height: 150,
+				height: 130,
 				width: "100%",
 				overflow: "visible",
 				zIndex: 15,
@@ -212,7 +223,7 @@ function GrassHorizontal() {
 					position: "absolute",
 					top: "50%",
 
-					transform: "translateY(-50%) scaleY(0.8)",
+					transform: "translateY(-50%) scaleY(0.6)",
 				}}
 			>
 				<img src="grass front.png" alt="Grass" />
