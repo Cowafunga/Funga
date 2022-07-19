@@ -15,7 +15,7 @@ export default function MintInfo() {
 			direction="column"
 			alignItems="center"
 			alignSelf="stretch"
-			sx={{ position: "relative" }}
+			sx={{ position: "relative", zIndex: 30 }}
 		>
 			<Arrow />
 			<Grid container sx={{ position: "relative", zIndex: 50, mt: 5 }}>
@@ -48,21 +48,29 @@ function Frame() {
 	const { palette } = useTheme();
 	return (
 		<Box sx={{ position: "relative" }}>
-			<img
-				style={{ width: 370, height: 370, position: "relative", zIndex: 15 }}
-				src="/mintinfo4.png"
-				alt="Mint info"
-			/>
-			{/* Mushrooms */}
-			{/* <Box>
+			<Box sx={{ width: 370, height: 370, position: "relative" }}>
 				<img
-					style={{ width: 250, height: 250, transform:"rotate(45deg)" }}
-					src="/Green Numen.png"
-					alt=""
+					style={{ width: 370, height: 370, position: "relative", zIndex: 15 }}
+					src="/mintinfo4.png"
+					alt="Mint info"
 				/>
+				<Box
+					sx={{ zIndex: 300, position: "absolute", top: "100%", left: "100%" }}
+				>
+					<img
+						style={{ width: 250, height: 250, transform: "rotate(80deg)" }}
+						src="/Green Numen.png"
+						alt=""
+					/>
 
-				<img src="/mushroom2.png" alt="" />
-			</Box> */}
+					<img
+						style={{ position: "absolute", bottom: 25, left: -25 }}
+						src="/mushroom2.png"
+						alt=""
+					/>
+				</Box>
+			</Box>
+			{/* Mushrooms */}
 
 			<Star />
 

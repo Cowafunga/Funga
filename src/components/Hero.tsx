@@ -104,9 +104,9 @@ function TopPart() {
 					transform: "translateX(-50%)",
 					width: "2050.93px",
 					height: 644 * 1.03,
-					background: `linear-gradient(33.27deg, #754F64 28.97%, #320A62 75.98%, rgba(255, 255, 255, 0) 100%);`,
-					overflow: "hidden",
-					filter: "blur(45.827px)",
+					background: `linear-gradient(33.27deg, #754F64 28.97%, #320A62 75.98%);`,
+					// overflow: "hidden",
+					filter: "blur(35.827px)",
 				}}
 			></Box>
 		</Box>
@@ -130,7 +130,24 @@ function BottomPart() {
 				// background: `linear-gradient(359deg, rgba(0, 0, 0, 0) 59.4%, #492262 100%),url(/hero.png)`,
 			}}
 		>
-			<video muted loop autoPlay src="/hero-video.mp4"></video>
+			<video
+				style={{ maxWidth: "100%" }}
+				muted
+				loop
+				autoPlay
+				src="/hero-video.mp4"
+			></video>
+			<Box
+				sx={{
+					width: "100vw",
+					height: "130px",
+					left: 0,
+					background: "black",
+					position: "absolute",
+					bottom: 0,
+					zIndex: 20,
+				}}
+			></Box>
 		</Box>
 	);
 }
