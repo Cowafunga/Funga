@@ -131,7 +131,7 @@ function BottomPart() {
 			}}
 		>
 			<video
-				style={{ maxWidth: "100%" }}
+				style={{ maxWidth: "100%", objectFit: "cover" }}
 				muted
 				loop
 				autoPlay
