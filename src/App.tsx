@@ -13,9 +13,9 @@ function App() {
 		<div className="App">
 			<ThemeProvider theme={theme}>
 				<Stack alignItems="center">
-					<Layout>
+					<Layout sx={{ mx: "auto" }}>
 						<Box
-							sx={{ zIndex: 100, position: "relative" }}
+							sx={{ mx: "auto", zIndex: 100, position: "relative" }}
 							marginBottom="-100%"
 						>
 							<Navbar />
@@ -27,13 +27,43 @@ function App() {
 						sx={{
 							background: "#070e11",
 							width: "min(100vw, 1440px)",
+							overflow: "hidden",
 						}}
 					>
+						{/* <Box sx={{ position: "relative" }}> */}
 						<MintInfo />
+
 						<JoinDiscord />
-						<Roadmap />
+						{/* </Box> */}
+						{/* <Roadmap /> */}
 						{/* <Box sx={{ height: 300 }}></Box> */}
+						{/* <Box
+							sx={{
+								// mt: "-100px",
+								zIndex: 50,
+								position: "relative",
+								alignSelf: "stretch",
+								// boxShadow: "0 0 100px 10px black",
+								// background: "white",
+							}}
+						></Box> */}
 					</Stack>
+					<Box
+						sx={{
+							py: 10,
+							pb: 4,
+							mt: -8,
+							zIndex: 155,
+							position: "relative",
+							height: "100%",
+							width: "100%",
+							maxWidth: "1440px",
+							background:
+								"linear-gradient(180deg, rgba(23,18,12,0.6811099439775911) 0%, rgba(23,18,12,1) 29%, rgba(23,18,12,1) 100%)",
+						}}
+					>
+						<Navbar />
+					</Box>
 				</Stack>
 			</ThemeProvider>
 		</div>

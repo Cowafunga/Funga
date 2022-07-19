@@ -19,6 +19,10 @@ const theme = createTheme({
 			main: "#65B875",
 			contrastText: "white",
 		},
+		info: {
+			main: "#3AA2CF",
+			contrastText: "white",
+		},
 	},
 	custom: {
 		pink: {
@@ -27,6 +31,9 @@ const theme = createTheme({
 		purple: {
 			main: "#613572",
 			dark: "#4b2958",
+		},
+		yellow: {
+			main: "#FAD275",
 		},
 	},
 });

@@ -39,7 +39,7 @@ function TopPart() {
 				<Typography
 					sx={{
 						// use multiple shadows to simulate spread effect, otherwise, shadow will be blurry
-						// textShadow:
+						fontSize: "132px",
 						textShadow: appendDublicate({
 							text: `0 0 14px ${palette.secondary.dark}`,
 							times: 10,
@@ -55,8 +55,8 @@ function TopPart() {
 						color: "white",
 						position: "relative",
 						zIndex: 5,
-						my: -6,
-						fontSize: "72px",
+						my: -6.5,
+						fontSize: "92px",
 						textShadow: appendDublicate({
 							text: `0 0 14px ${palette.secondary.dark}`,
 							times: 10,
@@ -68,6 +68,7 @@ function TopPart() {
 				</Typography>
 				<Typography
 					sx={{
+						fontSize: "132px",
 						textShadow: appendDublicate({
 							text: `0 0 14px ${palette.secondary.dark}`,
 							times: 10,
@@ -80,7 +81,14 @@ function TopPart() {
 			</Box>
 			<Typography
 				color="secondary.main"
-				sx={{ maxWidth: "700px", position: "relative", zIndex: 10 }}
+				sx={{
+					mt: "40px",
+					maxWidth: "700px",
+					position: "relative",
+					zIndex: 10,
+					fontSize: "18px",
+					fontWeight: "bolder",
+				}}
 				textAlign="center"
 			>
 				Funga and Friends host parties at their virtual music festival venue,
@@ -109,25 +117,19 @@ function BottomPart() {
 		<Box
 			sx={{
 				mt: "-130px",
-				height: 813,
+				height: 810,
 				zIndex: 4,
 				display: "flex",
 				justifyContent: "center",
 				position: "relative",
 				width: "min(1440px, 100vw)",
+				background: "#4b2463",
+
 				// background: "url(/hero.png)",
-				background: `linear-gradient(359deg, rgba(0, 0, 0, 0) 59.4%, #492262 100%),url(/hero.png)`,
+				// background: `linear-gradient(359deg, rgba(0, 0, 0, 0) 59.4%, #492262 100%),url(/hero.png)`,
 			}}
 		>
-			{/* <Typography
-				color="secondary.main"
-				sx={{ maxWidth: "700px" }}
-				textAlign="center"
-			>
-				Funga and Friends host parties at their virtual music festival venue,
-				The Festiverse™️, and steward a music-focused lifestyle brand,
-				LivingThings™️.
-			</Typography> */}
+			<video muted loop autoPlay src="/hero-video.mp4"></video>
 		</Box>
 	);
 }

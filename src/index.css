@@ -16,3 +16,7 @@ code {
 	font-family: "Geska Rolling";
 	src: url("/public/fonts/Geska\ Rolling\ Font/GeskaRolling-Regular.otf");
 }
+html,
+* {
+	scroll-behavior: smooth;
+}

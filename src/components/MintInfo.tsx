@@ -1,104 +1,163 @@
-import { Box, Button, Grid, Stack, Typography } from "@mui/material";
+import { Box, Button, Grid, Stack, Typography, useTheme } from "@mui/material";
 import React from "react";
 import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
 import WatchLaterIcon from "@mui/icons-material/WatchLater";
 import PublicIcon from "@mui/icons-material/Public";
 import PeopleIcon from "@mui/icons-material/People";
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
-import { useTheme } from "@emotion/react";
 import appendDublicate from "../utils/appendDublicate";
 
 export default function MintInfo() {
-	const { custom, palette } = useTheme() as any;
+	const { custom, palette } = useTheme();
 	return (
-		<Stack direction="column" alignItems="center">
-			<Stack
-				alignItems="center"
+		<Stack
+			justifyContent="space-between"
+			direction="column"
+			alignItems="center"
+			alignSelf="stretch"
+			sx={{ position: "relative" }}
+		>
+			<Arrow />
+			<Grid container sx={{ position: "relative", zIndex: 50, mt: 5 }}>
+				<Grid item sx={{ display: "flex", justifyContent: "center" }} xs={6}>
+					<Frame />
+				</Grid>
+
+				<Grid
+					sx={{
+						display: "flex",
+						justifyContent: "center",
+						position: "relative",
+						zIndex: 500,
+					}}
+					item
+					xs={6}
+				>
+					<MintInfoDetails />
+				</Grid>
+				<Grid xs={12}>
+					<GrassHorizontal />
+				</Grid>
+			</Grid>
+			<Grass />
+		</Stack>
+	);
+}
+
+function Frame() {
+	const { palette } = useTheme();
+	return (
+		<Box sx={{ position: "relative" }}>
+			<img
+				style={{ width: 470, height: 470, position: "relative", zIndex: 15 }}
+				src="/mintinfo4.png"
+				alt="Mint info"
+			/>
+			<Star />
+			{/* Shadow */}
+
+			<Box
 				sx={{
-					filter: appendDublicate({
-						text: `drop-shadow(3px -1px 2px ${palette.primary.main})`,
-						times: 2,
-						separator: " ",
-					}),
-					my: 10,
+					position: "absolute",
+					width: "0%",
+					height: "0%",
+					top: "20%",
+					zIndex: 5,
+					left: "62%",
+					borderRadius: "100%",
+					// backgroundColor: palette.primary.main,
+					boxShadow: `0px 0px 300px 155px ${palette.primary.main}`,
+					// top: "50%",
+					// left: "50%",
+					// transform: "translateX(-50%, -50%)",
 				}}
+			></Box>
+		</Box>
+	);
+}
+
+function Star() {
+	return (
+		<Box
+			sx={{
+				top: "50%",
+				left: "25%",
+				zIndex: 10,
+				transform: "translate(-50%, -50%)",
+				position: "absolute",
+			}}
+		>
+			<img style={{ width: 1805, height: 984 }} src="/star.png" alt="Star" />
+		</Box>
+	);
+}
+
+function MintInfoDetails() {
+	const { custom, palette } = useTheme();
+
+	return (
+		<Stack
+			justifyContent="space-between"
+			sx={{ alignSelf: "stretch", position: "relative", zIndex: 500 }}
+			alignItems="center"
+		>
+			<Typography
+				sx={{
+					textAlign: "center",
+					fontFamily: "Geska Rolling",
+					width: "100%",
+					whiteSpace: "nowrap",
+					fontSize: "120px",
+					// transform: "translateX(-50%)",
+					textShadow: appendDublicate({
+						text: `0 0 14px ${"#4BAD90"}`,
+						times: 40,
+					}),
+				}}
+				variant="h1"
+				color={custom.yellow.main}
 			>
-				<img src="/arrow-down.png" alt="arrow" />
-			</Stack>
-			<Box sx={{ position: "relative" }}>
-				<img
-					style={{ width: "619px", height: "358px" }}
-					src="/mintinfo.png"
-					alt="pose"
-				/>
-
-				<Box
-					sx={{
-						width: "100%",
-						position: "absolute",
-						bottom: 0,
-						"&>:first-child": {
-							position: "absolute",
-							left: "0",
-							transform: "translateX(-10%)",
-							bottom: -50,
-						},
-						"&>:nth-of-type(2)": {
-							position: "absolute",
-							right: 0,
-
-							transform: "translateX(5%) rotate(90deg) scale(0.5)",
-							bottom: -70,
-						},
-					}}
-				>
-					<img src="/Green Numen.png" alt="pose" />
-					<img src="/Green Numen.png" alt="pose" />
-				</Box>
-				<Typography
-					sx={{
-						textAlign: "center",
-						fontFamily: "Geska Rolling",
-						position: "absolute",
-						bottom: -12,
-						left: "50%",
-						whiteSpace: "nowrap",
-						transform: "translateX(-50%)",
-						textShadow: appendDublicate({
-							text: `0 0 24px ${custom.purple.main}`,
-							times: 10,
-						}),
-					}}
-					variant="h1"
-					color={custom.pink.main}
-				>
-					Mint info
-				</Typography>
-			</Box>
+				mint info
+			</Typography>
 
 			<Grid
-				sx={{ mt: 5, transform: "translateX(15%)" }}
+				sx={{ mt: 5, transform: "translateX(10%)" }}
 				justifyContent="center"
 				container
 			>
 				{[
-					{ text: "Team is keeping 100", icon: <PeopleIcon /> },
+					{
+						text: "Team is keeping 100",
+						icon: <PeopleIcon />,
+					},
 					{ text: "3,333 Figure", icon: <PublicIcon /> },
 					{ text: "July 30, 2022", icon: <WatchLaterIcon /> },
 					{ text: "Free min", icon: <AccountBalanceWalletIcon /> },
 				].map((item) => {
 					return (
 						<Grid sx={{ display: "flex", my: 1 }} key={item.text} xs={6}>
-							<Stack gap={3} direction="row">
+							<Stack
+								sx={{ fontSize: "24px", svg: { fontSize: "38px" } }}
+								gap={3}
+								direction="row"
+							>
 								<Box sx={{ color: palette.primary.main }}>{item.icon}</Box>
-								<Typography color="white">{item.text}</Typography>
+								<Typography sx={{ fontSize: "24px" }} color="white">
+									{item.text}
+								</Typography>
 							</Stack>
 						</Grid>
 					);
 				})}
 			</Grid>
 			<Button
-				sx={{ mx: "auto", my: 4 }}
+				sx={{
+					mx: "auto",
+					fontSize: "24px",
+					width: "325px",
+					height: "84px",
+					borderRadius: "8px",
+				}}
 				startIcon={<LocalHospitalIcon />}
 				variant="contained"
 				size="large"
@@ -106,5 +165,53 @@ export default function MintInfo() {
 				Minitng page
 			</Button>
 		</Stack>
+	);
+}
+
+function Arrow() {
+	const { palette } = useTheme();
+
+	return (
+		<Stack
+			alignItems="center"
+			sx={{
+				filter: appendDublicate({
+					text: `drop-shadow(3px -1px 2px ${palette.primary.main})`,
+					times: 2,
+					separator: " ",
+				}),
+				my: 10,
+			}}
+		>
+			<img src="/arrow-down.png" alt="arrow" />
+		</Stack>
+	);
+}
+
+function Grass() {
+	return (
+		<Box sx={{ top: -100, position: "absolute", left: 0 }}>
+			<img src="grass back.png" alt="Grass" />
+		</Box>
+	);
+}
+
+function GrassHorizontal() {
+	return (
+		<Box
+			sx={{
+				height: 200,
+				width: "100%",
+				overflow: "visible",
+				zIndex: 15,
+				position: "relative",
+			}}
+		>
+			<Box
+				sx={{ position: "absolute", top: "50%", transform: "translateY(-50%)" }}
+			>
+				<img src="grass front.png" alt="Grass" />
+			</Box>
+		</Box>
 	);
 }
