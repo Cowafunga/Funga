@@ -1,6 +1,6 @@
 import { Box, Stack, Grid, Typography, useTheme } from "@mui/material";
 import React from "react";
-import appendDublicate from "../utils/appendDublicate";
+import appendDublicate from "../../utils/appendDublicate";
 
 export default function Roadmap() {
 	const { palette, custom } = useTheme();

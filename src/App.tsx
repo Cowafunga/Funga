@@ -3,9 +3,9 @@ import Navbar from "./components/Navbar";
 import Layout from "./components/Layout";
 import theme from "./contexts/theme";
 import { Box, Stack, ThemeProvider } from "@mui/material";
-import Hero from "./components/Hero";
-import MintInfo from "./components/MintInfo";
-import JoinDiscord from "./components/JoinDiscord";
+import Hero from "./components/home/Hero";
+import MintInfo from "./components/home/MintInfo";
+import JoinDiscord from "./components/home/JoinDiscord";
 // import Roadmap from "./components/Roadmap";
 
 function App() {

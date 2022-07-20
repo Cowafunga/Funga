@@ -1,12 +1,15 @@
 import { Box, Button, Stack, Typography, useTheme } from "@mui/material";
-import React from "react";
-import appendDublicate from "../utils/appendDublicate";
+import React, { useState } from "react";
+import appendDublicate from "../../utils/appendDublicate";
+import RepeatElement from "./../RepeatElement";
 
 export default function JoinDiscord() {
+	const [showBorders] = useState(false);
 	return (
 		<Stack
 			alignSelf="stretch"
 			sx={{
+				border: showBorders ? "12px solid blue" : "",
 				overflow: "hidden",
 				my: 15,
 				mb: 0,
@@ -42,7 +45,7 @@ function Content() {
 					sx={{
 						fontFamily: "Geska Rolling",
 						textShadow: appendDublicate({
-							text: `0 0 14px ${"white"}`,
+							text: `0 0 12px ${"white"}`,
 							times: 50,
 						}),
 						fontSize: "90px",
@@ -181,19 +184,5 @@ function Background() {
 				/>
 			</Box>
 		</Box>
-	);
-}
-
-interface IRepeatElement {
-	children: any;
-	times?: number;
-}
-function RepeatElement({ children, times = 1 }: IRepeatElement) {
-	return (
-		<>
-			{Array(times)
-				.fill(0)
-				.map((item, index) => children)}
-		</>
 	);
 }

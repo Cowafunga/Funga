@@ -23,6 +23,10 @@ const theme = createTheme({
 			main: "#3AA2CF",
 			contrastText: "white",
 		},
+		success: {
+			main: "#5FBFA2",
+			contrastText: "white",
+		},
 	},
 	custom: {
 		pink: {

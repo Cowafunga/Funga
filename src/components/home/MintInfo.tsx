@@ -5,7 +5,7 @@ import WatchLaterIcon from "@mui/icons-material/WatchLater";
 import PublicIcon from "@mui/icons-material/Public";
 import PeopleIcon from "@mui/icons-material/People";
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
-import appendDublicate from "../utils/appendDublicate";
+import appendDublicate from "../../utils/appendDublicate";
 
 export default function MintInfo() {
 	return (
@@ -136,8 +136,8 @@ function MintInfoDetails() {
 					fontSize: "90px",
 					// transform: "translateX(-50%)",
 					textShadow: appendDublicate({
-						text: `0 0 14px ${"#4BAD90"}`,
-						times: 40,
+						text: `0 0 12px ${"#4BAD90"}`,
+						times: 50,
 					}),
 				}}
 				variant="h1"
@@ -152,23 +152,24 @@ function MintInfoDetails() {
 				container
 			>
 				{[
+					{ text: "Free mint", icon: <AccountBalanceWalletIcon /> },
+					{ text: "July 30, 2022", icon: <WatchLaterIcon /> },
+
 					{
 						text: "Team is keeping 100",
 						icon: <PeopleIcon />,
 					},
 					{ text: "3,333 Figure", icon: <PublicIcon /> },
-					{ text: "July 30, 2022", icon: <WatchLaterIcon /> },
-					{ text: "Free min", icon: <AccountBalanceWalletIcon /> },
 				].map((item) => {
 					return (
-						<Grid item sx={{ display: "flex", my: 1 }} key={item.text} xs={6}>
+						<Grid item sx={{ display: "flex", my: 1.4 }} key={item.text} xs={6}>
 							<Stack
 								sx={{ fontSize: "20px", svg: { fontSize: "28px" } }}
 								gap={3}
 								direction="row"
 							>
-								<Box sx={{ color: palette.primary.main }}>{item.icon}</Box>
-								<Typography sx={{ fontSize: "24px" }} color="white">
+								<Box sx={{ color: palette.success.main }}>{item.icon}</Box>
+								<Typography sx={{ fontSize: "20px" }} color="white">
 									{item.text}
 								</Typography>
 							</Stack>
@@ -186,6 +187,7 @@ function MintInfoDetails() {
 				}}
 				startIcon={<LocalHospitalIcon />}
 				variant="contained"
+				color="success"
 				size="large"
 			>
 				Mintng page

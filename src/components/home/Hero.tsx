@@ -1,6 +1,6 @@
 import { Box, Typography, useTheme } from "@mui/material";
 import React from "react";
-import appendDublicate from "../utils/appendDublicate";
+import appendDublicate from "../../utils/appendDublicate";
 
 export default function Hero() {
 	return (
@@ -39,10 +39,10 @@ function TopPart() {
 				<Typography
 					sx={{
 						// use multiple shadows to simulate spread effect, otherwise, shadow will be blurry
-						fontSize: "112px",
+						fontSize: "102px",
 						textShadow: appendDublicate({
-							text: `0 0 14px ${palette.secondary.dark}`,
-							times: 10,
+							text: `0 0 12px ${palette.secondary.dark}`,
+							times: 50,
 						}),
 					}}
 					variant="h1"
@@ -55,11 +55,11 @@ function TopPart() {
 						color: "white",
 						position: "relative",
 						zIndex: 5,
-						my: -6.5,
-						fontSize: "82px",
+						my: -4.5,
+						fontSize: "75px",
 						textShadow: appendDublicate({
-							text: `0 0 14px ${palette.secondary.dark}`,
-							times: 10,
+							text: `0 0 12px ${palette.secondary.dark}`,
+							times: 50,
 						}),
 					}}
 					variant="h2"
@@ -68,10 +68,10 @@ function TopPart() {
 				</Typography>
 				<Typography
 					sx={{
-						fontSize: "112px",
+						fontSize: "102px",
 						textShadow: appendDublicate({
-							text: `0 0 14px ${palette.secondary.dark}`,
-							times: 10,
+							text: `0 0 12px ${palette.secondary.dark}`,
+							times: 50,
 						}),
 					}}
 					variant="h1"
@@ -87,12 +87,12 @@ function TopPart() {
 					position: "relative",
 					zIndex: 10,
 					fontSize: "18px",
-					fontWeight: "bolder",
+					// fontWeight: "bolder",
 				}}
 				textAlign="center"
 			>
 				Funga and Friends host parties at their virtual music festival venue,
-				The Festiverse™️, and steward a music-focused lifestyle brand,
+				The <br /> Festiverse™️, and steward a music-focused lifestyle brand,
 				LivingThings™️.
 			</Typography>
 
@@ -124,30 +124,53 @@ function BottomPart() {
 				justifyContent: "center",
 				position: "relative",
 				width: "min(1440px, 100vw)",
-				background: "#4b2463",
+				// background: "#4b2463",
 
 				// background: "url(/hero.png)",
-				// background: `linear-gradient(359deg, rgba(0, 0, 0, 0) 59.4%, #492262 100%),url(/hero.png)`,
+				background: `linear-gradient(359deg, rgba(0, 0, 0, 0) 59.4%, #492262 100%),url(/hero.png)`,
 			}}
 		>
 			<video
-				style={{ maxWidth: "100%", objectFit: "cover" }}
+				style={{ maxWidth: "100%", objectFit: "contain" }}
 				muted
 				loop
 				autoPlay
 				src="/hero-video.mp4"
 			></video>
-			<Box
-				sx={{
-					width: "100vw",
-					height: "50px",
-					left: 0,
-					background: "linear-gradient(0deg, #070e11, #24251954)",
-					position: "absolute",
-					bottom: 0,
-					zIndex: 20,
-				}}
-			></Box>
+			<MakeSkyMorePurple />
+			<LinearGradientInTheBottom />
 		</Box>
+	);
+}
+
+function MakeSkyMorePurple() {
+	return (
+		<Box
+			style={{
+				position: "absolute",
+				top: 0,
+				left: 0,
+				height: "100%",
+				width: "100%",
+				background: `linear-gradient(359deg, rgba(0, 0, 0, 0) 59.4%, #492262 100%)`,
+			}}
+		></Box>
+	);
+}
+
+function LinearGradientInTheBottom() {
+	return (
+		<Box
+			sx={{
+				width: "100vw",
+				height: "170px",
+				left: 0,
+				// visibility: "hidden",
+				background: "linear-gradient(0deg, #070e11, #24251954)",
+				position: "absolute",
+				bottom: 0,
+				zIndex: 20,
+			}}
+		></Box>
 	);
 }
