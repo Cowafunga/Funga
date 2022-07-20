@@ -12,8 +12,6 @@ export default function Hero() {
 }
 
 function TopPart() {
-	const { palette } = useTheme();
-
 	return (
 		<Box
 			sx={{
@@ -27,58 +25,7 @@ function TopPart() {
 				zIndex: 9,
 			}}
 		>
-			<Box
-				sx={{
-					position: "relative",
-					zIndex: 10,
-					"*": { fontFamily: "Geska Rolling !important" },
-					color: palette.secondary.main,
-				}}
-				textAlign={"center"}
-			>
-				<Typography
-					sx={{
-						// use multiple shadows to simulate spread effect, otherwise, shadow will be blurry
-						fontSize: "102px",
-						textShadow: appendDublicate({
-							text: `0 0 12px ${palette.secondary.dark}`,
-							times: 50,
-						}),
-					}}
-					variant="h1"
-				>
-					funga
-				</Typography>
-
-				<Typography
-					sx={{
-						color: "white",
-						position: "relative",
-						zIndex: 5,
-						my: -4.5,
-						fontSize: "75px",
-						textShadow: appendDublicate({
-							text: `0 0 12px ${palette.secondary.dark}`,
-							times: 50,
-						}),
-					}}
-					variant="h2"
-				>
-					and
-				</Typography>
-				<Typography
-					sx={{
-						fontSize: "102px",
-						textShadow: appendDublicate({
-							text: `0 0 12px ${palette.secondary.dark}`,
-							times: 50,
-						}),
-					}}
-					variant="h1"
-				>
-					friends
-				</Typography>
-			</Box>
+			<MainText />
 			<Typography
 				color="secondary.main"
 				sx={{
@@ -172,5 +119,65 @@ function LinearGradientInTheBottom() {
 				zIndex: 20,
 			}}
 		></Box>
+	);
+}
+
+function MainText() {
+	const { palette } = useTheme();
+
+	return (
+		<Box
+			sx={{
+				position: "relative",
+				zIndex: 10,
+				"*": { fontFamily: "Geska Rolling !important" },
+				color: palette.secondary.main,
+			}}
+			textAlign={"center"}
+		>
+			<img style={{ width: "400px" }} src="/funga text.png" alt="" />
+			{/* <Typography
+				sx={{
+					// use multiple shadows to simulate spread effect, otherwise, shadow will be blurry
+					fontSize: "102px",
+					textShadow: appendDublicate({
+						text: `0 0 12px ${palette.secondary.dark}`,
+						times: 50,
+					}),
+				}}
+				variant="h1"
+			>
+				funga
+			</Typography>
+
+			<Typography
+				sx={{
+					color: "white",
+					position: "relative",
+					zIndex: 5,
+					my: -4.5,
+					fontSize: "75px",
+					textShadow: appendDublicate({
+						text: `0 0 12px ${palette.secondary.dark}`,
+						times: 50,
+					}),
+				}}
+				variant="h2"
+			>
+				and
+			</Typography>
+			<Typography
+				sx={{
+					fontSize: "102px",
+					textShadow: appendDublicate({
+						text: `0 0 12px ${palette.secondary.dark}`,
+						times: 50,
+					}),
+				}}
+				variant="h1"
+			>
+				friends
+			</Typography> */}
+		</Box>
 	);
 }

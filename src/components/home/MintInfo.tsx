@@ -127,7 +127,8 @@ function MintInfoDetails() {
 			sx={{ alignSelf: "stretch", position: "relative", zIndex: 500 }}
 			alignItems="center"
 		>
-			<Typography
+			<img src="/mint info text.png" style={{ width: "68%" }} alt="" />
+			{/* <Typography
 				sx={{
 					textAlign: "center",
 					fontFamily: "Geska Rolling",
@@ -144,7 +145,7 @@ function MintInfoDetails() {
 				color={custom.yellow.main}
 			>
 				mint info
-			</Typography>
+			</Typography> */}
 
 			<Grid
 				sx={{ transform: "translateX(10%)" }}

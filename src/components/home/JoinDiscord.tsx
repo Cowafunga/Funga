@@ -41,7 +41,8 @@ function Content() {
 			alignItems="flex-end"
 		>
 			<Stack sx={{ bottom: 0, position: "relative" }} alignItems="stretch">
-				<Typography
+				<img src="/join discord text.png" style={{ width: "467px" }} alt="" />
+				{/* <Typography
 					sx={{
 						fontFamily: "Geska Rolling",
 						textShadow: appendDublicate({
@@ -68,7 +69,7 @@ function Content() {
 					variant="h1"
 				>
 					Discord
-				</Typography>
+				</Typography> */}
 				<Button
 					size="large"
 					color="info"
@@ -92,7 +93,12 @@ function Content() {
 			</Stack>
 			<Box sx={{ position: "relative", top: "100px", left: "120px" }}>
 				<img
-					style={{ transform: "scale(0.8)", transformOrigin: "50% 100%" }}
+					style={{
+						position: "relative",
+						top: "25px",
+						// transform: "scale(0.8)",
+						transformOrigin: "50% 100%",
+					}}
 					src="/mushroom man.png"
 					alt=""
 				/>
@@ -109,7 +115,7 @@ function Background() {
 				<Box style={{ position: "absolute", top: 0, left: 0 }}>
 					{/* placeholder image */}
 					<img
-						style={{ visibility: "hidden" }}
+						// style={{ visibility: "hidden" }}
 						src="/sunset.png"
 						alt="visual illustration"
 					/>
@@ -124,23 +130,12 @@ function Background() {
 						src="/sunset.png"
 						alt="visual illustration"
 					/> */}
-					<video
-						style={{
-							width: "70%",
-							position: "absolute",
-							top: 0,
-							left: "50%",
-							transform: "translateX(-50%)",
-						}}
-						muted
-						autoPlay
-						loop
-						src="/join-video.mp4"
-					></video>
+					<Video />
 				</Box>
+				{/* sunset cover */}
 				<img
 					style={{
-						width: "70%",
+						width: "100%",
 						display: "block",
 						margin: "auto",
 						position: "relative",
@@ -151,38 +146,61 @@ function Background() {
 				/>
 			</Box>
 			{/* ground and water */}
-			<Box
-				className="Ground"
-				sx={{ marginTop: "-270px", position: "relative" }}
-			>
-				<img src="/ground.png" alt="Ground" />
-				<RepeatElement times={2}>
-					<img
-						style={{
-							position: "absolute",
-							top: 120,
-							left: -200,
-							zIndex: 10,
-							transform: "rotate(-5deg)",
-							transformOrigin: "0 100%",
-							// width: 1500,
-							// height: 700,
-						}}
-						src="/water.png"
-						alt="Water"
-					/>
-				</RepeatElement>
-				{/* {Bush} */}
+			<GroundAndWater />
+		</Box>
+	);
+}
+
+function Video() {
+	return (
+		<video
+			style={{
+				// visibility: "hidden",
+				// width: "70%",
+				width: "100%",
+				position: "absolute",
+				top: 0,
+				left: "50%",
+				transform: "translateX(-50%)",
+			}}
+			muted
+			autoPlay
+			loop
+			src="/join-video.mp4"
+		></video>
+	);
+}
+
+function GroundAndWater() {
+	return (
+		<Box sx={{ marginTop: "-270px", position: "relative" }}>
+			<img src="/ground.png" alt="Ground" />
+			<RepeatElement times={3}>
 				<img
-					src="/water bush.png"
-					alt="Bush"
 					style={{
 						position: "absolute",
-						left: 0,
-						transform: "translateX(-50%) rotate(10deg)",
+						top: 160,
+						left: -450,
+						zIndex: 10,
+						transform: "rotate(-5deg)",
+						transformOrigin: "0 100%",
+						// width: 1500,
+						// height: 700,
 					}}
+					src="/water.png"
+					alt="Water"
 				/>
-			</Box>
+			</RepeatElement>
+			{/* {Bush} */}
+			<img
+				src="/water bush.png"
+				alt="Bush"
+				style={{
+					position: "absolute",
+					left: 0,
+					transform: "translateX(-50%) rotate(10deg)",
+				}}
+			/>
 		</Box>
 	);
 }

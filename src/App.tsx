@@ -6,12 +6,15 @@ import { Box, Stack, ThemeProvider } from "@mui/material";
 import Hero from "./components/home/Hero";
 import MintInfo from "./components/home/MintInfo";
 import JoinDiscord from "./components/home/JoinDiscord";
+import LoadingScreen from "./components/LoadingScreen";
 // import Roadmap from "./components/Roadmap";
 
 function App() {
 	return (
 		<div className="App">
 			<ThemeProvider theme={theme}>
+				<LoadingScreen />
+
 				<Stack
 					alignItems="center"
 					maxWidth="1440px"
@@ -52,6 +55,17 @@ function App() {
 							}}
 						></Box> */}
 					</Stack>
+					<Box
+						sx={{
+							zIndex: 9999,
+							width: "100%",
+							height: "1px",
+							position: "relative",
+							top: 40,
+						}}
+					>
+						<LinearGradientInTheBottom />
+					</Box>
 					<Box
 						sx={{
 							py: 10,
@@ -103,3 +117,20 @@ function App() {
 }
 
 export default App;
+
+function LinearGradientInTheBottom() {
+	return (
+		<Box
+			sx={{
+				width: "100vw",
+				height: "170px",
+				left: 0,
+				// visibility: "hidden",
+				background: "linear-gradient(0deg, #17120c, #24251954)",
+				position: "absolute",
+				bottom: 0,
+				zIndex: 20,
+			}}
+		></Box>
+	);
+}
