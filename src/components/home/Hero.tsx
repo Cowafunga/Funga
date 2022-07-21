@@ -12,6 +12,7 @@ export default function Hero() {
 }
 
 function TopPart() {
+	const { breakpoints: bp } = useTheme();
 	return (
 		<Box
 			sx={{
@@ -20,13 +21,29 @@ function TopPart() {
 				flexDirection: "column",
 				alignItems: "center",
 				justifyContent: "center",
-				height: {
-					xs: 644 / 2.7,
-					vsm: 644 / 1.95,
-					sm: 644 / 1.9,
-					md: 644 / 1.3,
-					lg: 644,
+
+				[bp.between("xs", "vsm")]: {
+					height: 644 / 2.7,
 				},
+				[bp.between("vsm", "sm")]: {
+					height: 644 / 1.95,
+				},
+				[bp.between("sm", "md")]: {
+					height: 644 / 1.9,
+				},
+				[bp.between("md", "lg")]: {
+					height: 644 / 1.3,
+				},
+				[bp.up("lg")]: {
+					height: 644,
+				},
+				// height: {
+				// 	xs: 644 / 2.7,
+				// 	vsm: 644 / 1.95,
+				// 	sm: 644 / 1.9,
+				// 	md: 644 / 1.3,
+				// 	lg: 644,
+				// },
 				// overflow: "hidden",
 				position: "relative",
 				zIndex: 9,
@@ -57,6 +74,14 @@ function TopPart() {
 
 function TopGradient() {
 	const gradientRef = useRef<HTMLDivElement>(null);
+	const { breakpoints: bp } = useTheme();
+
+	useEffect(() => {
+		let box = gradientRef.current as HTMLDivElement;
+		box.style.width = "0";
+		box.style.width = "min(140%,2050.93px)";
+	}, []);
+
 	// useEffect(() => {
 	// 	function onResize() {
 	// 		let elem = gradientRef.current as HTMLDivElement;
@@ -81,20 +106,44 @@ function TopGradient() {
 				left: "50%",
 				transform: "translateX(-50%)",
 				width: { xs: "min(140%,2050.93px)" },
-				height: {
-					xs: "134.7%",
-					vsm: "132% !important ",
-					400: "128% !important ",
-					sm: "120% !important",
-					md: "115% !important",
-					lg: "103% !important",
+				// height: {
+				// 	xs: "134.7%",
+				// 	vsm: "132% !important ",
+				// 	400: "128% !important ",
+				// 	sm: "120% !important",
+				// 	md: "115% !important",
+				// 	lg: "103% !important",
+				// },
+				[bp.between("xs", "vsm")]: {
+					height: "134.7%",
+					filter: "blur(20px) ",
 				},
-				filter: {
-					xs: "blur(20px) ",
-					vsm: "blur(22.5px) !important",
-					400: "blur(15px) !important",
-					sm: "blur(35.827px) !important",
+				[bp.between("vsm", "400")]: {
+					height: "129%",
+					filter: "blur(28.5px)",
 				},
+				[bp.between("400", "sm")]: {
+					height: "125.5%",
+					filter: "blur(20px)",
+				},
+				[bp.between("sm", "md")]: {
+					height: "120%",
+				},
+				[bp.between("md", "lg")]: {
+					height: "115%",
+				},
+				[bp.up("lg")]: {
+					height: "103%",
+				},
+				[bp.up("sm")]: {
+					filter: "blur(35.827px)",
+				},
+				// filter: {
+				// 	xs: "blur(20px) ",
+				// 	vsm: "blur(22.5px) !important",
+				// 	400: "blur(15px) !important",
+				// 	sm: "blur(35.827px) !important",
+				// },
 				background: `linear-gradient(33.27deg, #754F64 28.97%, #320A62 75.98%);`,
 			}}
 		></Box>
@@ -102,11 +151,17 @@ function TopGradient() {
 }
 
 function BottomPart() {
+	// silly stuff because things somehow don't work in the great iPhone
+	const videoRef = useRef<HTMLVideoElement>(null);
+	useEffect(() => {
+		let video = videoRef.current as HTMLVideoElement;
+		video.play();
+	}, []);
 	return (
 		<Box
 			sx={{
 				mt: { xs: "20px", vsm: "20px", sm: "-45px", lg: "-130px" },
-				height: { xs: 350, sm: 510, md: 650, lg: 810 },
+				height: { xs: 380, sm: 510, md: 650, lg: 810 },
 				zIndex: 4,
 				display: "flex",
 				justifyContent: "center",
@@ -116,6 +171,7 @@ function BottomPart() {
 			}}
 		>
 			<video
+				ref={videoRef}
 				style={{ width: "100%", objectFit: "cover" }}
 				muted
 				loop

@@ -9,8 +9,9 @@ declare module "@mui/material/styles" {
 	}
 	interface BreakpointOverrides {
 		xs: true;
-		vsm: true;
+		"100": true;
 		"200": true;
+		vsm: true;
 		"300": true;
 		"350": true;
 		"400": true;
@@ -18,6 +19,7 @@ declare module "@mui/material/styles" {
 		"550": true;
 		sm: true;
 		"700": true;
+		"800": true;
 		md: true;
 		lg: true;
 		xl: true;
@@ -61,6 +63,7 @@ const theme = createTheme({
 			xs: 0,
 			vsm: 300,
 			"200": 200,
+			"100": 100,
 			"300": 300,
 			"350": 350,
 			"400": 400,
@@ -68,6 +71,7 @@ const theme = createTheme({
 			"550": 550,
 			sm: 600,
 			"700": 700,
+			"800": 800,
 			md: 900,
 			lg: 1200,
 			xl: 1536,

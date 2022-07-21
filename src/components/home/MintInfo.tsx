@@ -35,7 +35,7 @@ export default function MintInfo() {
 				<Grid
 					item
 					sx={{
-						mt: { xs: 10, md: 0 },
+						mt: { xs: "45px", md: 0 },
 						display: "flex",
 						justifyContent: "center",
 					}}
