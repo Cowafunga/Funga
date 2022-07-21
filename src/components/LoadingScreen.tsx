@@ -127,7 +127,7 @@ export default function LoadingScreen() {
 							);
 
 							// load videos only 15% and rest as it plays?
-							const videoProgressThreshold = 50;
+							const videoProgressThreshold = 100;
 							const isVideo = /(\.mp4$)|(\.wav$)/.test(file.url);
 							if (isVideo && progress > videoProgressThreshold) {
 								progress = 100;
@@ -168,7 +168,7 @@ export default function LoadingScreen() {
 				position: "sticky",
 				top: 0,
 				left: 0,
-				zIndex: 10000,
+				zIndex: 25000,
 				transform: "translateX(0)",
 				height: "100vh",
 				width: "100vw",

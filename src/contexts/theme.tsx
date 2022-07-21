@@ -53,6 +53,9 @@ const theme = createTheme({
 			},
 		},
 	},
+	typography: {
+		fontFamily: ["Quicksand", "sans-serif"].join(","),
+	},
 	breakpoints: {
 		values: {
 			xs: 0,

@@ -14,7 +14,7 @@ export default function MintInfo() {
 			direction="column"
 			alignItems="center"
 			alignSelf="stretch"
-			sx={{ position: "relative", zIndex: 30 }}
+			sx={{ position: "relative", zIndex: 20000 }}
 		>
 			<Arrow />
 			<Grid container sx={{ position: "relative", zIndex: 50, mt: 5 }}>
@@ -89,7 +89,13 @@ export default function MintInfo() {
 function Frame() {
 	const { palette } = useTheme();
 	return (
-		<Box sx={{ display: "grid", placeItems: "center", position: "relative" }}>
+		<Box
+			sx={{
+				display: "grid",
+				placeItems: "center",
+				position: "relative",
+			}}
+		>
 			<Box
 				sx={{
 					width: "min(75%, 370px)",
@@ -237,7 +243,7 @@ function MintInfoDetails() {
 						text: "Team is keeping 100",
 						icon: <PeopleIcon />,
 					},
-					{ text: "3,333 Figure", icon: <PublicIcon /> },
+					{ text: "3,333 Fungas", icon: <PublicIcon /> },
 				].map((item) => {
 					return (
 						<Grid

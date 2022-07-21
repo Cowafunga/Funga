@@ -73,7 +73,7 @@ function App() {
 					{/* Footer gradient */}
 					<Box
 						sx={{
-							py: 10,
+							py: 13,
 							pb: 4,
 							mt: { md: -8 },
 							zIndex: 155,
