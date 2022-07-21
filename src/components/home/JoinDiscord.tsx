@@ -80,8 +80,8 @@ function Content() {
 				alignItems={{ xs: "center" }}
 			>
 				<img
-					src="/join discord text.png"
-					style={{ width: "min(80%,467px)", position: "relative", zIndex: 20 }}
+					src="/images/join discord text.png"
+					style={{ width: "min(80%,397px)", position: "relative", zIndex: 20 }}
 					alt=""
 				/>
 
@@ -90,9 +90,9 @@ function Content() {
 					color="info"
 					startIcon={<img src="/discord-simple.png" alt="Discord" />}
 					sx={{
-						mt: { xs: 2, "200": 3, "400": 5, sm: 8 },
+						mt: { xs: 4, "200": 3, "400": 5, sm: 8 },
 						mb: { xs: 8, md: 0 },
-						height: { xs: "54px", md: "44px" },
+						height: { xs: "44px", md: "44px" },
 						borderRadius: "8px",
 						fontSize: "15px",
 						position: "relative",

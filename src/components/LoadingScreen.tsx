@@ -22,7 +22,7 @@ let assets = [
 	},
 	{
 		name: "Join Discord Text",
-		url: "/join discord text.png",
+		url: "/images/join discord text.png",
 	},
 	{
 		name: "Mint Info Text",
