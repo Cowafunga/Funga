@@ -7,6 +7,7 @@ import Hero from "./components/home/Hero";
 import MintInfo from "./components/home/MintInfo";
 import JoinDiscord from "./components/home/JoinDiscord";
 import LoadingScreen from "./components/LoadingScreen";
+import Footer from "./components/Footer";
 // import Roadmap from "./components/Roadmap";
 
 function App() {
@@ -33,7 +34,8 @@ function App() {
 						alignItems="center"
 						sx={{
 							background: "#070e11",
-							width: "min(100vw, 1440px)",
+							width: "min(100%, 1440px)",
+							maxWidth: "100%",
 							overflow: "visible",
 						}}
 					>
@@ -56,59 +58,37 @@ function App() {
 						></Box> */}
 					</Stack>
 					<Box
+						className="last-boundary"
 						sx={{
 							zIndex: 9999,
 							width: "100%",
-							height: "1px",
+							height: { xs: 0, md: "1px" },
+							display: { xs: "none", md: "block" },
 							position: "relative",
 							top: 40,
 						}}
 					>
 						<LinearGradientInTheBottom />
 					</Box>
+					{/* Footer gradient */}
 					<Box
 						sx={{
 							py: 10,
 							pb: 4,
-							mt: -8,
+							mt: { md: -8 },
 							zIndex: 155,
 							position: "relative",
 							height: "100%",
 							width: "100%",
 							maxWidth: "1440px",
-							background:
-								"linear-gradient(180deg, rgba(23,18,12,0.6811099439775911) 0%, rgba(23,18,12,1) 29%, rgba(23,18,12,1) 100%)",
+							background: {
+								xs: "#070e11",
+								// xs: "linear-gradient(180deg, rgb(17, 30, 35) 0%, rgba(23,18,12,1) 29%, rgba(23,18,12,1) 100%)",
+								md: "linear-gradient(180deg, rgba(23,18,12,0.6811099439775911) 0%, rgba(23,18,12,1) 29%, rgba(23,18,12,1) 100%)",
+							},
 						}}
 					>
-						<Box>
-							<a
-								style={{
-									position: "absolute",
-									top: "43%",
-									left: "45%",
-									transform: "traslateX(-50%) translateY(-20%)",
-									color: "white",
-								}}
-								href="/#"
-							>
-								Privacy & Terms
-							</a>
-						</Box>
-						<Navbar />
-						<p
-							style={{
-								// position: "absolute",
-								bottom: 0,
-								color: "white",
-								opacity: 0.6,
-								left: "50%",
-								textAlign: "center",
-								// transform: "translateX(-50%)",
-							}}
-						>
-							{" "}
-							Funga™️ 2022. All rights reserved
-						</p>
+						<Footer />
 					</Box>
 				</Stack>
 			</ThemeProvider>
@@ -123,10 +103,13 @@ function LinearGradientInTheBottom() {
 		<Box
 			sx={{
 				width: "100vw",
-				height: "170px",
+				height: { xs: "100px", md: "170px" },
 				left: 0,
 				// visibility: "hidden",
-				background: "linear-gradient(0deg, #17120c, #24251954)",
+				background: {
+					xs: "linear-gradient(0deg, #111e23, #24251954)",
+					md: "linear-gradient(0deg, #17120c, #24251954)",
+				},
 				position: "absolute",
 				bottom: 0,
 				zIndex: 20,

@@ -7,13 +7,29 @@ declare module "@mui/material/styles" {
 	interface Theme {
 		custom: any;
 	}
+	interface BreakpointOverrides {
+		xs: true;
+		vsm: true;
+		"200": true;
+		"300": true;
+		"350": true;
+		"400": true;
+		"500": true;
+		"550": true;
+		sm: true;
+		"700": true;
+		md: true;
+		lg: true;
+		xl: true;
+	}
 }
 
 const theme = createTheme({
 	palette: {
 		secondary: {
 			main: "#FAD275",
-			dark: "#583C0D",
+			dark: "#d49528",
+			// contrastText: "white",
 		},
 		primary: {
 			main: "#65B875",
@@ -26,6 +42,32 @@ const theme = createTheme({
 		success: {
 			main: "#5FBFA2",
 			contrastText: "white",
+		},
+	},
+	components: {
+		MuiButton: {
+			styleOverrides: {
+				root: {
+					borderRadius: "8px",
+				},
+			},
+		},
+	},
+	breakpoints: {
+		values: {
+			xs: 0,
+			vsm: 300,
+			"200": 200,
+			"300": 300,
+			"350": 350,
+			"400": 400,
+			"500": 500,
+			"550": 550,
+			sm: 600,
+			"700": 700,
+			md: 900,
+			lg: 1200,
+			xl: 1536,
 		},
 	},
 	custom: {

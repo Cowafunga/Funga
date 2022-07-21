@@ -18,24 +18,67 @@ export default function MintInfo() {
 		>
 			<Arrow />
 			<Grid container sx={{ position: "relative", zIndex: 50, mt: 5 }}>
-				<Grid item sx={{ display: "flex", justifyContent: "center" }} xs={6}>
-					<Frame />
-				</Grid>
-
 				<Grid
 					sx={{
-						display: "flex",
+						display: { xs: "flex", md: "none" },
 						justifyContent: "center",
 						position: "relative",
 						zIndex: 500,
 					}}
 					item
-					xs={6}
+					xs={12}
+					md={6}
 				>
 					<MintInfoDetails />
 				</Grid>
-				<Grid xs={12} item>
+
+				<Grid
+					item
+					sx={{
+						mt: { xs: 10, md: 0 },
+						display: "flex",
+						justifyContent: "center",
+					}}
+					xs={12}
+					md={6}
+				>
+					<Frame />
+				</Grid>
+
+				<Grid
+					sx={{
+						display: { xs: "none", md: "flex" },
+						justifyContent: "center",
+						position: "relative",
+						zIndex: 500,
+					}}
+					item
+					xs={12}
+					md={6}
+				>
+					<MintInfoDetails />
+				</Grid>
+				<Grid sx={{ position: "relative" }} xs={12} item>
 					<GrassHorizontal />
+					<Button
+						sx={{
+							mx: "auto",
+							fontSize: "17px",
+							width: "min(95%, 275px)",
+							zIndex: 900,
+							left: "50%",
+							top: "250%",
+							transform: "translateX(-50%) translateY(-50%)",
+							position: "absolute",
+							height: "54px",
+							display: { md: "none", xs: "flex" },
+						}}
+						startIcon={<LocalHospitalIcon />}
+						variant="contained"
+						color="success"
+					>
+						Minting page
+					</Button>
 				</Grid>
 			</Grid>
 			<Grass />
@@ -46,13 +89,37 @@ export default function MintInfo() {
 function Frame() {
 	const { palette } = useTheme();
 	return (
-		<Box sx={{ position: "relative" }}>
-			<Box sx={{ width: 370, height: 370, position: "relative" }}>
-				<img
-					style={{ width: 370, height: 370, position: "relative", zIndex: 15 }}
+		<Box sx={{ display: "grid", placeItems: "center", position: "relative" }}>
+			<Box
+				sx={{
+					width: "min(75%, 370px)",
+					aspectRatio: "1/1",
+					display: "grid",
+					placeItems: "center",
+					position: "relative",
+				}}
+			>
+				<video
+					src={"/videos/Funga Flip.mp4"}
+					style={{
+						borderRadius: "10px",
+						width: "100%",
+						position: "relative",
+						zIndex: 15,
+					}}
+					autoPlay
+					muted
+					loop
+				></video>
+				{/* <img
+					style={{
+						width: "100%",
+						position: "relative",
+						zIndex: 15,
+					}}
 					src="/mintinfo4.png"
 					alt="Mint info"
-				/>
+				/> */}
 				{/* Mushrooms */}
 
 				<Box
@@ -124,7 +191,12 @@ function MintInfoDetails() {
 	return (
 		<Stack
 			justifyContent="space-between"
-			sx={{ alignSelf: "stretch", position: "relative", zIndex: 500 }}
+			sx={{
+				gap: { md: 0, xs: 4 },
+				alignSelf: "stretch",
+				position: "relative",
+				zIndex: 500,
+			}}
 			alignItems="center"
 		>
 			<img src="/mint info text.png" style={{ width: "68%" }} alt="" />
@@ -148,7 +220,12 @@ function MintInfoDetails() {
 			</Typography> */}
 
 			<Grid
-				sx={{ transform: "translateX(10%)" }}
+				sx={{
+					// display: { md: "grid", xs: "flex" },
+					// flexDirection: "column",
+					width: { xs: "min-content", md: "auto" },
+					transform: { md: "translateX(10%)" },
+				}}
 				justifyContent="center"
 				container
 			>
@@ -163,9 +240,26 @@ function MintInfoDetails() {
 					{ text: "3,333 Figure", icon: <PublicIcon /> },
 				].map((item) => {
 					return (
-						<Grid item sx={{ display: "flex", my: 1.4 }} key={item.text} xs={6}>
+						<Grid
+							item
+							sx={{
+								minWidth: 0,
+								width: { xs: "240px", md: "auto" },
+								display: "flex",
+								my: 1.4,
+							}}
+							key={item.text}
+							xs={12}
+							md={6}
+						>
 							<Stack
-								sx={{ fontSize: "20px", svg: { fontSize: "28px" } }}
+								sx={{
+									display: "flex",
+									fontSize: "20px",
+									svg: { fontSize: "28px" },
+									position: "relative",
+									// left: { xs: "40%", md: 0 },
+								}}
 								gap={3}
 								direction="row"
 							>
@@ -184,14 +278,13 @@ function MintInfoDetails() {
 					fontSize: "17px",
 					width: "275px",
 					height: "54px",
-					borderRadius: "8px",
+					display: { xs: "none", md: "inline-flex" },
 				}}
 				startIcon={<LocalHospitalIcon />}
 				variant="contained"
 				color="success"
-				size="large"
 			>
-				Mintng page
+				Minting page
 			</Button>
 		</Stack>
 	);
@@ -209,7 +302,7 @@ function Arrow() {
 					times: 2,
 					separator: " ",
 				}),
-				my: 10,
+				my: { xs: 5, md: 10 },
 			}}
 		>
 			<img src="/arrow-down.png" alt="arrow" />
@@ -229,10 +322,11 @@ function GrassHorizontal() {
 	return (
 		<Box
 			sx={{
-				height: 130,
+				height: { xs: 40, md: 130 },
 				width: "100%",
 				overflow: "visible",
 				zIndex: 15,
+				top: 50,
 				position: "relative",
 			}}
 		>
@@ -241,7 +335,10 @@ function GrassHorizontal() {
 					position: "absolute",
 					top: "50%",
 
-					transform: "translateY(-50%) scaleY(0.6)",
+					transform: {
+						xs: "translateY(-50%) scaleY(0.4)",
+						md: "translateY(-50%) scaleY(0.6)",
+					},
 				}}
 			>
 				<img src="grass front.png" alt="Grass" />

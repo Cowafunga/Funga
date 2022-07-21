@@ -9,7 +9,7 @@ interface ILayout {
 export default function Layout({ children, sx = {} }: ILayout) {
 	return (
 		<Box
-			sx={{ boxSizing: "border-box", position: "relative", px: 3, ...sx }}
+			sx={{ boxSizing: "border-box", position: "relative", ...sx }}
 			width={"min(100%, 1440px)"}
 			margin="auto"
 		>

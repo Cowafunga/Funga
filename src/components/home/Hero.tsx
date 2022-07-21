@@ -1,5 +1,5 @@
 import { Box, Typography, useTheme } from "@mui/material";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import appendDublicate from "../../utils/appendDublicate";
 
 export default function Hero() {
@@ -15,11 +15,18 @@ function TopPart() {
 	return (
 		<Box
 			sx={{
+				pt: { xs: 18, vsm: 12, sm: 15, md: 15, lg: 0 },
 				display: "flex",
 				flexDirection: "column",
 				alignItems: "center",
 				justifyContent: "center",
-				height: 644,
+				height: {
+					xs: 644 / 2.7,
+					vsm: 644 / 1.95,
+					sm: 644 / 1.9,
+					md: 644 / 1.3,
+					lg: 644,
+				},
 				// overflow: "hidden",
 				position: "relative",
 				zIndex: 9,
@@ -30,33 +37,67 @@ function TopPart() {
 				color="secondary.main"
 				sx={{
 					mt: "40px",
-					maxWidth: "700px",
+					maxWidth: "650px",
 					position: "relative",
 					zIndex: 10,
-					fontSize: "18px",
+					fontSize: { xs: "16px", sm: "18px" },
+					px: 3,
 					// fontWeight: "bolder",
 				}}
 				textAlign="center"
 			>
 				Funga and Friends host parties at their virtual music festival venue,
-				The <br /> Festiverse™️, and steward a music-focused lifestyle brand,
+				The Festiverse™️, and steward a music-focused lifestyle brand,
 				LivingThings™️.
 			</Typography>
-
-			<Box
-				sx={{
-					position: "absolute",
-					top: -50,
-					left: "50%",
-					transform: "translateX(-50%)",
-					width: "2050.93px",
-					height: 644 * 1.03,
-					background: `linear-gradient(33.27deg, #754F64 28.97%, #320A62 75.98%);`,
-					// overflow: "hidden",
-					filter: "blur(35.827px)",
-				}}
-			></Box>
+			<TopGradient />
 		</Box>
+	);
+}
+
+function TopGradient() {
+	const gradientRef = useRef<HTMLDivElement>(null);
+	// useEffect(() => {
+	// 	function onResize() {
+	// 		let elem = gradientRef.current as HTMLDivElement;
+	// 		if (window.innerWidth < 1440) {
+	// 			let heightDiff = 1440 - window.innerWidth;
+	// 			let originalHeight = 103;
+	// 			let newHeight = originalHeight + heightDiff * 0.1;
+	// 			elem.style.height = `${newHeight}%`;
+	// 		}
+	// 	}
+	// 	// window.addEventListener("resize", onResize);
+	// 	return () => {
+	// 		window.removeEventListener("resize", onResize);
+	// 	};
+	// }, []);
+	return (
+		<Box
+			ref={gradientRef}
+			sx={{
+				position: "absolute",
+				top: -50,
+				left: "50%",
+				transform: "translateX(-50%)",
+				width: { xs: "min(140%,2050.93px)" },
+				height: {
+					xs: "134.7%",
+					vsm: "132% !important ",
+					400: "128% !important ",
+					sm: "120% !important",
+					md: "115% !important",
+					lg: "103% !important",
+				},
+				filter: {
+					xs: "blur(20px) ",
+					vsm: "blur(22.5px) !important",
+					400: "blur(15px) !important",
+					sm: "blur(35.827px) !important",
+				},
+				background: `linear-gradient(33.27deg, #754F64 28.97%, #320A62 75.98%);`,
+			}}
+		></Box>
 	);
 }
 
@@ -64,21 +105,18 @@ function BottomPart() {
 	return (
 		<Box
 			sx={{
-				mt: "-130px",
-				height: 810,
+				mt: { xs: "20px", vsm: "20px", sm: "-45px", lg: "-130px" },
+				height: { xs: 350, sm: 510, md: 650, lg: 810 },
 				zIndex: 4,
 				display: "flex",
 				justifyContent: "center",
 				position: "relative",
 				width: "min(1440px, 100vw)",
-				// background: "#4b2463",
-
-				// background: "url(/hero.png)",
-				background: `linear-gradient(359deg, rgba(0, 0, 0, 0) 59.4%, #492262 100%),url(/hero.png)`,
+				// background: `linear-gradient(359deg, rgba(0, 0, 0, 0) 59.4%, #492262 100%),url(/hero.png)`,
 			}}
 		>
 			<video
-				style={{ maxWidth: "100%", objectFit: "contain" }}
+				style={{ width: "100%", objectFit: "cover" }}
 				muted
 				loop
 				autoPlay
@@ -110,7 +148,7 @@ function LinearGradientInTheBottom() {
 		<Box
 			sx={{
 				width: "100vw",
-				height: "170px",
+				height: { xs: "80px", sm: "150px", lg: "170px" },
 				left: 0,
 				// visibility: "hidden",
 				background: "linear-gradient(0deg, #070e11, #24251954)",
@@ -135,7 +173,7 @@ function MainText() {
 			}}
 			textAlign={"center"}
 		>
-			<img style={{ width: "400px" }} src="/funga text.png" alt="" />
+			<img style={{ width: "min(66%, 400px)" }} src="/funga text.png" alt="" />
 			{/* <Typography
 				sx={{
 					// use multiple shadows to simulate spread effect, otherwise, shadow will be blurry
