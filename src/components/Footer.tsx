@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
-import { INNER_WIDTH } from "../constants";
+import { DISCORD_LINK, INNER_WIDTH, TWITTER_LINK } from "../constants";
 import { Box } from "@mui/material";
+import { useAppData } from "../contexts/AppContext";
 
 export default function Footer() {
+	const [appData, setAppData] = useAppData();
+	const { connectWalletPressed } = appData;
+	function handleWalletPress() {
+		setAppData(() => ({ ...appData, connectWalletPressed: true }));
+	}
+
 	return (
 		<Stack>
 			<Stack
@@ -42,24 +49,7 @@ export default function Footer() {
 						<img style={{ maxWidth: "100%" }} src="/images/logo.svg" alt="" />
 					</Box>
 				</a>
-				<Box
-					sx={{
-						position: { md: "absolute" },
-						transform: { md: "translateX(-50%)" },
-						left: "50%",
-						display: { xs: "none", "700": "flex !important" },
-					}}
-				>
-					<a
-						style={{
-							width: "max-content",
-							color: "white",
-						}}
-						href="/#"
-					>
-						Privacy & Terms
-					</a>
-				</Box>
+
 				<Stack
 					alignSelf={{ xs: "stretch", "700": "center !important" }}
 					justifyContent={"space-between"}
@@ -67,36 +57,48 @@ export default function Footer() {
 					direction={{ xs: "column", "350": "row !important" } as any}
 					alignItems={"center"}
 				>
-					<img src="/images/twitter.svg" alt="" />
+					<Box
+						sx={{
+							"&,a": { display: { xs: "grid" } },
+							placeItems: "center",
+						}}
+					>
+						<a href={TWITTER_LINK}>
+							<img src="/images/twitter.svg" alt="" />
+						</a>
+					</Box>
 					<Button
 						variant="contained"
 						startIcon={<img alt="" src="/wallet.png" />}
-						sx={{ display: { "700": "none !important", xs: "inline-flex" } }}
+						sx={{ display: { sm: "none !important", xs: "inline-flex" } }}
+						onClick={handleWalletPress}
+						color={connectWalletPressed ? "secondary" : "primary"}
 					>
-						Connect Wallet
+						{connectWalletPressed ? "(NOT YET)" : "Connect Wallet"}
 					</Button>
-					<img src="/images/discord filled.svg" alt="" />
+					<Box
+						sx={{
+							"&,a": { display: { xs: "grid" } },
+							placeItems: "center",
+						}}
+					>
+						<a href={DISCORD_LINK}>
+							<img src="/images/discord filled.svg" alt="" />
+						</a>
+					</Box>
 					<Button
 						variant="contained"
 						startIcon={<img alt="" src="/images/wallet.svg" />}
 						sx={{
 							width: "max-content",
-							display: { "700": "inline-flex !important", xs: "none" },
+							display: { sm: "inline-flex !important", xs: "none" },
 						}}
+						onClick={handleWalletPress}
+						color={connectWalletPressed ? "secondary" : "primary"}
 					>
-						Connect Wallet
+						{connectWalletPressed ? "(NOT YET)" : "Connect Wallet"}
 					</Button>
 				</Stack>
-				<Box sx={{ display: { "700": "none !important", xs: "block" } }}>
-					<a
-						style={{
-							color: "white",
-						}}
-						href="/#"
-					>
-						Privacy & Terms
-					</a>
-				</Box>
 			</Stack>
 			<p
 				style={{

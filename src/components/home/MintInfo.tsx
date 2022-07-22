@@ -1,13 +1,10 @@
 import { Box, Button, Grid, Stack, Typography, useTheme } from "@mui/material";
-import React from "react";
-import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
-import WatchLaterIcon from "@mui/icons-material/WatchLater";
-import PublicIcon from "@mui/icons-material/Public";
-import PeopleIcon from "@mui/icons-material/People";
-import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
-import appendDublicate from "../../utils/appendDublicate";
+import React, { useState } from "react";
+import { useAppData } from "../../contexts/AppContext";
 
 export default function MintInfo() {
+	const [appData, setAppData] = useAppData();
+	const { mintBtnPressed } = appData;
 	return (
 		<Stack
 			justifyContent="space-between"
@@ -73,11 +70,12 @@ export default function MintInfo() {
 							height: "54px",
 							display: { md: "none", xs: "flex" },
 						}}
+						onClick={() => setAppData((d) => ({ ...d, mintBtnPressed: true }))}
 						startIcon={<img src="/images/medical kit.svg" alt="Medical kit" />}
 						variant="contained"
-						color="success"
+						color={mintBtnPressed ? "secondary" : "success"}
 					>
-						Minting page
+						{mintBtnPressed ? "Coming soon..." : "Minting page"}
 					</Button>
 				</Grid>
 			</Grid>
@@ -116,6 +114,7 @@ function Frame() {
 					autoPlay
 					muted
 					loop
+					playsInline
 				></video>
 				{/* <img
 					style={{
@@ -192,7 +191,9 @@ function Star() {
 }
 
 function MintInfoDetails() {
-	const { custom, palette } = useTheme();
+	const { palette } = useTheme();
+	const [appData, setAppData] = useAppData();
+	const { mintBtnPressed } = appData;
 
 	return (
 		<Stack
@@ -308,11 +309,12 @@ function MintInfoDetails() {
 					height: "54px",
 					display: { xs: "none", md: "inline-flex" },
 				}}
+				onClick={() => setAppData((d) => ({ ...d, mintBtnPressed: true }))}
 				startIcon={<img src="/images/medical kit.svg" alt="Medical kit" />}
 				variant="contained"
-				color="success"
+				color={mintBtnPressed ? "secondary" : "success"}
 			>
-				Minting page
+				{mintBtnPressed ? "Coming soon..." : "Minting page"}
 			</Button>
 		</Stack>
 	);

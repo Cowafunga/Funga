@@ -1,6 +1,6 @@
 import { Box, Typography, useTheme } from "@mui/material";
 import React, { useEffect, useRef } from "react";
-import appendDublicate from "../../utils/appendDublicate";
+import { useAppData } from "../../contexts/AppContext";
 
 export default function Hero() {
 	return (
@@ -37,14 +37,7 @@ function TopPart() {
 				[bp.up("lg")]: {
 					height: 644,
 				},
-				// height: {
-				// 	xs: 644 / 2.7,
-				// 	vsm: 644 / 1.95,
-				// 	sm: 644 / 1.9,
-				// 	md: 644 / 1.3,
-				// 	lg: 644,
-				// },
-				// overflow: "hidden",
+
 				position: "relative",
 				zIndex: 9,
 			}}
@@ -64,8 +57,9 @@ function TopPart() {
 				textAlign="center"
 			>
 				Funga and Friends host parties at their virtual music festival venue,
-				The Festiverse™️, and steward a music-focused lifestyle brand,
-				LivingThings™️.
+				The Festiverse<sup style={{ fontSize: "10px" }}>TM</sup>, and steward a
+				music-focused lifestyle brand, LivingThings
+				<sup style={{ fontSize: "10px" }}>TM</sup>.
 			</Typography>
 			<TopGradient />
 		</Box>
@@ -75,12 +69,24 @@ function TopPart() {
 function TopGradient() {
 	const gradientRef = useRef<HTMLDivElement>(null);
 	const { breakpoints: bp } = useTheme();
-
+	const [data] = useAppData();
 	useEffect(() => {
 		let box = gradientRef.current as HTMLDivElement;
-		box.style.width = "0";
-		box.style.width = "min(140%,2050.93px)";
-	}, []);
+		// all trouble of using loading because the sky graident in the top secion looks cutoff in iphone safari and this weird code fixes it
+		if (!data.isLoading) {
+			box.style.width = "0";
+			// setTimeout(() => {
+			requestAnimationFrame(() => {
+				box.style.width = "min(140%,2050.93px)";
+			});
+			// }, 100);
+		}
+		setTimeout(() => {
+			requestAnimationFrame(() => {
+				box.style.width = "min(140%,2050.93px)";
+			});
+		}, 500);
+	}, [data.isLoading]);
 
 	// useEffect(() => {
 	// 	function onResize() {
@@ -106,14 +112,7 @@ function TopGradient() {
 				left: "50%",
 				transform: "translateX(-50%)",
 				width: { xs: "min(140%,2050.93px)" },
-				// height: {
-				// 	xs: "134.7%",
-				// 	vsm: "132% !important ",
-				// 	400: "128% !important ",
-				// 	sm: "120% !important",
-				// 	md: "115% !important",
-				// 	lg: "103% !important",
-				// },
+
 				[bp.between("xs", "vsm")]: {
 					height: "134.7%",
 					filter: "blur(20px) ",
@@ -138,12 +137,7 @@ function TopGradient() {
 				[bp.up("sm")]: {
 					filter: "blur(35.827px)",
 				},
-				// filter: {
-				// 	xs: "blur(20px) ",
-				// 	vsm: "blur(22.5px) !important",
-				// 	400: "blur(15px) !important",
-				// 	sm: "blur(35.827px) !important",
-				// },
+
 				background: `linear-gradient(33.27deg, #754F64 28.97%, #320A62 75.98%);`,
 			}}
 		></Box>
@@ -175,6 +169,7 @@ function BottomPart() {
 				style={{ width: "100%", objectFit: "cover" }}
 				muted
 				loop
+				playsInline
 				autoPlay
 				src="/hero-video.mp4"
 			></video>

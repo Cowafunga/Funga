@@ -1,5 +1,6 @@
 import { Box, Button, Stack, Typography, useTheme } from "@mui/material";
 import React, { useEffect, useState } from "react";
+import { DISCORD_LINK } from "../../constants";
 import appendDublicate from "../../utils/appendDublicate";
 import RepeatElement from "./../RepeatElement";
 
@@ -196,26 +197,27 @@ function Content() {
 					style={{ width: "100%", position: "relative", zIndex: 20 }}
 					alt=""
 				/>
-
-				<Button
-					size="large"
-					color="info"
-					startIcon={<img src="/discord-simple.png" alt="Discord" />}
-					sx={{
-						// mt: { xs: 3, "200": 3, "400": 5, sm: 5 },
-						mt: { xs: "30px", md: "44px" },
-						mb: { xs: 9, md: 0 },
-						height: { xs: "30px", md: "44px" },
-						borderRadius: "8px",
-						fontSize: "15px",
-						position: "relative",
-						zIndex: 20,
-						width: "100%",
-					}}
-					variant="contained"
-				>
-					Join
-				</Button>
+				<a style={{ width: "100%" }} href={DISCORD_LINK}>
+					<Button
+						size="large"
+						color="info"
+						startIcon={<img src="/discord-simple.png" alt="Discord" />}
+						sx={{
+							// mt: { xs: 3, "200": 3, "400": 5, sm: 5 },
+							mt: { xs: "30px", md: "44px" },
+							mb: { xs: 9, md: 0 },
+							height: { xs: "30px", md: "44px" },
+							borderRadius: "8px",
+							fontSize: "15px",
+							position: "relative",
+							zIndex: 20,
+							width: "100%",
+						}}
+						variant="contained"
+					>
+						Join
+					</Button>
+				</a>
 				{/* Water below md screen */}
 				<Box
 					sx={{
@@ -225,7 +227,7 @@ function Content() {
 						width: "100%",
 					}}
 				>
-					<RepeatElement times={2}>
+					<RepeatElement times={3}>
 						<Box
 							className="join-discord-water"
 							sx={{
@@ -244,7 +246,7 @@ function Content() {
 								// [bp.up("md")]: {
 								// 	mt: "-470px",
 								// },
-								left: { xs: -850, md: -650 },
+								left: { xs: -950, md: -650 },
 								zIndex: 10,
 								transform: { xs: "rotate(13deg)", md: "rotate(-2deg)" },
 								transformOrigin: "0 100%",
@@ -260,7 +262,8 @@ function Content() {
 				sx={{
 					position: "relative",
 					alignSelf: "flex-end",
-					top: { xs: "0px", md: "140px" },
+					top: { xs: "0px", md: "140px", lg: "240px" },
+					// transform: "scale(1.2)",
 					left: { xs: 0, md: "40px" },
 					width: { xs: "70%", md: "47%" },
 					flexShrink: 0,
@@ -336,6 +339,7 @@ function Video() {
 				transform: "translateX(-50%)",
 			}}
 			muted
+			playsInline
 			autoPlay
 			loop
 			src="/join-video.mp4"
@@ -365,7 +369,7 @@ function GroundAndWater() {
 						bottom: 0,
 						width: "100%",
 						display: { xs: "block", md: "none" },
-						background: "linear-gradient(0deg, #070e11, rgba(255, 0, 0, 0))",
+						background: "linear-gradient(0deg, #070e11, rgba(0, 0, 0, 0))",
 					}}
 				></Box>
 				{/* {Bush} */}

@@ -2,6 +2,7 @@ import { useTheme } from "@emotion/react";
 import { Box, Button, Stack, Typography } from "@mui/material";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useAppData } from "../contexts/AppContext";
 
 let assets = [
 	{
@@ -98,6 +99,7 @@ let assets = [
 
 export default function LoadingScreen() {
 	// const {  } = useTheme();
+	const [data, setAppData] = useAppData();
 	const [progress, setProgress] = useState(() =>
 		assets.map((asset) => ({ ...asset, progress: 0 }))
 	);
@@ -143,14 +145,13 @@ export default function LoadingScreen() {
 	// 	document.body.style.overflow = "initial";
 	// 	return <></>;
 	// }
-	if (!show) {
-		document.body.style.overflow = "initial";
-		return (
-			<audio autoPlay>
-				<source src="/audio/website song.wav" type="audio/wav" />
-			</audio>
-		);
-	}
+	useEffect(() => {
+		if (!show) {
+			document.body.style.overflow = "initial";
+
+			data.isLoading && setAppData((d) => ({ ...d, isLoading: false }));
+		}
+	}, [show, data.isLoading, setAppData]);
 
 	function getTotalProgress() {
 		const total = progress.reduce((prev, current) => {
@@ -165,7 +166,7 @@ export default function LoadingScreen() {
 				position: "sticky",
 				top: 0,
 				left: 0,
-				zIndex: 25000,
+				zIndex: 9999999,
 				transform: "translateX(0)",
 				height: "100vh",
 				width: "100vw",
@@ -198,6 +199,30 @@ export default function LoadingScreen() {
 					>
 						<img
 							style={{
+								visibility: "hidden",
+								width: "100%",
+								height: "100%",
+								transform: "scale(1.2)",
+								transformOrigin: "center center",
+							}}
+							src="/images/spinning mushroom.gif"
+							alt=""
+						/>
+					</Box>
+					<Box
+						sx={{
+							position: "fixed",
+							top: "50%",
+							transform: "translateY(-50%)",
+							// visibility: "hidden",
+
+							// aspectRatio: "1/1",
+							width: { xs: "100px", sm: "150px" },
+							height: { xs: "100px", sm: "150px" },
+						}}
+					>
+						<img
+							style={{
 								width: "100%",
 								height: "100%",
 								transform: "scale(1.2)",
@@ -223,10 +248,14 @@ export default function LoadingScreen() {
 				<Button
 					onClick={() => setShow(false)}
 					size="large"
+					sx={{
+						fontWeight: "bold",
+						// transform: "translateX(-20%) translateY(50%)",
+					}}
 					color="secondary"
 					variant="contained"
 				>
-					Enter
+					Get Weird
 				</Button>
 			)}
 

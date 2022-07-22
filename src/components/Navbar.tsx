@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
-import { INNER_WIDTH } from "../constants";
-import { Box } from "@mui/material";
+import { DISCORD_LINK, INNER_WIDTH, TWITTER_LINK } from "../constants";
+import { Box, IconButton } from "@mui/material";
+import MusicNoteIcon from "@mui/icons-material/MusicNote";
+import { useAppData } from "../contexts/AppContext";
 
 export default function Navbar() {
+	const [appData, setAppData] = useAppData();
+	const { connectWalletPressed } = appData;
+	function handleWalletPress() {
+		setAppData(() => ({ ...appData, connectWalletPressed: true }));
+	}
 	return (
 		<Stack
 			sx={{
@@ -33,24 +40,44 @@ export default function Navbar() {
 						display: "grid",
 						placeItems: "center",
 						width: { xs: "75px", sm: "auto" },
+						img: {
+							width: { xs: "75px", sm: "auto" },
+						},
 					}}
 				>
-					<img style={{ maxWidth: "100%" }} src="/images/logo.svg" alt="" />
+					<img src="/images/logo.svg" alt="" />
 				</Box>
 			</a>
 			<Stack gap={3} direction="row" alignItems={"center"}>
-				<Box sx={{ display: { xs: "none", sm: "grid" }, placeItems: "center" }}>
-					<img src="/images/twitter.svg" alt="" />
+				<Box
+					sx={{
+						"&,a": { display: { xs: "none", sm: "grid" } },
+						placeItems: "center",
+					}}
+				>
+					<a href={TWITTER_LINK}>
+						<img src="/images/twitter.svg" alt="" />
+					</a>
 				</Box>
-				<Box sx={{ display: { xs: "none", sm: "grid" }, placeItems: "center" }}>
-					{" "}
-					<img src="/images/discord filled.svg" alt="" />
+
+				<Box
+					sx={{
+						"&,a": { display: { xs: "none", sm: "grid" } },
+						placeItems: "center",
+					}}
+				>
+					<a href={DISCORD_LINK}>
+						{" "}
+						<img src="/images/discord filled.svg" alt="" />
+					</a>
 				</Box>
 				<Button
 					variant="contained"
 					startIcon={<img alt="" src="/images/wallet.svg" />}
+					onClick={handleWalletPress}
+					color={connectWalletPressed ? "secondary" : "primary"}
 				>
-					Connect Wallet
+					{connectWalletPressed ? "(NOT YET)" : "Connect Wallet"}
 				</Button>
 			</Stack>
 		</Stack>
