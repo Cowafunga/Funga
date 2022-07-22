@@ -33,7 +33,7 @@ function App() {
 					<Stack
 						alignItems="center"
 						sx={{
-							background: "#070e11",
+							background: "#07111A",
 							width: "min(100%, 1440px)",
 							maxWidth: "100%",
 							overflow: "visible",
@@ -76,19 +76,34 @@ function App() {
 							py: 13,
 							pb: 4,
 							mt: { md: -8 },
-							zIndex: 155,
+							zIndex: 19555,
 							position: "relative",
 							height: "100%",
 							width: "100%",
 							maxWidth: "1440px",
-							background: {
-								xs: "#070e11",
-								// xs: "linear-gradient(180deg, rgb(17, 30, 35) 0%, rgba(23,18,12,1) 29%, rgba(23,18,12,1) 100%)",
-								md: "linear-gradient(180deg, rgba(23,18,12,0.6811099439775911) 0%, rgba(23,18,12,1) 29%, rgba(23,18,12,1) 100%)",
-							},
+							// background: {
+							// 	xs: "#070e11",
+
+							// 	md: "linear-gradient(180deg, rgba(23,18,12,0.6811099439775911) 0%, rgba(23,18,12,1) 29%, rgba(23,18,12,1) 100%)",
+							// },
 						}}
 					>
-						<Footer />
+						<Box sx={{ position: "relative", zIndex: 5 }}>
+							<Footer />
+						</Box>
+						<Box
+							sx={{
+								position: "absolute",
+								bottom: "0",
+								height: "100%",
+								width: "100%",
+								transform: "scale(1.2)",
+								transformOrigin: "center center",
+								background:
+									"linear-gradient(37.7deg, #041018 43.67%, #17120C 78.78%)",
+								filter: "blur(15px)",
+							}}
+						></Box>
 					</Box>
 				</Stack>
 			</ThemeProvider>
@@ -102,15 +117,23 @@ function LinearGradientInTheBottom() {
 	return (
 		<Box
 			sx={{
-				width: "100vw",
-				height: { xs: "100px", md: "170px" },
-				left: 0,
+				// width: "100vw",
+				// height: { xs: "100px", md: "170px" },
+				// height: "313px",
+				// width: "2051px",
+				aspectRatio: "1/ 0.1526",
+				width: "min(142%, 2051px)",
+				// left: 0,
+				left: "50%",
+				filter: "blur(30px)",
 				// visibility: "hidden",
-				background: {
-					xs: "linear-gradient(0deg, #111e23, #24251954)",
-					md: "linear-gradient(0deg, #17120c, #24251954)",
-				},
+				// background: {
+				// 	xs: "linear-gradient(0deg, #111e23, #24251954)",
+				// 	md: "linear-gradient(0deg, #17120c, #24251954)",
+				// },
+				background: "linear-gradient(37.7deg, #041018 43.67%, #17120C 78.78%)",
 				position: "absolute",
+				transform: "translateX(-50%) translateY(35%)",
 				bottom: 0,
 				zIndex: 20,
 			}}

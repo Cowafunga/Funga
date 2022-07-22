@@ -204,11 +204,14 @@ function LinearGradientInTheBottom() {
 		<Box
 			sx={{
 				width: "100vw",
-				height: { xs: "80px", sm: "150px", lg: "170px" },
+				// height: { xs: "80px", sm: "150px", lg: "170px" },
+				height: "100%",
 				left: 0,
 				// visibility: "hidden",
-				background: "linear-gradient(0deg, #070e11, #24251954)",
+				// background: "linear-gradient(0deg, #070e11, #24251954)",
 				position: "absolute",
+				background:
+					"linear-gradient(180deg, rgba(0, 0, 0, 0) 79.4%, #07111A 100%)",
 				bottom: 0,
 				zIndex: 20,
 			}}

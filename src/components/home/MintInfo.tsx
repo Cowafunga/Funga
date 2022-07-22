@@ -236,21 +236,30 @@ function MintInfoDetails() {
 				container
 			>
 				{[
-					{ text: "Free mint", icon: <AccountBalanceWalletIcon /> },
-					{ text: "July 30, 2022", icon: <WatchLaterIcon /> },
+					{
+						text: "Free mint",
+						icon: <img src="/images/free mint wallet.svg" alt="wallet" />,
+					},
+					{
+						text: "July 30, 2022",
+						icon: <img src="images/clock.svg" alt="Clock" />,
+					},
 
 					{
 						text: "Team is keeping 100",
-						icon: <PeopleIcon />,
+						icon: <img src="/images/people.svg" alt="People" />,
 					},
-					{ text: "3,333 Fungas", icon: <PublicIcon /> },
+					{
+						text: "3,333 Fungas",
+						icon: <img src="/images/globe.svg" alt="Globe" />,
+					},
 				].map((item) => {
 					return (
 						<Grid
 							item
 							sx={{
 								minWidth: 0,
-								width: { xs: "240px", md: "auto" },
+								width: { xs: "270px", md: "auto" },
 								display: "flex",
 								my: 1.4,
 							}}
@@ -267,9 +276,22 @@ function MintInfoDetails() {
 									// left: { xs: "40%", md: 0 },
 								}}
 								gap={3}
+								alignItems="center"
 								direction="row"
 							>
-								<Box sx={{ color: palette.success.main }}>{item.icon}</Box>
+								<Box
+									sx={{
+										width: "36px",
+										height: "36px",
+										color: palette.success.main,
+										img: {
+											width: "100%",
+											height: "100%",
+										},
+									}}
+								>
+									{item.icon}
+								</Box>
 								<Typography sx={{ fontSize: "20px" }} color="white">
 									{item.text}
 								</Typography>
@@ -303,15 +325,15 @@ function Arrow() {
 		<Stack
 			alignItems="center"
 			sx={{
-				filter: appendDublicate({
-					text: `drop-shadow(3px -1px 2px ${palette.primary.main})`,
-					times: 2,
-					separator: " ",
-				}),
+				// filter: appendDublicate({
+				// 	text: `drop-shadow(3px -1px 2px ${palette.primary.main})`,
+				// 	times: 2,
+				// 	separator: " ",
+				// }),
 				my: { xs: 5, md: 10 },
 			}}
 		>
-			<img src="/arrow-down.png" alt="arrow" />
+			<img src="/images/arrow down.png" alt="arrow" />
 		</Stack>
 	);
 }

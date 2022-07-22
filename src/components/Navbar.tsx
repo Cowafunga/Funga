@@ -35,20 +35,20 @@ export default function Navbar() {
 						width: { xs: "75px", sm: "auto" },
 					}}
 				>
-					<img style={{ maxWidth: "100%" }} src="/logo.png" alt="" />
+					<img style={{ maxWidth: "100%" }} src="/images/logo.svg" alt="" />
 				</Box>
 			</a>
 			<Stack gap={3} direction="row" alignItems={"center"}>
 				<Box sx={{ display: { xs: "none", sm: "grid" }, placeItems: "center" }}>
-					<img src="/twitter.png" alt="" />
+					<img src="/images/twitter.svg" alt="" />
 				</Box>
 				<Box sx={{ display: { xs: "none", sm: "grid" }, placeItems: "center" }}>
 					{" "}
-					<img src="/discord.png" alt="" />
+					<img src="/images/discord filled.svg" alt="" />
 				</Box>
 				<Button
 					variant="contained"
-					startIcon={<img alt="" src="/wallet.png" />}
+					startIcon={<img alt="" src="/images/wallet.svg" />}
 				>
 					Connect Wallet
 				</Button>

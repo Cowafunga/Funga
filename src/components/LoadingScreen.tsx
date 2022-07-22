@@ -42,8 +42,8 @@ let assets = [
 		url: "/discord-simple.png",
 	},
 	{
-		name: "Discord",
-		url: "/discord.png",
+		name: "Discord Contained",
+		url: "/images/discord filled.svg",
 	},
 	{
 		name: "Grass back",
@@ -79,15 +79,12 @@ let assets = [
 	},
 	{
 		name: "Twitter",
-		url: "/twitter.png",
+		url: "/images/twitter.svg",
 	},
-	{
-		name: "Twitter",
-		url: "/twitter.png",
-	},
+
 	{
 		name: "Wallet",
-		url: "/wallet.png",
+		url: "/images/wallet.svg",
 	},
 	{
 		name: "Water bush",

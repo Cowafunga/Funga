@@ -39,7 +39,7 @@ export default function Footer() {
 							width: { xs: "75px", sm: "150px" },
 						}}
 					>
-						<img style={{ maxWidth: "100%" }} src="/logo.png" alt="" />
+						<img style={{ maxWidth: "100%" }} src="/images/logo.svg" alt="" />
 					</Box>
 				</a>
 				<Box
@@ -67,7 +67,7 @@ export default function Footer() {
 					direction={{ xs: "column", "350": "row !important" } as any}
 					alignItems={"center"}
 				>
-					<img src="/twitter.png" alt="" />
+					<img src="/images/twitter.svg" alt="" />
 					<Button
 						variant="contained"
 						startIcon={<img alt="" src="/wallet.png" />}
@@ -75,10 +75,10 @@ export default function Footer() {
 					>
 						Connect Wallet
 					</Button>
-					<img src="/discord.png" alt="" />
+					<img src="/images/discord filled.svg" alt="" />
 					<Button
 						variant="contained"
-						startIcon={<img alt="" src="/wallet.png" />}
+						startIcon={<img alt="" src="/images/wallet.svg" />}
 						sx={{
 							width: "max-content",
 							display: { "700": "inline-flex !important", xs: "none" },
