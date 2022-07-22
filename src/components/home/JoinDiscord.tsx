@@ -131,7 +131,7 @@ function Content() {
 			if (window.innerWidth > 900) return;
 			const groundWidth = ground.offsetHeight;
 			waters.forEach((water) => {
-				// water.style.top = -groundWidth * 0.851 + "px";
+				water.style.top = +groundWidth * 0.5 + "px";
 			});
 		}
 		ground.addEventListener("load", handler);
@@ -151,48 +151,8 @@ function Content() {
 			sx={{
 				width: "100%",
 				justifyContent: "center",
-				// visibility: "hidden",
 				position: { xs: "relative", md: "absolute" },
 				bottom: { xs: 0, md: 250 },
-
-				// mt: {
-				// 	xs: "-190px",
-				// 	"300": "-230px !important ",
-				// 	"400": "-300px !important",
-				// 	"500": "-400px !important",
-				// 	"550": "-540px",
-				// 	sm: "-470px",
-				// 	md: "-470px ",
-				// },
-
-				// [bp.between("xs", 300)]: {
-				// 	mt: "-190px",
-				// },
-				// [bp.between(300, 400)]: {
-				// 	mt: "-230px",
-				// },
-				// [bp.between(400, 500)]: {
-				// 	mt: "-300px",
-				// },
-				// [bp.between(500, 550)]: {
-				// 	mt: "-400px",
-				// },
-				// [bp.between(550, "sm")]: {
-				// 	mt: "-400px",
-				// },
-				// [bp.between("sm", 700)]: {
-				// 	mt: "-400px",
-				// },
-				// [bp.between(700, 800)]: {
-				// 	mt: "-500px",
-				// },
-				// [bp.between(800, 900)]: {
-				// 	mt: "-550px",
-				// },
-				// [bp.up(600)]: {
-				// 	mt: "-670px",
-				// },
-
 				zIndex: 30,
 				gap: { xs: "50px", md: "0" },
 			}}
@@ -201,20 +161,12 @@ function Content() {
 		>
 			<Stack
 				sx={{
-					// mt: { xs: -4 },
-					// top: { xs: "0%", md: 170 },
+					position: "relative",
+
 					[bp.between("xs", "md")]: {
 						top: 0,
 					},
-					// [bp.up("md")]: {
-					// 	top: 170,
-					// },
-					position: "relative",
-					// width: {
-					// 	xs: "65%", //67% to match design
-					// 	sm: "55%",
-					// 	md: "43%",
-					// },
+
 					[bp.between("xs", "sm")]: {
 						width: "65%",
 					},
@@ -233,7 +185,6 @@ function Content() {
 						top: "80px",
 					},
 					justifyContent: "start",
-					// aspectRatio: "1.4/1",
 					px: { md: 8, lg: 12 }, //6 to match design
 					boxSizing: "border-box",
 					bottom: 0,
