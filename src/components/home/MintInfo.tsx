@@ -73,7 +73,7 @@ export default function MintInfo() {
 							height: "54px",
 							display: { md: "none", xs: "flex" },
 						}}
-						startIcon={<LocalHospitalIcon />}
+						startIcon={<img src="/images/medical kit.svg" alt="Medical kit" />}
 						variant="contained"
 						color="success"
 					>
@@ -308,7 +308,7 @@ function MintInfoDetails() {
 					height: "54px",
 					display: { xs: "none", md: "inline-flex" },
 				}}
-				startIcon={<LocalHospitalIcon />}
+				startIcon={<img src="/images/medical kit.svg" alt="Medical kit" />}
 				variant="contained"
 				color="success"
 			>
