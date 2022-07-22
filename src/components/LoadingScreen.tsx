@@ -6,16 +6,21 @@ import { useAppData } from "../contexts/AppContext";
 let assets = [
 	{
 		name: "Eating video",
-		url: "/hero-video.mp4",
-	},
-	{
-		name: "Website song",
-		url: "/audio/website song.wav",
+		url: "/videos/hero-video.mp4",
 	},
 	{
 		name: "Funga Flip",
 		url: "/videos/Funga Flip.mp4",
 	},
+	{
+		name: "Watching sunset",
+		url: "/videos/join-video.mp4",
+	},
+	{
+		name: "Website song",
+		url: "/audio/website song.wav",
+	},
+
 	{
 		name: "Funga Text",
 		url: "/funga text.png",
@@ -30,13 +35,9 @@ let assets = [
 	},
 	{
 		name: "Arrow down",
-		url: "/arrow-down.png",
+		url: "/images/arrow down.png",
 	},
 
-	{
-		name: "Watching sunset",
-		url: "/join-video.mp4",
-	},
 	{
 		name: "Discord simple",
 		url: "/discord-simple.png",
@@ -63,7 +64,7 @@ let assets = [
 	},
 	{
 		name: "Mushroom man",
-		url: "/mushroom man.png",
+		url: "/images/mushroom man.png",
 	},
 	{
 		name: "Mushroom",
@@ -88,7 +89,7 @@ let assets = [
 	},
 	{
 		name: "Water bush",
-		url: "/water bush.png",
+		url: "/images/ground bush trimmed.png",
 	},
 	{
 		name: "Water",
@@ -140,10 +141,7 @@ export default function LoadingScreen() {
 			});
 		});
 	}, []);
-	// if (getTotalProgress() === 100) {
-	// 	document.body.style.overflow = "initial";
-	// 	return <></>;
-	// }
+
 	useEffect(() => {
 		if (!show) {
 			document.body.style.overflow = "initial";
@@ -181,7 +179,7 @@ export default function LoadingScreen() {
 				backgroundSize: "cover",
 			}}
 		>
-			{getTotalProgress() !== 100 && (
+			{getTotalProgress() < 100 && (
 				<>
 					{/* <Box>Creating your experience {Math.floor(getTotalProgress())}%</Box> */}
 					<img
@@ -243,7 +241,7 @@ export default function LoadingScreen() {
 					</Typography>
 				</>
 			)}
-			{getTotalProgress() === 100 && (
+			{getTotalProgress() >= 100 && (
 				<Button
 					onClick={() => setShow(false)}
 					size="large"

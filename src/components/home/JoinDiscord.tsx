@@ -340,7 +340,7 @@ function Video() {
 			playsInline
 			autoPlay
 			loop
-			src="/join-video.mp4"
+			src="/videos/join-video.mp4"
 		></video>
 	);
 }

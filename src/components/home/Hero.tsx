@@ -171,7 +171,7 @@ function BottomPart() {
 				loop
 				playsInline
 				autoPlay
-				src="/hero-video.mp4"
+				src="/videos/hero-video.mp4"
 			></video>
 			<MakeSkyMorePurple />
 			<LinearGradientInTheBottom />
