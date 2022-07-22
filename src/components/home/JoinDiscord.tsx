@@ -194,13 +194,13 @@ function Content() {
 			<Stack
 				sx={{
 					// mt: { xs: -4 },
-					top: { xs: "0%", md: 130 },
+					top: { xs: "0%", md: 170 },
 					width: {
 						xs: "45%", //67% to match design
 						md: "43%",
 					},
 					aspectRatio: "1.4/1",
-					px: { md: 13 }, //6 to match design
+					px: { md: 12 }, //6 to match design
 					boxSizing: "border-box",
 					bottom: 0,
 					position: "relative",
