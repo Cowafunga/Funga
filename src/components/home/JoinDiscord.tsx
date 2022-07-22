@@ -1,7 +1,6 @@
-import { Box, Button, Stack, Typography, useTheme } from "@mui/material";
+import { Box, Button, Stack, useTheme } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { DISCORD_LINK } from "../../constants";
-import appendDublicate from "../../utils/appendDublicate";
 import RepeatElement from "./../RepeatElement";
 
 export default function JoinDiscord() {
@@ -28,7 +27,6 @@ export default function JoinDiscord() {
 }
 
 function BelowSunset() {
-	const { breakpoints: bp } = useTheme();
 	useEffect(() => {
 		const ground = document.querySelector(
 			".ground-container img"

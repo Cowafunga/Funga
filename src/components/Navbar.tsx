@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { DISCORD_LINK, INNER_WIDTH, TWITTER_LINK } from "../constants";
-import { Box, IconButton } from "@mui/material";
-import MusicNoteIcon from "@mui/icons-material/MusicNote";
+import { Box } from "@mui/material";
 import { useAppData } from "../contexts/AppContext";
 
 export default function Navbar() {

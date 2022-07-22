@@ -1,5 +1,4 @@
 import { Box, Button, Grid, Stack, Typography, useTheme } from "@mui/material";
-import React, { useState } from "react";
 import { useAppData } from "../../contexts/AppContext";
 
 export default function MintInfo() {
@@ -321,8 +320,6 @@ function MintInfoDetails() {
 }
 
 function Arrow() {
-	const { palette } = useTheme();
-
 	return (
 		<Stack
 			alignItems="center"
