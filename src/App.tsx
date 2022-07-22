@@ -101,7 +101,7 @@ function App() {
 								transformOrigin: "center center",
 								background:
 									"linear-gradient(37.7deg, #041018 43.67%, #17120C 78.78%)",
-								filter: "blur(15px)",
+								filter: { xs: "blur(5px)", md: "blur(15px)" },
 							}}
 						></Box>
 					</Box>
@@ -123,14 +123,9 @@ function LinearGradientInTheBottom() {
 				// width: "2051px",
 				aspectRatio: "1/ 0.1526",
 				width: "min(142%, 2051px)",
-				// left: 0,
 				left: "50%",
-				filter: "blur(30px)",
-				// visibility: "hidden",
-				// background: {
-				// 	xs: "linear-gradient(0deg, #111e23, #24251954)",
-				// 	md: "linear-gradient(0deg, #17120c, #24251954)",
-				// },
+				filter: { xs: "blur(30px)", md: "blur(30px)" },
+
 				background: "linear-gradient(37.7deg, #041018 43.67%, #17120C 78.78%)",
 				position: "absolute",
 				transform: "translateX(-50%) translateY(35%)",

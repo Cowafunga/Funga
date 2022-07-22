@@ -89,6 +89,10 @@ function BelowSunset() {
 
 function Content() {
 	const { breakpoints: bp } = useTheme();
+	// const [render, setRender] = useState(false);
+	// useEffect(() => {
+	// 	setRender(true);
+	// }, []);
 	useEffect(() => {
 		const ground = document.querySelector(
 			".ground-container img"
@@ -96,8 +100,12 @@ function Content() {
 
 		function resizeHandler() {
 			const content = document.querySelector(".content") as HTMLDivElement;
-			if (window.innerWidth < 900) {
+			if (window.innerWidth > 900) {
+				content.style.bottom = `${ground.offsetHeight * 0.5}px`;
+				content.style.marginTop = -0 + "px";
+			} else {
 				content.style.marginTop = -(ground.offsetHeight * 1.3) + "px";
+				content.style.bottom = `${0}px`;
 			}
 		}
 		console.log(ground);
@@ -194,16 +202,41 @@ function Content() {
 			<Stack
 				sx={{
 					// mt: { xs: -4 },
-					top: { xs: "0%", md: 170 },
-					width: {
-						xs: "45%", //67% to match design
-						md: "43%",
+					// top: { xs: "0%", md: 170 },
+					[bp.between("xs", "md")]: {
+						top: 0,
 					},
-					aspectRatio: "1.4/1",
-					px: { md: 12 }, //6 to match design
+					// [bp.up("md")]: {
+					// 	top: 170,
+					// },
+					position: "relative",
+					// width: {
+					// 	xs: "65%", //67% to match design
+					// 	sm: "55%",
+					// 	md: "43%",
+					// },
+					[bp.between("xs", "sm")]: {
+						width: "65%",
+					},
+					[bp.between("sm", "700")]: {
+						width: "55%",
+					},
+
+					[bp.between(700, 800)]: {
+						width: "50%",
+					},
+					[bp.between(800, "md")]: {
+						width: "44%",
+					},
+					[bp.up("md")]: {
+						width: "43%",
+						top: "80px",
+					},
+					justifyContent: "start",
+					// aspectRatio: "1.4/1",
+					px: { md: 8, lg: 12 }, //6 to match design
 					boxSizing: "border-box",
 					bottom: 0,
-					position: "relative",
 				}}
 				alignItems={{ xs: "center" }}
 			>
@@ -218,9 +251,10 @@ function Content() {
 					color="info"
 					startIcon={<img src="/discord-simple.png" alt="Discord" />}
 					sx={{
-						mt: { xs: 4, "200": 3, "400": 5, sm: 5 },
-						mb: { xs: 0, md: 0 },
-						height: { xs: "44px", md: "44px" },
+						// mt: { xs: 3, "200": 3, "400": 5, sm: 5 },
+						mt: { xs: "30px", md: "44px" },
+						mb: { xs: 9, md: 0 },
+						height: { xs: "30px", md: "44px" },
 						borderRadius: "8px",
 						fontSize: "15px",
 						position: "relative",
