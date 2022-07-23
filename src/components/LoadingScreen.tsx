@@ -5,6 +5,10 @@ import { useAppData } from "../contexts/AppContext";
 
 let assets = [
 	{
+		name: "Logo",
+		url: "/images/logo high res 2.png",
+	},
+	{
 		name: "Eating video",
 		url: "/videos/hero-video.mp4",
 	},

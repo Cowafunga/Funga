@@ -38,13 +38,15 @@ export default function Navbar() {
 					sx={{
 						display: "grid",
 						placeItems: "center",
-						width: { xs: "75px", sm: "auto" },
+						width: { xs: "75px", sm: "125px" },
 						img: {
-							width: { xs: "75px", sm: "auto" },
+							width: { xs: "75px", sm: "125px" },
+							objectFit: "contain",
 						},
 					}}
 				>
-					<img src="/images/logo.svg" alt="" />
+					{/* <img src="/images/logo.svg" alt="" /> */}
+					<img src="/images/logo high res 2.png" alt="" />
 				</Box>
 			</a>
 			<Stack gap={3} direction="row" alignItems={"center"}>

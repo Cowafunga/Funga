@@ -43,10 +43,14 @@ export default function Footer() {
 						sx={{
 							display: "grid",
 							placeItems: "center",
-							width: { xs: "75px", sm: "150px" },
+							width: { xs: "75px", sm: "125px" },
 						}}
 					>
-						<img style={{ maxWidth: "100%" }} src="/images/logo.svg" alt="" />
+						<img
+							style={{ objectFit: "contain", width: "100%" }}
+							src="/images/logo high res 2.png"
+							alt=""
+						/>
 					</Box>
 				</a>
 
