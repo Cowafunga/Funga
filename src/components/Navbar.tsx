@@ -24,9 +24,6 @@ export default function Navbar() {
 				width: `min(${INNER_WIDTH}px, 100%)`,
 				zIndex: 10,
 				gap: 1,
-				// "&>*": {
-				// 	mx: "auto",
-				// },
 			}}
 			alignItems="center"
 			flexDirection={{ xs: "column", "300": "row !important" } as any}
@@ -45,7 +42,6 @@ export default function Navbar() {
 						},
 					}}
 				>
-					{/* <img src="/images/logo.svg" alt="" /> */}
 					<img src="/images/logo high res 2.png" alt="" />
 				</Box>
 			</a>

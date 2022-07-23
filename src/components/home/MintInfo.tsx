@@ -4,6 +4,7 @@ import { useAppData } from "../../contexts/AppContext";
 export default function MintInfo() {
 	const [appData, setAppData] = useAppData();
 	const { mintBtnPressed } = appData;
+
 	return (
 		<Stack
 			justifyContent="space-between"
@@ -228,7 +229,7 @@ function MintInfoDetails() {
 							item
 							sx={{
 								minWidth: 0,
-								width: { xs: "270px", md: "auto" },
+								width: { xs: "max-content", md: "auto" },
 								display: "flex",
 								my: 1.4,
 							}}
@@ -242,7 +243,6 @@ function MintInfoDetails() {
 									fontSize: "20px",
 									svg: { fontSize: "28px" },
 									position: "relative",
-									// left: { xs: "40%", md: 0 },
 								}}
 								gap={3}
 								alignItems="center"
@@ -335,15 +335,14 @@ function GrassHorizontal() {
 					},
 				}}
 			>
-				{/* <img src="grass front.png" alt="Grass" /> */}
 				<img
 					style={{ width: "100%" }}
 					src="/images/grass front.png"
 					alt="Grass"
 				/>
 			</Box>
-			{/* for small screen */}
 
+			{/* for small screen */}
 			<Box
 				sx={{
 					position: "absolute",
@@ -356,10 +355,8 @@ function GrassHorizontal() {
 					},
 				}}
 			>
-				{/* <img src="grass front.png" alt="Grass" /> */}
 				<img
 					style={{ width: "100%" }}
-					// src="/images/grass front mobile 2.png"
 					src="/images/grass front.png"
 					alt="Grass"
 				/>

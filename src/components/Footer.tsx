@@ -2,12 +2,13 @@ import React from "react";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { DISCORD_LINK, INNER_WIDTH, TWITTER_LINK } from "../constants";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { useAppData } from "../contexts/AppContext";
 
 export default function Footer() {
 	const [appData, setAppData] = useAppData();
 	const { connectWalletPressed } = appData;
+
 	function handleWalletPress() {
 		setAppData(() => ({ ...appData, connectWalletPressed: true }));
 	}
@@ -26,9 +27,6 @@ export default function Footer() {
 					width: `min(${INNER_WIDTH}px, 100%)`,
 					zIndex: 10,
 					gap: 3,
-					// "&>*": {
-					// 	mx: "auto",
-					// },
 					"&>*": {
 						flexBasis: 0,
 					},
@@ -38,6 +36,7 @@ export default function Footer() {
 				justifyContent={{ xs: "space-evenly", vsm: "space-between !Important" }}
 				direction="row"
 			>
+				{/* Logo */}
 				<a href="/#">
 					<Box
 						sx={{
@@ -54,6 +53,7 @@ export default function Footer() {
 					</Box>
 				</a>
 
+				{/* Button and Links */}
 				<Stack
 					alignSelf={{ xs: "stretch", "700": "center !important" }}
 					justifyContent={"space-between"}
@@ -104,8 +104,10 @@ export default function Footer() {
 					</Button>
 				</Stack>
 			</Stack>
-			<p
-				style={{
+
+			<Typography
+				sx={{
+					mb: 3,
 					color: "white",
 					opacity: 0.6,
 					left: "50%",
@@ -113,7 +115,7 @@ export default function Footer() {
 				}}
 			>
 				Funga™️ 2022. All rights reserved
-			</p>
+			</Typography>
 		</Stack>
 	);
 }

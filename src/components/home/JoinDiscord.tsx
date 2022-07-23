@@ -1,43 +1,48 @@
 import { Box, Button, Stack, useTheme } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { DISCORD_LINK } from "../../constants";
 import RepeatElement from "./../RepeatElement";
 
+const GroundContext =
+	React.createContext<React.RefObject<HTMLImageElement> | null>(null);
+
+function useGround() {
+	return React.useContext(GroundContext);
+}
+
 export default function JoinDiscord() {
-	const [showBorders] = useState(false);
+	const groundRef = useRef<HTMLImageElement>(null);
 	return (
-		<Stack
-			alignSelf="stretch"
-			sx={{
-				border: showBorders ? "12px solid blue" : "",
-				// overflow: "hidden",
-				overflow: "visible",
-				my: 15,
-				mb: 0,
-				position: "relative",
-				zIndex: 9999,
-			}}
-		>
-			{/* Top part */}
-			<Sunset />
-			{/* Bottom part */}
-			<BelowSunset />
-		</Stack>
+		<GroundContext.Provider value={groundRef}>
+			<Stack
+				alignSelf="stretch"
+				sx={{
+					overflow: "visible",
+					my: 15,
+					mb: 0,
+					position: "relative",
+					zIndex: 9999,
+				}}
+			>
+				{/* Top part */}
+				<Sunset />
+				{/* Bottom part */}
+				<BelowSunset />
+			</Stack>
+		</GroundContext.Provider>
 	);
 }
 
 function BelowSunset() {
+	const groundRef = useGround();
+	const containerRef = useRef<HTMLDivElement>(null);
 	useEffect(() => {
-		const ground = document.querySelector(
-			".ground-container img"
-		) as HTMLImageElement;
+		if (!groundRef) return;
+
+		const ground = groundRef.current as HTMLImageElement;
+		const container = containerRef.current as HTMLDivElement;
+
 		function handler() {
-			const ground = document.querySelector(
-				".ground-container"
-			) as HTMLImageElement;
-			const container = document.querySelector(
-				".below-sunset"
-			) as HTMLDivElement;
 			container.style.marginTop = `-${ground.offsetHeight / 3}px`;
 		}
 		window.addEventListener("resize", handler);
@@ -46,35 +51,12 @@ function BelowSunset() {
 		return () => {
 			window.removeEventListener("resize", handler);
 		};
-	}, []);
+	}, [groundRef]);
 	return (
 		<Box
-			className="below-sunset"
+			ref={containerRef}
 			sx={{
-				// [bp.between("xs", "vsm")]: {
-				// 	mt: "-50px",
-				// },
-				// [bp.between("vsm", "sm")]: {
-				// 	mt: "-100px",
-				// },
-				// [bp.between("sm", "md")]: {
-				// 	mt: "-100px",
-				// },
-				// [bp.between("md", "lg")]: {
-				// 	mt: "-180px",
-				// },
-				// [bp.up("lg")]: {
-				// 	mt: "-245px",
-				// },
-				// marginTop: {
-				// 	xs: "-50px",
-				// 	vsm: "-100px",
-				// 	sm: "-140px",
-				// 	md: "-180px",
-				// 	lg: "-215px",
-				// },
 				py: 0.1,
-				// background: "red",
 				position: "relative",
 			}}
 		>
@@ -88,17 +70,17 @@ function BelowSunset() {
 
 function Content() {
 	const { breakpoints: bp } = useTheme();
-	// const [render, setRender] = useState(false);
-	// useEffect(() => {
-	// 	setRender(true);
-	// }, []);
+	const groundRef = useGround();
+	const contentRef = useRef<HTMLDivElement>(null);
+	const watersRef = useRef<HTMLDivElement>(null);
 	useEffect(() => {
-		const ground = document.querySelector(
-			".ground-container img"
-		) as HTMLImageElement;
+		if (!groundRef) return;
+
+		const ground = groundRef.current as HTMLImageElement;
+
+		const content = contentRef.current as HTMLDivElement;
 
 		function resizeHandler() {
-			const content = document.querySelector(".content") as HTMLDivElement;
 			if (window.innerWidth > 900) {
 				content.style.bottom = `${ground.offsetHeight * 0.5}px`;
 				content.style.marginTop = -0 + "px";
@@ -107,25 +89,27 @@ function Content() {
 				content.style.bottom = `${0}px`;
 			}
 		}
-		console.log(ground);
 		resizeHandler();
-		ground.addEventListener("load", resizeHandler);
+		if (ground) {
+			ground.addEventListener("load", resizeHandler);
+		}
 
 		window.addEventListener("resize", resizeHandler);
 		return () => {
 			window.removeEventListener("reisze", resizeHandler);
 		};
-	}, []);
+	}, [groundRef]);
 
 	useEffect(() => {
 		// for md and below screen
-		const ground = document.querySelector(
-			".ground-container img"
-		) as HTMLImageElement;
+		if (!groundRef) return;
+		const ground = groundRef.current as HTMLImageElement;
+		const watersContainer = watersRef.current as HTMLDivElement;
 
 		const waters = Array.from(
-			document.querySelectorAll(".join-discord-water")
+			watersContainer.querySelectorAll(".join-discord-water")
 		) as HTMLDivElement[];
+
 		function handler() {
 			if (window.innerWidth > 900) return;
 			const groundWidth = ground.offsetHeight;
@@ -143,10 +127,10 @@ function Content() {
 		return () => {
 			window.removeEventListener("resize", handler);
 		};
-	}, []);
+	}, [groundRef]);
 	return (
 		<Stack
-			className="content"
+			ref={contentRef}
 			sx={{
 				width: "100%",
 				justifyContent: "center",
@@ -227,6 +211,7 @@ function Content() {
 						height: 0,
 						width: "100%",
 					}}
+					ref={watersRef}
 				>
 					<RepeatElement times={3}>
 						<Box
@@ -234,19 +219,7 @@ function Content() {
 							sx={{
 								display: { xs: "block", md: "none" },
 								position: "absolute",
-								// top: { xs: "-10%", md: 0 },
-								// [bp.between("sm", "700")]: {
-								// 	mt: "-300px",
-								// },
-								// [bp.between("700", "800")]: {
-								// 	mt: "-350px",
-								// },
-								// [bp.between("800", "md")]: {
-								// 	mt: "-400px",
-								// },
-								// [bp.up("md")]: {
-								// 	mt: "-470px",
-								// },
+
 								left: { xs: -950, md: -650 },
 								zIndex: 10,
 								transform: { xs: "rotate(13deg)", md: "rotate(-2deg)" },
@@ -291,22 +264,11 @@ function Sunset() {
 				<Box style={{ width: "100%", position: "absolute", top: 0, left: 0 }}>
 					{/* placeholder image */}
 					<img
-						// style={{ visibility: "hidden" }}
 						style={{ maxWidth: "100%" }}
 						src="/sunset.png"
 						alt="visual illustration"
 					/>
-					{/* <img
-						style={{
-							position: "absolute",
-							bottom: 0,
-							zIndex: 100,
-							width: "100%",
-							height: "300px",
-						}}
-						src="/sunset.png"
-						alt="visual illustration"
-					/> */}
+
 					<Video />
 				</Box>
 				{/* sunset cover */}
@@ -330,8 +292,6 @@ function Video() {
 	return (
 		<video
 			style={{
-				// visibility: "hidden",
-				// width: "70%",
 				maxWidth: "100%",
 				width: "100%",
 				position: "absolute",
@@ -349,6 +309,7 @@ function Video() {
 }
 
 function GroundAndWater() {
+	const groundRef = useGround();
 	return (
 		<Box
 			sx={{
@@ -357,11 +318,13 @@ function GroundAndWater() {
 			}}
 		>
 			{/* Ground */}
-			<Box
-				className="ground-container"
-				sx={{ height: { md: "auto" }, position: "relative", width: "100%" }}
-			>
-				<img style={{ width: "100%" }} src="/images/ground.png" alt="Ground" />
+			<Box sx={{ height: { md: "auto" }, position: "relative", width: "100%" }}>
+				<img
+					ref={groundRef}
+					style={{ width: "100%" }}
+					src="/images/ground.png"
+					alt="Ground"
+				/>
 				{/* Linear gradient at bottom */}
 				<Box
 					sx={{
@@ -380,8 +343,7 @@ function GroundAndWater() {
 						position: "absolute",
 						zIndex: 10,
 						top: 0,
-						// top: { xs: "-355px", md: "intial" },
-						// left: { xs: -300, sm: -150, md: 0 },
+
 						width: "71%",
 						transform: "translateX(-50%) translateY(-20%) rotate(8deg)",
 					}}
@@ -401,8 +363,7 @@ function GroundAndWater() {
 						display: { md: "block", xs: "none" },
 						position: "absolute",
 						top: 0,
-						// bottom: { xs: "0", md: "intital" },
-						// left: { xs: -750, md: -650 },
+
 						zIndex: 10,
 						width: "105%",
 						transform: "rotate(-8deg) translateX(-35%) translateY(15%)",

@@ -153,7 +153,7 @@ function LinearGradientInTheBottom() {
 export default function App() {
 	return (
 		<div className="App">
-			<Box
+			{/* <Box
 				sx={{
 					py: 10,
 					display: "flex",
@@ -162,10 +162,10 @@ export default function App() {
 				}}
 			>
 				<ConnectWallet />
-			</Box>
-			{/* <AppProvider>
+			</Box> */}
+			<AppProvider>
 				<AppComponent></AppComponent>
-			</AppProvider> */}
+			</AppProvider>
 		</div>
 	);
 }
