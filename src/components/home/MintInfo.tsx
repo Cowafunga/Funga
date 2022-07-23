@@ -102,28 +102,17 @@ function Frame() {
 					position: "relative",
 				}}
 			>
-				<video
-					src={"/videos/Funga Flip.mp4"}
+				<img
+					src={"/videos/Flip Funga.gif"}
 					style={{
 						borderRadius: "10px",
 						width: "100%",
 						position: "relative",
 						zIndex: 15,
 					}}
-					autoPlay
-					muted
-					loop
-					playsInline
-				></video>
-				{/* <img
-					style={{
-						width: "100%",
-						position: "relative",
-						zIndex: 15,
-					}}
-					src="/mintinfo4.png"
-					alt="Mint info"
-				/> */}
+					alt="Funga flip"
+				/>
+
 				{/* Mushrooms */}
 
 				<Box
@@ -162,11 +151,7 @@ function Frame() {
 					zIndex: 5,
 					left: "62%",
 					borderRadius: "100%",
-					// backgroundColor: palette.primary.main,
 					boxShadow: `0px 0px 300px 155px ${palette.primary.main}`,
-					// top: "50%",
-					// left: "50%",
-					// transform: "translateX(-50%, -50%)",
 				}}
 			></Box>
 		</Box>
@@ -206,29 +191,9 @@ function MintInfoDetails() {
 			alignItems="center"
 		>
 			<img src="/mint info text.png" style={{ width: "68%" }} alt="" />
-			{/* <Typography
-				sx={{
-					textAlign: "center",
-					fontFamily: "Geska Rolling",
-					width: "100%",
-					whiteSpace: "nowrap",
-					fontSize: "90px",
-					// transform: "translateX(-50%)",
-					textShadow: appendDublicate({
-						text: `0 0 12px ${"#4BAD90"}`,
-						times: 50,
-					}),
-				}}
-				variant="h1"
-				color={custom.yellow.main}
-			>
-				mint info
-			</Typography> */}
 
 			<Grid
 				sx={{
-					// display: { md: "grid", xs: "flex" },
-					// flexDirection: "column",
 					width: { xs: "min-content", md: "auto" },
 					transform: { md: "translateX(10%)" },
 				}}
@@ -324,11 +289,6 @@ function Arrow() {
 		<Stack
 			alignItems="center"
 			sx={{
-				// filter: appendDublicate({
-				// 	text: `drop-shadow(3px -1px 2px ${palette.primary.main})`,
-				// 	times: 2,
-				// 	separator: " ",
-				// }),
 				my: { xs: 5, md: 10 },
 			}}
 		>
@@ -357,18 +317,48 @@ function GrassHorizontal() {
 				position: "relative",
 			}}
 		>
+			{/* for md up screen */}
 			<Box
 				sx={{
 					position: "absolute",
-					top: "50%",
+					top: "40%",
+					width: "100%",
+					display: { xs: "none", md: "block" },
 
 					transform: {
-						xs: "translateY(-50%) scaleY(0.4)",
-						md: "translateY(-50%) scaleY(0.6)",
+						xs: "translateY(-35%) scaleY(1)",
+						md: "translateY(-35%) scaleY(1)",
 					},
 				}}
 			>
-				<img src="grass front.png" alt="Grass" />
+				{/* <img src="grass front.png" alt="Grass" /> */}
+				<img
+					style={{ width: "100%" }}
+					src="/images/grass front.png"
+					alt="Grass"
+				/>
+			</Box>
+			{/* for small screen */}
+
+			<Box
+				sx={{
+					position: "absolute",
+					top: { xs: "-60%", md: "-100%" },
+					width: { xs: "170%", sm: "120%", md: "100%" },
+					display: { md: "none", xs: "block" },
+					transform: {
+						xs: "translateY(-35%) scaleY(1)",
+						md: "translateY(-35%) scale(1)",
+					},
+				}}
+			>
+				{/* <img src="grass front.png" alt="Grass" /> */}
+				<img
+					style={{ width: "100%" }}
+					// src="/images/grass front mobile 2.png"
+					src="/images/grass front.png"
+					alt="Grass"
+				/>
 			</Box>
 		</Box>
 	);
