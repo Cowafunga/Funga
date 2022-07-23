@@ -1,4 +1,5 @@
 import { Box, Button, Grid, Stack, Typography, useTheme } from "@mui/material";
+import assets from "data/assets";
 import { useAppData } from "../../contexts/AppContext";
 
 export default function MintInfo() {
@@ -71,7 +72,7 @@ export default function MintInfo() {
 							display: { md: "none", xs: "flex" },
 						}}
 						onClick={() => setAppData((d) => ({ ...d, mintBtnPressed: true }))}
-						startIcon={<img src="/images/medical kit.svg" alt="Medical kit" />}
+						startIcon={<img src={assets.medicalKit} alt="Medical kit" />}
 						variant="contained"
 						color={mintBtnPressed ? "secondary" : "success"}
 					>
@@ -104,7 +105,7 @@ function Frame() {
 				}}
 			>
 				<img
-					src={"/videos/Flip Funga.gif"}
+					src={assets.fungaFlipGif}
 					style={{
 						borderRadius: "10px",
 						width: "100%",
@@ -126,13 +127,13 @@ function Frame() {
 				>
 					<img
 						style={{ width: 250, height: 250, transform: "rotate(80deg)" }}
-						src="/Green Numen.png"
+						src={assets.greenMushroom}
 						alt=""
 					/>
 
 					<img
 						style={{ position: "absolute", bottom: 25, left: -25 }}
-						src="/images/white mushroom.png"
+						src={assets.whiteMushroom}
 						alt=""
 					/>
 				</Box>
@@ -170,11 +171,7 @@ function Star() {
 				position: "absolute",
 			}}
 		>
-			<img
-				style={{ width: 1805, height: 984 }}
-				src="/images/star.png"
-				alt="Star"
-			/>
+			<img style={{ width: 1805, height: 984 }} src={assets.star} alt="Star" />
 		</Box>
 	);
 }
@@ -195,7 +192,7 @@ function MintInfoDetails() {
 			}}
 			alignItems="center"
 		>
-			<img src="/images/mint info text.png" style={{ width: "68%" }} alt="" />
+			<img src={assets.mintInfoText} style={{ width: "68%" }} alt="" />
 
 			<Grid
 				sx={{
@@ -208,20 +205,20 @@ function MintInfoDetails() {
 				{[
 					{
 						text: "Free mint",
-						icon: <img src="/images/free mint wallet.svg" alt="wallet" />,
+						icon: <img src={assets.freeMintWallet} alt="wallet" />,
 					},
 					{
 						text: "July 30, 2022",
-						icon: <img src="images/clock.svg" alt="Clock" />,
+						icon: <img src={assets.clock} alt="Clock" />,
 					},
 
 					{
 						text: "Team is keeping 100",
-						icon: <img src="/images/people.svg" alt="People" />,
+						icon: <img src={assets.people} alt="People" />,
 					},
 					{
 						text: "3,333 Fungas",
-						icon: <img src="/images/globe.svg" alt="Globe" />,
+						icon: <img src={assets.globe} alt="Globe" />,
 					},
 				].map((item) => {
 					return (
@@ -278,7 +275,7 @@ function MintInfoDetails() {
 					display: { xs: "none", md: "inline-flex" },
 				}}
 				onClick={() => setAppData((d) => ({ ...d, mintBtnPressed: true }))}
-				startIcon={<img src="/images/medical kit.svg" alt="Medical kit" />}
+				startIcon={<img src={assets.medicalKit} alt="Medical kit" />}
 				variant="contained"
 				color={mintBtnPressed ? "secondary" : "success"}
 			>
@@ -296,7 +293,7 @@ function Arrow() {
 				my: { xs: 5, md: 10 },
 			}}
 		>
-			<img src="/images/arrow down.png" alt="arrow" />
+			<img src={assets.arrowDown} alt="arrow" />
 		</Stack>
 	);
 }
@@ -304,7 +301,7 @@ function Arrow() {
 function Grass() {
 	return (
 		<Box sx={{ top: -100, position: "absolute", left: 0 }}>
-			<img src="grass back.png" alt="Grass" />
+			<img src={assets.grassBack} alt="Grass" />
 		</Box>
 	);
 }
@@ -325,7 +322,7 @@ function GrassHorizontal() {
 			<Box
 				sx={{
 					position: "absolute",
-					top: "40%",
+					top: "-95%",
 					width: "100%",
 					display: { xs: "none", md: "block" },
 
@@ -335,18 +332,14 @@ function GrassHorizontal() {
 					},
 				}}
 			>
-				<img
-					style={{ width: "100%" }}
-					src="/images/grass front.png"
-					alt="Grass"
-				/>
+				<img style={{ width: "100%" }} src={assets.grassFront} alt="Grass" />
 			</Box>
 
 			{/* for small screen */}
 			<Box
 				sx={{
 					position: "absolute",
-					top: { xs: "-60%", md: "-100%" },
+					top: { xs: "-360%", md: "-100%" },
 					width: { xs: "170%", sm: "120%", md: "100%" },
 					display: { md: "none", xs: "block" },
 					transform: {
@@ -355,11 +348,7 @@ function GrassHorizontal() {
 					},
 				}}
 			>
-				<img
-					style={{ width: "100%" }}
-					src="/images/grass front.png"
-					alt="Grass"
-				/>
+				<img style={{ width: "100%" }} src={assets.grassFront} alt="Grass" />
 			</Box>
 		</Box>
 	);

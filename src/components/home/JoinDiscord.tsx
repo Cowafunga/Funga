@@ -1,4 +1,5 @@
 import { Box, Button, Stack, useTheme } from "@mui/material";
+import assets from "data/assets";
 import React, { useEffect, useRef, useState } from "react";
 import { DISCORD_LINK } from "../../constants";
 import RepeatElement from "./../RepeatElement";
@@ -175,7 +176,7 @@ function Content() {
 				alignItems={{ xs: "center" }}
 			>
 				<img
-					src="/images/join discord text.png"
+					src={assets.joinDiscordText}
 					style={{ width: "100%", position: "relative", zIndex: 20 }}
 					alt=""
 				/>
@@ -186,7 +187,7 @@ function Content() {
 					<Button
 						size="large"
 						color="info"
-						startIcon={<img src="/images/discord.svg" alt="Discord" />}
+						startIcon={<img src={assets.discord} alt="Discord" />}
 						sx={{
 							// mt: { xs: 3, "200": 3, "400": 5, sm: 5 },
 							mt: { xs: "30px", md: "44px" },
@@ -226,7 +227,7 @@ function Content() {
 								transformOrigin: "0 100%",
 							}}
 						>
-							<img src="/images/water.png" alt="Water" />
+							<img src={assets.water} alt="Water" />
 						</Box>
 					</RepeatElement>
 				</Box>
@@ -248,7 +249,7 @@ function Content() {
 						position: "relative",
 						width: "100%",
 					}}
-					src="/images/mushroom man.png"
+					src={assets.mushroomMan}
 					alt=""
 				/>
 			</Box>
@@ -263,14 +264,15 @@ function Sunset() {
 			<Box sx={{ maxWidth: "100%", position: "relative", zIndex: 2 }}>
 				<Box style={{ width: "100%", position: "absolute", top: 0, left: 0 }}>
 					{/* placeholder image */}
-					<img
+					{/* <img
 						style={{ maxWidth: "100%" }}
-						src="/sunset.png"
+						src={"/sunset.png"}
 						alt="visual illustration"
-					/>
+					/> */}
 
 					<Video />
 				</Box>
+
 				{/* sunset cover */}
 				<img
 					style={{
@@ -280,7 +282,7 @@ function Sunset() {
 						position: "relative",
 						zIndex: 113,
 					}}
-					src="/images/sunset cover.png"
+					src={assets.sunsetCover}
 					alt="visual illustration"
 				/>
 			</Box>
@@ -303,7 +305,7 @@ function Video() {
 			playsInline
 			autoPlay
 			loop
-			src="/videos/join-video.mp4"
+			src={assets.watchingSunsetVid}
 		></video>
 	);
 }
@@ -322,7 +324,7 @@ function GroundAndWater() {
 				<img
 					ref={groundRef}
 					style={{ width: "100%" }}
-					src="/images/ground.png"
+					src={assets.ground}
 					alt="Ground"
 				/>
 				{/* Linear gradient at bottom */}
@@ -348,11 +350,7 @@ function GroundAndWater() {
 						transform: "translateX(-50%) translateY(-20%) rotate(8deg)",
 					}}
 				>
-					<img
-						style={{ width: "100%" }}
-						src="/images/ground bush trimmed.png"
-						alt="Bush"
-					/>
+					<img style={{ width: "100%" }} src={assets.groundBush} alt="Bush" />
 				</Box>
 			</Box>
 			{/* Water */}
@@ -370,7 +368,7 @@ function GroundAndWater() {
 						transformOrigin: "0 100%",
 					}}
 				>
-					<img style={{ width: "100%" }} src="/images/water.png" alt="Water" />
+					<img style={{ width: "100%" }} src={assets.water} alt="Water" />
 				</Box>
 			</RepeatElement>
 		</Box>

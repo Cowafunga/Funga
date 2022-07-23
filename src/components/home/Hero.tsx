@@ -1,4 +1,5 @@
 import { Box, Typography, useTheme } from "@mui/material";
+import assets from "data/assets";
 import React, { useEffect, useRef } from "react";
 
 export default function Hero() {
@@ -57,7 +58,7 @@ function TopPart() {
 			>
 				<img
 					style={{ width: "min(66%, 400px)" }}
-					src="/funga text.png"
+					src={assets.fungaAndFriendsTxt}
 					alt=""
 				/>
 			</Box>
@@ -164,7 +165,7 @@ function BottomPart() {
 				loop
 				playsInline
 				autoPlay
-				src="/videos/hero-video.mp4"
+				src={assets.heroVid}
 			></video>
 			{/* Make sky more purple */}
 			<Box

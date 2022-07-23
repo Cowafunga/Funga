@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import { DISCORD_LINK, INNER_WIDTH, TWITTER_LINK } from "../constants";
 import { Box } from "@mui/material";
 import { useAppData } from "../contexts/AppContext";
+import assets from "data/assets";
 
 export default function Navbar() {
 	const [appData, setAppData] = useAppData();
@@ -42,7 +43,7 @@ export default function Navbar() {
 						},
 					}}
 				>
-					<img src="/images/logo high res 2.png" alt="" />
+					<img src={assets.logo} alt="" />
 				</Box>
 			</a>
 			<Stack gap={3} direction="row" alignItems={"center"}>
@@ -53,7 +54,7 @@ export default function Navbar() {
 					}}
 				>
 					<a href={TWITTER_LINK}>
-						<img src="/images/twitter.svg" alt="" />
+						<img src={assets.twitter} alt="" />
 					</a>
 				</Box>
 
@@ -65,7 +66,7 @@ export default function Navbar() {
 				>
 					<a href={DISCORD_LINK}>
 						{" "}
-						<img src="/images/discord filled.svg" alt="" />
+						<img src={assets.discordContained} alt="" />
 					</a>
 				</Box>
 				<Button

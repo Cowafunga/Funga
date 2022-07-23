@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import { DISCORD_LINK, INNER_WIDTH, TWITTER_LINK } from "../constants";
 import { Box, Typography } from "@mui/material";
 import { useAppData } from "../contexts/AppContext";
+import assets from "data/assets";
 
 export default function Footer() {
 	const [appData, setAppData] = useAppData();
@@ -47,7 +48,7 @@ export default function Footer() {
 					>
 						<img
 							style={{ objectFit: "contain", width: "100%" }}
-							src="/images/logo high res 2.png"
+							src={assets.logo}
 							alt=""
 						/>
 					</Box>
@@ -68,7 +69,7 @@ export default function Footer() {
 						}}
 					>
 						<a href={TWITTER_LINK}>
-							<img src="/images/twitter.svg" alt="" />
+							<img src={assets.twitter} alt="" />
 						</a>
 					</Box>
 					<Button
@@ -87,12 +88,12 @@ export default function Footer() {
 						}}
 					>
 						<a href={DISCORD_LINK}>
-							<img src="/images/discord filled.svg" alt="" />
+							<img src={assets.discordContained} alt="" />
 						</a>
 					</Box>
 					<Button
 						variant="contained"
-						startIcon={<img alt="" src="/images/wallet.svg" />}
+						startIcon={<img alt="" src={assets.wallet} />}
 						sx={{
 							width: "max-content",
 							display: { sm: "inline-flex !important", xs: "none" },

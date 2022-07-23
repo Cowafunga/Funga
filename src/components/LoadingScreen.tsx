@@ -1,109 +1,28 @@
 import { Box, Button, Typography } from "@mui/material";
 import axios from "axios";
+import assets from "data/assets";
 import React, { useEffect, useState } from "react";
 import { useAppData } from "../contexts/AppContext";
 
-let assets = [
-	{
-		name: "Eating video",
-		url: "/videos/hero-video.mp4",
-	},
-	{
-		name: "Funga Flip",
-		url: "/videos/Flip Funga.gif",
-	},
-	{
-		name: "Watching sunset",
-		url: "/videos/join-video.mp4",
-	},
+const formattedAssets = [] as { url: string; name: string }[];
 
-	{
-		name: "Website song",
-		url: "/audio/website song.wav",
-	},
-	{
-		name: "Logo",
-		url: "/images/logo high res 2.png",
-	},
-	{
-		name: "Funga Text",
-		url: "/funga text.png",
-	},
-	{
-		name: "Join Discord Text",
-		url: "/images/join discord text.png",
-	},
-	{
-		name: "Mint Info Text",
-		url: "/images/mint info text.png",
-	},
-	{
-		name: "Arrow down",
-		url: "/images/arrow down.png",
-	},
-
-	{
-		name: "Discord Contained",
-		url: "/images/discord filled.svg",
-	},
-	{
-		name: "Grass back",
-		url: "/grass back.png",
-	},
-	{
-		name: "Grass front",
-		url: "/grass front.png",
-	},
-	{
-		name: "Ground",
-		url: "/images/ground.png",
-	},
-
-	{
-		name: "Mushroom man",
-		url: "/images/mushroom man.png",
-	},
-	{
-		name: "Mushroom",
-		url: "/images/white mushroom.png",
-	},
-	{
-		name: "Star",
-		url: "/images/star.png",
-	},
-	{
-		name: "Sunset cover",
-		url: "/images/sunset cover.png",
-	},
-	{
-		name: "Twitter",
-		url: "/images/twitter.svg",
-	},
-
-	{
-		name: "Wallet",
-		url: "/images/wallet.svg",
-	},
-	{
-		name: "Water bush",
-		url: "/images/ground bush trimmed.png",
-	},
-	{
-		name: "Water",
-		url: "/images/water.png",
-	},
-];
+for (let asset in assets) {
+	formattedAssets.push({
+		name: asset,
+		url: assets[asset as keyof typeof assets],
+	});
+}
 
 export default function LoadingScreen() {
 	const [data, setAppData] = useAppData();
 	const [progress, setProgress] = useState(() =>
-		assets.map((asset) => ({ ...asset, progress: 0 }))
+		formattedAssets.map((asset) => ({ ...asset, progress: 0 }))
 	);
 	const [show, setShow] = useState(true);
 	useEffect(() => {
 		document.body.style.overflow = "hidden";
 
-		assets.forEach((asset) => {
+		formattedAssets.forEach((asset) => {
 			axios.get(asset.url, {
 				onDownloadProgress(progressEvent) {
 					const totalLength = progressEvent.lengthComputable
@@ -122,7 +41,7 @@ export default function LoadingScreen() {
 							);
 
 							// load videos only 15% and rest as it plays?
-							const videoProgressThreshold = 100;
+							const videoProgressThreshold = 30;
 							const isVideo = /(\.mp4$)|(\.wav$)/.test(file.url);
 							if (isVideo && progress > videoProgressThreshold) {
 								progress = 100;
