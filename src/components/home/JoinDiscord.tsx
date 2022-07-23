@@ -195,11 +195,14 @@ function Content() {
 					style={{ width: "100%", position: "relative", zIndex: 20 }}
 					alt=""
 				/>
-				<a style={{ width: "100%" }} href={DISCORD_LINK}>
+				<a
+					style={{ width: "100%", textDecoration: "none" }}
+					href={DISCORD_LINK}
+				>
 					<Button
 						size="large"
 						color="info"
-						startIcon={<img src="/discord-simple.png" alt="Discord" />}
+						startIcon={<img src="/images/discord.svg" alt="Discord" />}
 						sx={{
 							// mt: { xs: 3, "200": 3, "400": 5, sm: 5 },
 							mt: { xs: "30px", md: "44px" },
