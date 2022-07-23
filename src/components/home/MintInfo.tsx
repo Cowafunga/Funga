@@ -131,7 +131,7 @@ function Frame() {
 
 					<img
 						style={{ position: "absolute", bottom: 25, left: -25 }}
-						src="/mushroom2.png"
+						src="/images/white mushroom.png"
 						alt=""
 					/>
 				</Box>
@@ -169,7 +169,11 @@ function Star() {
 				position: "absolute",
 			}}
 		>
-			<img style={{ width: 1805, height: 984 }} src="/star.png" alt="Star" />
+			<img
+				style={{ width: 1805, height: 984 }}
+				src="/images/star.png"
+				alt="Star"
+			/>
 		</Box>
 	);
 }
@@ -190,7 +194,7 @@ function MintInfoDetails() {
 			}}
 			alignItems="center"
 		>
-			<img src="/mint info text.png" style={{ width: "68%" }} alt="" />
+			<img src="/images/mint info text.png" style={{ width: "68%" }} alt="" />
 
 			<Grid
 				sx={{

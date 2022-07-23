@@ -73,7 +73,7 @@ export default function Footer() {
 					</Box>
 					<Button
 						variant="contained"
-						startIcon={<img alt="" src="/wallet.png" />}
+						startIcon={<img alt="" src="/images/wallet.svg" />}
 						sx={{ display: { sm: "none !important", xs: "inline-flex" } }}
 						onClick={handleWalletPress}
 						color={connectWalletPressed ? "secondary" : "primary"}

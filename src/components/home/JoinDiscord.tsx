@@ -253,7 +253,7 @@ function Content() {
 								transformOrigin: "0 100%",
 							}}
 						>
-							<img src="/water.png" alt="Water" />
+							<img src="/images/water.png" alt="Water" />
 						</Box>
 					</RepeatElement>
 				</Box>
@@ -275,7 +275,7 @@ function Content() {
 						position: "relative",
 						width: "100%",
 					}}
-					src="/mushroom man.png"
+					src="/images/mushroom man.png"
 					alt=""
 				/>
 			</Box>
@@ -318,7 +318,7 @@ function Sunset() {
 						position: "relative",
 						zIndex: 113,
 					}}
-					src="/sunset cover.png"
+					src="/images/sunset cover.png"
 					alt="visual illustration"
 				/>
 			</Box>
@@ -361,7 +361,7 @@ function GroundAndWater() {
 				className="ground-container"
 				sx={{ height: { md: "auto" }, position: "relative", width: "100%" }}
 			>
-				<img style={{ width: "100%" }} src="/ground.png" alt="Ground" />
+				<img style={{ width: "100%" }} src="/images/ground.png" alt="Ground" />
 				{/* Linear gradient at bottom */}
 				<Box
 					sx={{
@@ -409,7 +409,7 @@ function GroundAndWater() {
 						transformOrigin: "0 100%",
 					}}
 				>
-					<img style={{ width: "100%" }} src="/water.png" alt="Water" />
+					<img style={{ width: "100%" }} src="/images/water.png" alt="Water" />
 				</Box>
 			</RepeatElement>
 		</Box>

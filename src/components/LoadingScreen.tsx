@@ -5,26 +5,26 @@ import { useAppData } from "../contexts/AppContext";
 
 let assets = [
 	{
-		name: "Logo",
-		url: "/images/logo high res 2.png",
-	},
-	{
 		name: "Eating video",
 		url: "/videos/hero-video.mp4",
 	},
 	{
 		name: "Funga Flip",
-		url: "/videos/Funga Flip.mp4",
+		url: "/videos/Flip Funga.gif",
 	},
 	{
 		name: "Watching sunset",
 		url: "/videos/join-video.mp4",
 	},
+
 	{
 		name: "Website song",
 		url: "/audio/website song.wav",
 	},
-
+	{
+		name: "Logo",
+		url: "/images/logo high res 2.png",
+	},
 	{
 		name: "Funga Text",
 		url: "/funga text.png",
@@ -35,17 +35,13 @@ let assets = [
 	},
 	{
 		name: "Mint Info Text",
-		url: "/mint info text.png",
+		url: "/images/mint info text.png",
 	},
 	{
 		name: "Arrow down",
 		url: "/images/arrow down.png",
 	},
 
-	{
-		name: "Discord simple",
-		url: "/discord-simple.png",
-	},
 	{
 		name: "Discord Contained",
 		url: "/images/discord filled.svg",
@@ -60,27 +56,24 @@ let assets = [
 	},
 	{
 		name: "Ground",
-		url: "/ground.png",
+		url: "/images/ground.png",
 	},
-	{
-		name: "Mint info",
-		url: "/mintinfo4.png",
-	},
+
 	{
 		name: "Mushroom man",
 		url: "/images/mushroom man.png",
 	},
 	{
 		name: "Mushroom",
-		url: "/mushroom2.png",
+		url: "/images/white mushroom.png",
 	},
 	{
 		name: "Star",
-		url: "/star.png",
+		url: "/images/star.png",
 	},
 	{
 		name: "Sunset cover",
-		url: "/sunset cover.png",
+		url: "/images/sunset cover.png",
 	},
 	{
 		name: "Twitter",
@@ -97,12 +90,11 @@ let assets = [
 	},
 	{
 		name: "Water",
-		url: "/water.png",
+		url: "/images/water.png",
 	},
 ];
 
 export default function LoadingScreen() {
-	// const {  } = useTheme();
 	const [data, setAppData] = useAppData();
 	const [progress, setProgress] = useState(() =>
 		assets.map((asset) => ({ ...asset, progress: 0 }))
