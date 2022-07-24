@@ -3,6 +3,7 @@ import axios from "axios";
 import assets from "data/assets";
 import React, { useEffect, useState } from "react";
 import { useAppData } from "../contexts/AppContext";
+import "./LoadingScreen.css";
 
 const formattedAssets = [] as { url: string; name: string }[];
 
@@ -13,7 +14,7 @@ for (let asset in assets) {
 	});
 }
 
-export default function LoadingScreen() {
+export default function LoadingScreen({ playAudio }: { playAudio?(): any }) {
 	const [data, setAppData] = useAppData();
 	const [progress, setProgress] = useState(() =>
 		formattedAssets.map((asset) => ({ ...asset, progress: 0 }))
@@ -65,6 +66,9 @@ export default function LoadingScreen() {
 		}
 	}, [show, data.isLoading, setAppData]);
 
+	if (!data.isLoading) {
+		return <></>;
+	}
 	function getTotalProgress() {
 		const total = progress.reduce((prev, current) => {
 			return prev + current.progress;
@@ -111,36 +115,13 @@ export default function LoadingScreen() {
 					>
 						<img
 							style={{
-								visibility: "hidden",
 								width: "100%",
 								height: "100%",
-								transform: "scale(1.2)",
+								// transform: "scale(1.2)",
 								transformOrigin: "center center",
 							}}
-							src="/images/spinning mushroom.gif"
-							alt=""
-						/>
-					</Box>
-					<Box
-						sx={{
-							position: "fixed",
-							top: "50%",
-							transform: "translateY(-50%)",
-							// visibility: "hidden",
-
-							// aspectRatio: "1/1",
-							width: { xs: "100px", sm: "150px" },
-							height: { xs: "100px", sm: "150px" },
-						}}
-					>
-						<img
-							style={{
-								width: "100%",
-								height: "100%",
-								transform: "scale(1.2)",
-								transformOrigin: "center center",
-							}}
-							src="/images/spinning mushroom.gif"
+							id="spinning-mushroom"
+							src="/images/spinning mushroom.png"
 							alt=""
 						/>
 					</Box>
@@ -158,7 +139,10 @@ export default function LoadingScreen() {
 			)}
 			{getTotalProgress() >= 100 && (
 				<Button
-					onClick={() => setShow(false)}
+					onClickCapture={() => {
+						setShow(false);
+						playAudio && playAudio();
+					}}
 					size="large"
 					sx={{
 						fontWeight: "bold",
@@ -170,21 +154,6 @@ export default function LoadingScreen() {
 					Get Weird
 				</Button>
 			)}
-
-			{/* <Box sx={{ width: "200px", height: "30px", border: "2px solid black" }}>
-				<Box
-					sx={{
-						height: "100%",
-						width: `${getTotalProgress()}%`,
-						// animationDuration: "150ms",
-						transition: "all 0.25s ease-in-out",
-
-						background: "black",
-					}}
-				>
-					{" "}
-				</Box>
-			</Box> */}
 		</Box>
 	);
 }

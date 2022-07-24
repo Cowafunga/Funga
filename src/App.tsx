@@ -1,4 +1,3 @@
-import React from "react";
 import Navbar from "./components/Navbar";
 import Layout from "./components/Layout";
 import theme from "./contexts/theme";
@@ -8,24 +7,45 @@ import MintInfo from "./components/home/MintInfo";
 import JoinDiscord from "./components/home/JoinDiscord";
 import LoadingScreen from "./components/LoadingScreen";
 import Footer from "./components/Footer";
-import AppProvider, { useAppData } from "./contexts/AppContext";
+import AppProvider from "./contexts/AppContext";
 import { Provider as StoreProvider } from "react-redux";
 import store from "./store";
-import ConnectWallet from "./components/dapp/ConnectWallet";
+// import ConnectWallet from "./components/dapp/ConnectWallet";
+import assets from "data/assets";
 
 function AppComponent() {
-	const [appData] = useAppData();
+	// const [appData] = useAppData();
+	// const audioRef = useRef<HTMLAudioElement>(null);
+	// useEffect(() => {
+	// 	if (!appData.isLoading) {
+	// 		const audio = audioRef.current as HTMLAudioElement;
+
+	// 		audio
+	// 			.play()
+	// 			.then(() => console.log("Audio playing"))
+	// 			.catch((err) => console.log(err));
+	// 	}
+	// }, [appData.isLoading]);
+	function playAudio() {
+		const audio = document.querySelector("#mainAudioFile") as HTMLAudioElement;
+		audio
+			.play()
+			.then(() => console.log("Audio playing"))
+			.catch((err) => console.log(err));
+	}
 	return (
 		<StoreProvider store={store}>
 			<ThemeProvider theme={theme}>
-				{appData.isLoading ? (
-					<LoadingScreen />
-				) : (
-					<audio autoPlay loop>
-						<source src="/audio/website song.wav" type="audio/wav" />
-					</audio>
-				)}
+				<LoadingScreen playAudio={playAudio} />
 
+				<audio
+					style={{ position: "absolute", zIndex: -99999, opacity: 0.1 }}
+					id="mainAudioFile"
+					// controls
+					loop
+				>
+					<source src={assets.websiteSong} type="audio/wav" />
+				</audio>
 				<Stack
 					alignItems="center"
 					maxWidth="1440px"

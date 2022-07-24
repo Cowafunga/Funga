@@ -1,5 +1,14 @@
-import { Box, Button, Grid, Stack, Typography, useTheme } from "@mui/material";
+import {
+	Box,
+	Button,
+	Grid,
+	Stack,
+	SxProps,
+	Typography,
+	useTheme,
+} from "@mui/material";
 import assets from "data/assets";
+import { useEffect, useRef } from "react";
 import { useAppData } from "../../contexts/AppContext";
 
 export default function MintInfo() {
@@ -62,13 +71,14 @@ export default function MintInfo() {
 						sx={{
 							mx: "auto",
 							fontSize: "17px",
-							width: "min(95%, 275px)",
+							width: "min(95%, 245px)",
 							zIndex: 900,
 							left: "50%",
-							top: "250%",
+							bottom: "10%",
+							// top: "100%",
 							transform: "translateX(-50%) translateY(-50%)",
 							position: "absolute",
-							height: "54px",
+							height: "45px",
 							display: { md: "none", xs: "flex" },
 						}}
 						onClick={() => setAppData((d) => ({ ...d, mintBtnPressed: true }))}
@@ -80,7 +90,7 @@ export default function MintInfo() {
 					</Button>
 				</Grid>
 			</Grid>
-			<Grass />
+			<Grass sx={{ display: { xs: "none", md: "block" } }} />
 		</Stack>
 	);
 }
@@ -151,11 +161,20 @@ function Frame() {
 					height: "0%",
 					top: "20%",
 					zIndex: 5,
-					left: "62%",
+					opacity: { md: 1, xs: 0.65 },
+					left: { xs: "50%", md: "62%" },
 					borderRadius: "100%",
 					boxShadow: `0px 0px 300px 155px ${palette.primary.main}`,
 				}}
 			></Box>
+			<Grass
+				sx={{
+					zIndex: 2,
+					top: "-100%",
+					img: { width: "100%" },
+					display: { md: "none", xs: "block" },
+				}}
+			/>
 		</Box>
 	);
 }
@@ -165,7 +184,7 @@ function Star() {
 		<Box
 			sx={{
 				top: "50%",
-				left: "25%",
+				left: { xs: "50%", ms: "25%" },
 				zIndex: 10,
 				transform: "translate(-50%, -50%)",
 				position: "absolute",
@@ -298,38 +317,79 @@ function Arrow() {
 	);
 }
 
-function Grass() {
+interface IGrass {
+	sx?: SxProps;
+}
+
+function Grass({ sx = {} }: IGrass) {
 	return (
-		<Box sx={{ top: -100, position: "absolute", left: 0 }}>
+		<Box
+			sx={{
+				maxWidth: "100%",
+				width: "100%",
+				top: -100,
+				position: "absolute",
+				left: 0,
+				img: { width: "70%" },
+				...sx,
+			}}
+		>
 			<img src={assets.grassBack} alt="Grass" />
 		</Box>
 	);
 }
 
 function GrassHorizontal() {
+	const containerRef = useRef<HTMLDivElement>(null);
+	const grassRef = useRef<HTMLDivElement>(null);
+	useEffect(() => {
+		const container = containerRef.current as HTMLDivElement;
+		// const grass = grassRef.current as HTMLDivElement;
+		function handleResize() {
+			let multiplier = 0;
+			let aspectRatio = 0;
+			if (window.innerWidth > 900) {
+				multiplier = 0.3;
+				aspectRatio = 1 / 0.325;
+			} else {
+				multiplier = 0.4;
+				aspectRatio = 1 / 0.63;
+			}
+			const containerWidth = container.offsetWidth;
+			const containerHeight = containerWidth / aspectRatio;
+			container.style.height = containerHeight + "px";
+			container.style.marginTop = -containerHeight * multiplier + "px";
+
+			// aspectRatio: { xs: "1/0.63", md: "1/ 0.325" },
+		}
+		handleResize();
+		window.addEventListener("resize", handleResize);
+
+		return () => window.removeEventListener("resize", handleResize);
+	}, []);
 	return (
 		<Box
+			ref={containerRef}
 			sx={{
-				height: { xs: 40, md: 130 },
 				width: "100%",
+				// aspectRatio does not seem to work for some safari browsers
+				// aspectRatio: { xs: "1.58", md: "1/ 0.325" },
 				overflow: "visible",
+				// mt: { xs: -20, md: -15 },
 				zIndex: 15,
-				top: 50,
 				position: "relative",
 			}}
 		>
 			{/* for md up screen */}
 			<Box
+				ref={grassRef}
 				sx={{
 					position: "absolute",
-					top: "-95%",
-					width: "100%",
-					display: { xs: "none", md: "block" },
-
-					transform: {
-						xs: "translateY(-35%) scaleY(1)",
-						md: "translateY(-35%) scaleY(1)",
-					},
+					top: "0%",
+					left: "50%",
+					transform: "translateX(-50%)",
+					width: { xs: "160%", md: "100%" },
+					display: { xs: "block", md: "block" },
 				}}
 			>
 				<img style={{ width: "100%" }} src={assets.grassFront} alt="Grass" />
@@ -339,16 +399,20 @@ function GrassHorizontal() {
 			<Box
 				sx={{
 					position: "absolute",
-					top: { xs: "-360%", md: "-100%" },
-					width: { xs: "170%", sm: "120%", md: "100%" },
-					display: { md: "none", xs: "block" },
-					transform: {
-						xs: "translateY(-35%) scaleY(1)",
-						md: "translateY(-35%) scale(1)",
-					},
+					top: "0%",
+					width: "100%",
+					display: { xs: "none", md: "none" },
+					// transform: {
+					// 	xs: "translateY(-35%) scaleY(1)",
+					// 	md: "translateY(-35%) scale(1)",
+					// },
 				}}
 			>
-				<img style={{ width: "100%" }} src={assets.grassFront} alt="Grass" />
+				<img
+					style={{ width: "100%" }}
+					src={assets.grassFrontMobile}
+					alt="Grass"
+				/>
 			</Box>
 		</Box>
 	);

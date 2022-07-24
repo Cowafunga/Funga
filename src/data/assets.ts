@@ -25,7 +25,8 @@ let assets = {
 	freeMintWallet: "/images/free mint wallet.svg",
 
 	grassBack: "images/grass back.png",
-	grassFront: "/images/grass front.png",
+	grassFront: "/images/grass front trimmed.png",
+	grassFrontMobile: "/images/grass front mobile 2.png",
 	ground: "/images/ground.png",
 	groundBush: "/images/ground bush trimmed.png",
 	mushroomMan: "/images/mushroom man.png",

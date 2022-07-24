@@ -1,6 +1,6 @@
 import { Box, Button, Stack, useTheme } from "@mui/material";
 import assets from "data/assets";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { DISCORD_LINK } from "../../constants";
 import RepeatElement from "./../RepeatElement";
 
@@ -19,7 +19,7 @@ export default function JoinDiscord() {
 				alignSelf="stretch"
 				sx={{
 					overflow: "visible",
-					my: 15,
+					// mt: 15,
 					mb: 0,
 					position: "relative",
 					zIndex: 9999,

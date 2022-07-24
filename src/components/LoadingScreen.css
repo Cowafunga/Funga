@@ -1,0 +1,13 @@
+#spinning-mushroom {
+	animation: rotate 1500ms linear 0ms infinite normal;
+	transform: rotate(0) scale(1.2);
+}
+
+@keyframes rotate {
+	from {
+		transform: rotate(0) scale(1.2);
+	}
+	to {
+		transform: rotate(360deg) scale(1.2);
+	}
+}

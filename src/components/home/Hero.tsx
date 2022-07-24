@@ -51,6 +51,7 @@ function TopPart() {
 				sx={{
 					position: "relative",
 					zIndex: 10,
+					transform: "translateZ(100px)",
 					"*": { fontFamily: "Geska Rolling !important" },
 					color: palette.secondary.main,
 				}}
@@ -71,6 +72,7 @@ function TopPart() {
 					maxWidth: "650px",
 					position: "relative",
 					zIndex: 10,
+					transform: "translateZ(100px)",
 					fontSize: { xs: "16px", sm: "18px" },
 					px: 3,
 				}}
