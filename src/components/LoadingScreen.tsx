@@ -24,7 +24,7 @@ export default function LoadingScreen({ playAudio }: { playAudio?(): any }) {
 		document.body.style.overflow = "hidden";
 
 		formattedAssets.forEach((asset) => {
-			axios.get(asset.url, {
+			axios.get(window.location.origin + "/" + asset.url, {
 				onDownloadProgress(progressEvent) {
 					const totalLength = progressEvent.lengthComputable
 						? progressEvent.total
