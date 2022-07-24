@@ -10,8 +10,9 @@ import Footer from "./components/Footer";
 import AppProvider from "./contexts/AppContext";
 import { Provider as StoreProvider } from "react-redux";
 import store from "./store";
-// import ConnectWallet from "./components/dapp/ConnectWallet";
+import ConnectWallet from "./components/dapp/ConnectWallet";
 import assets from "data/assets";
+import Mint from "components/dapp/Mint";
 
 function AppComponent() {
 	// const [appData] = useAppData();
@@ -173,19 +174,25 @@ function LinearGradientInTheBottom() {
 export default function App() {
 	return (
 		<div className="App">
-			{/* <Box
+			<Box
 				sx={{
 					py: 10,
 					display: "flex",
 					alignItems: "center",
 					justifyContent: "center",
+					flexDirection: "column",
+					gap: 10,
+					"&>*": {
+						minWwidth: 200,
+					},
 				}}
 			>
 				<ConnectWallet />
-			</Box> */}
-			<AppProvider>
+				<Mint />
+			</Box>
+			{/* <AppProvider>
 				<AppComponent></AppComponent>
-			</AppProvider>
+			</AppProvider> */}
 		</div>
 	);
 }
