@@ -13,6 +13,7 @@ import { Box, Button, Stack, Typography } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
 import Alert from "@mui/material/Alert";
 import assets from "data/assets";
+import { toast } from "react-toastify";
 
 export default function Mint() {
 	const stateEthers = new ethers.providers.JsonRpcProvider(
@@ -186,8 +187,7 @@ export default function Mint() {
 			let boxError = false;
 			let errorText = "";
 			if (err.message.includes("denied")) {
-				// toastify below
-				//   this.$toast.info('you canceled the transaction')
+				toast("you canceled the transaction");
 				boxError = false;
 				errorText = "";
 			} else {
@@ -280,7 +280,7 @@ export default function Mint() {
 			let errorText = "";
 			if (err.message.includes("denied")) {
 				// toastify
-				//   this.$toast.info('transaction canceled')
+				toast("Transaction canceled");
 				boxError = false;
 				errorText = "";
 			} else if (err.message.includes("insufficient funds")) {
@@ -299,7 +299,7 @@ export default function Mint() {
 			maxWidth="100%"
 			sx={{ boxSizing: "border-box" }}
 			px={2}
-			gap={2}
+			gap={4}
 			alignItems="center"
 		>
 			<Button
@@ -310,6 +310,7 @@ export default function Mint() {
 				sx={{ textTransform: "initial" }}
 				variant="contained"
 				size="large"
+				// color="success"
 				startIcon={<img alt="Mint icon" src={assets.medicalKit} />}
 			>
 				Mint a funga
@@ -325,12 +326,12 @@ export default function Mint() {
 				</Box>
 			)}
 
-			{state.totalMinted < state.maxSupply - 20 && !state.isLoading && (
+			{/* {state.totalMinted < state.maxSupply - 20 && !state.isLoading && (
 				<Box p={3} boxShadow={1}>
 					<Box mt={5}>
 						<form>
 							<div>
-								<div>
+								<Stack sx={{ textAlign: "center" }}>
 									<p>Quantity</p>
 									<select
 										value={state.amount}
@@ -346,21 +347,15 @@ export default function Mint() {
 										{Array.from({ length: 1 }, (_, i) => i + 1).map((item) => {
 											return <option key={item}>{item}</option>;
 										})}
-
-										{/* <template slot="selection" slot-scope="{ item }">
-                    <span class="mx-auto qty-amount">
-                      {{ item }}
-                    </span>
-                  </template> */}
 									</select>
-								</div>
+								</Stack>
 							</div>
 						</form>
 
 						<p>free whitelisted mint</p>
 					</Box>
 				</Box>
-			)}
+			)} */}
 			{!state.isLoading && <StageStatus stage={state.stage} />}
 
 			{state.isLoading && (
@@ -398,7 +393,7 @@ export default function Mint() {
 				</Box>
 			)}
 
-			<Box>
+			{/* <Box>
 				<p style={{ textAlign: "center" }}>
 					<a target="_blank" href={state.openseaLink} rel="noreferrer">
 						Opensea
@@ -419,7 +414,7 @@ export default function Mint() {
 					</a>
 					desktop when minting
 				</p>
-			</Box>
+			</Box> */}
 		</Stack>
 	);
 }

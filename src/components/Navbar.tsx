@@ -2,7 +2,7 @@ import React from "react";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { DISCORD_LINK, INNER_WIDTH, TWITTER_LINK } from "../constants";
-import { Box } from "@mui/material";
+import { Box, useTheme } from "@mui/material";
 import { useAppData } from "../contexts/AppContext";
 import assets from "data/assets";
 
@@ -16,6 +16,7 @@ export default function Navbar({ connectWalletBtn }: INavbar) {
 	function handleWalletPress() {
 		setAppData(() => ({ ...appData, connectWalletPressed: true }));
 	}
+	const { palette } = useTheme();
 	return (
 		<Stack
 			sx={{
@@ -55,6 +56,10 @@ export default function Navbar({ connectWalletBtn }: INavbar) {
 					sx={{
 						"&,a": { display: { xs: "none", sm: "grid" } },
 						placeItems: "center",
+						// "*": {
+						// 	fill: palette.primary.main,
+						// 	color: palette.primary.main,
+						// },
 					}}
 				>
 					<a href={TWITTER_LINK}>
