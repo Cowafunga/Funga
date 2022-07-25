@@ -76,6 +76,7 @@ export default function Dapp() {
 						color: "black",
 						".all-rights-reserverd": {
 							opacity: "1 !important",
+							color: "black",
 						},
 						".connect-wallet-button": {
 							display: "none !important",

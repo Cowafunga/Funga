@@ -128,6 +128,7 @@ export default function Footer({ sx = {} }: IFooter) {
 			<Typography
 				className="all-rights-reserverd"
 				sx={{
+					color: "white",
 					mb: 3,
 					opacity: 0.6,
 					left: "50%",

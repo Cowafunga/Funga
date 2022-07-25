@@ -1,6 +1,6 @@
 import theme from "contexts/theme";
 import { Box, ThemeProvider, useTheme } from "@mui/material";
-import AppRoutes from "components/Routes";
+import AppRoutes from "Routes";
 import AppProvider from "contexts/AppContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
