@@ -55,15 +55,12 @@ export default function NewApp() {
 		setInterval(() => {
 			if (wallet) {
 				let elem = document.querySelector("onboard-v2") as HTMLElement;
-				console.log({ elem });
 				if (!elem) return;
 				let parent = elem.shadowRoot as ShadowRoot;
-				console.log({ parent });
 
 				if (!parent) return;
 
 				let content = parent.querySelector("div");
-				console.log({ content });
 				if (!content) console.log("No-content");
 
 				if (!content) return;
