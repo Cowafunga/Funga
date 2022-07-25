@@ -13,17 +13,52 @@ import Navbar from "components/Navbar";
 import Footer from "components/Footer";
 import assets from "data/assets";
 import theme from "contexts/theme";
+import Onboard from "@web3-onboard/core";
+import walletConnectModule from "@web3-onboard/walletconnect";
+window.Buffer = window.Buffer || require("buffer").Buffer;
+
+const rpcUrl = RPC_PROVIDER;
+const injected = injectedModule();
+
+const walletConnect = walletConnectModule({
+	bridge: "https://bridge.walletconnect.org/",
+	qrcodeModalOptions: {
+		mobileLinks: [
+			"metamask",
+			"trust",
+			"rainbow",
+			"argent",
+			"imtoken",
+			"pillar",
+		],
+	},
+});
+
+// const onboard = Onboard({
+// 	// ... other Onboard options
+// 	wallets: [
+// 		walletConnect,
+// 		injected,
+// 		//... other wallets
+// 	],
+// 	chains: [
+// 		{
+// 			id: `0x${NETWORK_ID}`,
+// 			token: "ETH",
+// 			label: NETWORK_NAME,
+// 			rpcUrl,
+// 		},
+// 	],
+// });
+// onboard.connectWallet();
 // Sign up to get your free API key at https://explorer.blocknative.com/?signup=true
 const dappId = "1730eff0-9d50-4382-a3fe-89f0d34a2070";
 
-const injected = injectedModule();
-
 const infuraKey = "<INFURA_KEY>";
-const rpcUrl = RPC_PROVIDER;
 
 // initialize Onboard
 init({
-	wallets: [injected],
+	wallets: [injected, walletConnect],
 	chains: [
 		{
 			id: `0x${NETWORK_ID}`,
@@ -64,7 +99,7 @@ export default function NewApp() {
 				if (!content) console.log("No-content");
 
 				if (!content) return;
-				content.style.top = "100px";
+				content.style.top = "50px";
 			}
 		}, 1000);
 	}, [wallet]);
