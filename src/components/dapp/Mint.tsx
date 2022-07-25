@@ -5,7 +5,7 @@ import {
 	NETWORK_ID,
 	EXPLORER_URI,
 	OPENSEA_LINK,
-} from "dapp/constants/constants";
+} from "data/constants";
 import { ERC721_ABI } from "data/erc721_abi";
 import whitelistData from "data/whitelist.json";
 import { useCallback, useEffect, useState } from "react";

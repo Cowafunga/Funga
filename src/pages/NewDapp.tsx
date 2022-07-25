@@ -1,10 +1,6 @@
 import { init, useConnectWallet } from "@web3-onboard/react";
 import injectedModule from "@web3-onboard/injected-wallets";
-import {
-	NETWORK_ID,
-	NETWORK_NAME,
-	RPC_PROVIDER,
-} from "dapp/constants/constants";
+import { NETWORK_ID, NETWORK_NAME, RPC_PROVIDER } from "data/constants";
 import Mint from "components/newDapp/Mint";
 import { Button } from "@mui/material";
 import React, { useEffect, useRef } from "react";

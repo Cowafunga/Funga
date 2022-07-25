@@ -1,7 +1,7 @@
 import React from "react";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
-import { DISCORD_LINK, INNER_WIDTH, TWITTER_LINK } from "../constants";
+import { DISCORD_LINK, INNER_WIDTH, TWITTER_LINK } from "data/constants";
 import { Box, useTheme } from "@mui/material";
 import { useAppData } from "../contexts/AppContext";
 import assets from "data/assets";

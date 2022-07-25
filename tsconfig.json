@@ -17,8 +17,6 @@
 		"jsx": "react-jsx",
 		"baseUrl": "./src",
 		"paths": {
-			"@components/*": ["./components/*"],
-			"@dapp/*": ["./dapp/*"],
 			"stream": ["../node_modules/readable-stream"]
 		}
 	},

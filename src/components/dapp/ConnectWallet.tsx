@@ -1,11 +1,7 @@
 import { Button } from "@mui/material";
 import { ethers } from "ethers";
 import { useState } from "react";
-import {
-	NETWORK_ID,
-	NETWORK_NAME,
-	CONTRACT_ADDR,
-} from "dapp/constants/constants";
+import { NETWORK_ID, NETWORK_NAME, CONTRACT_ADDR } from "data/constants";
 
 export default function ConnectWallet() {
 	const [state, setState] = useState({
