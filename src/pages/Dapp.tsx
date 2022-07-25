@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Box, Stack, ThemeProvider } from "@mui/material";
 import ConnectWallet from "components/dapp/ConnectWallet";
 import Mint from "components/dapp/Mint";
@@ -6,17 +6,31 @@ import Navbar from "components/Navbar";
 import Footer from "components/Footer";
 import assets from "data/assets";
 import theme from "contexts/theme";
-
 export default function Dapp() {
+	const containerRef = useRef<HTMLDivElement>(null);
+
+	useEffect(() => {
+		const container = containerRef.current as HTMLDivElement;
+		function handler() {
+			container.style.minHeight = window.innerHeight + "px";
+		}
+		handler();
+		window.addEventListener("resize", handler);
+		return () => {
+			window.removeEventListener("resize", handler);
+		};
+	}, []);
 	return (
 		<ThemeProvider
 			theme={{
 				...theme,
-				// palette: { ...theme.palette, primary: theme.palette.error },
+				palette: { ...theme.palette, primary: theme.palette.success },
 			}}
 		>
 			<Stack
+				ref={containerRef}
 				sx={{
+					boxSizing: "border-box",
 					background: "linear-gradient(0.13deg, #CCFFF0 0.1%, #FFFFFF 74.99%)",
 					minHeight: "100vh",
 					justifyContent: "space-between",
@@ -26,9 +40,11 @@ export default function Dapp() {
 					<Navbar connectWalletBtn={<ConnectWallet />} />
 					<img
 						style={{
-							width: "min(926px, 100%)",
+							width: "min(926px, 130%)",
+							position: "relative",
+							left: "50%",
+							transform: "translateX(-50%)",
 							display: "block",
-							margin: "auto",
 						}}
 						src={assets.mintPageImages}
 						alt="three fungus"

@@ -2,9 +2,11 @@ import React from "react";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { DISCORD_LINK, INNER_WIDTH, TWITTER_LINK } from "../constants";
-import { Box, SxProps, Typography } from "@mui/material";
+import { Box, SxProps, Typography, useTheme } from "@mui/material";
 import { useAppData } from "../contexts/AppContext";
 import assets from "data/assets";
+import Twitter from "./svg/Twitter";
+import DiscordFilled from "./svg/DiscordFilled";
 
 interface IFooter {
 	sx?: SxProps;
@@ -13,7 +15,7 @@ interface IFooter {
 export default function Footer({ sx = {} }: IFooter) {
 	const [appData, setAppData] = useAppData();
 	const { connectWalletPressed } = appData;
-
+	const { palette } = useTheme();
 	function handleWalletPress() {
 		setAppData(() => ({ ...appData, connectWalletPressed: true }));
 	}
@@ -72,10 +74,14 @@ export default function Footer({ sx = {} }: IFooter) {
 						sx={{
 							"&,a": { display: { xs: "grid" } },
 							placeItems: "center",
+							"*": {
+								fill: palette.primary.main,
+								color: palette.primary.main,
+							},
 						}}
 					>
 						<a href={TWITTER_LINK}>
-							<img src={assets.twitter} alt="" />
+							<Twitter />
 						</a>
 					</Box>
 					<Button
@@ -92,10 +98,15 @@ export default function Footer({ sx = {} }: IFooter) {
 						sx={{
 							"&,a": { display: { xs: "grid" } },
 							placeItems: "center",
+							"*": {
+								fill: palette.primary.main,
+								color: palette.primary.main,
+							},
 						}}
 					>
 						<a href={DISCORD_LINK}>
-							<img src={assets.discordContained} alt="" />
+							<DiscordFilled />
+							{/* <img src={assets.discordContained} alt="" /> */}
 						</a>
 					</Box>
 					<Button

@@ -5,6 +5,8 @@ import { DISCORD_LINK, INNER_WIDTH, TWITTER_LINK } from "../constants";
 import { Box, useTheme } from "@mui/material";
 import { useAppData } from "../contexts/AppContext";
 import assets from "data/assets";
+import Twitter from "./svg/Twitter";
+import DiscordFilled from "./svg/DiscordFilled";
 
 interface INavbar {
 	connectWalletBtn?: React.ReactNode;
@@ -56,14 +58,15 @@ export default function Navbar({ connectWalletBtn }: INavbar) {
 					sx={{
 						"&,a": { display: { xs: "none", sm: "grid" } },
 						placeItems: "center",
-						// "*": {
-						// 	fill: palette.primary.main,
-						// 	color: palette.primary.main,
-						// },
+						"*": {
+							fill: palette.primary.main,
+							color: palette.primary.main,
+						},
 					}}
 				>
 					<a href={TWITTER_LINK}>
-						<img src={assets.twitter} alt="" />
+						{/* <img src={assets.twitter} alt="" /> */}
+						<Twitter />
 					</a>
 				</Box>
 
@@ -71,11 +74,15 @@ export default function Navbar({ connectWalletBtn }: INavbar) {
 					sx={{
 						"&,a": { display: { xs: "none", sm: "grid" } },
 						placeItems: "center",
+						"*": {
+							fill: palette.primary.main,
+							color: palette.primary.main,
+						},
 					}}
 				>
 					<a href={DISCORD_LINK}>
-						{" "}
-						<img src={assets.discordContained} alt="" />
+						<DiscordFilled />
+						{/* <img src={assets.discordContained} alt="" /> */}
 					</a>
 				</Box>
 				{connectWalletBtn || (
