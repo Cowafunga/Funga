@@ -2,11 +2,15 @@ import React from "react";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { DISCORD_LINK, INNER_WIDTH, TWITTER_LINK } from "../constants";
-import { Box, Typography } from "@mui/material";
+import { Box, SxProps, Typography } from "@mui/material";
 import { useAppData } from "../contexts/AppContext";
 import assets from "data/assets";
 
-export default function Footer() {
+interface IFooter {
+	sx?: SxProps;
+}
+
+export default function Footer({ sx = {} }: IFooter) {
 	const [appData, setAppData] = useAppData();
 	const { connectWalletPressed } = appData;
 
@@ -15,8 +19,9 @@ export default function Footer() {
 	}
 
 	return (
-		<Stack>
+		<Stack sx={{ ...sx }}>
 			<Stack
+				className="top-row"
 				sx={{
 					alignSelf: "start",
 					position: "static",
@@ -56,6 +61,7 @@ export default function Footer() {
 
 				{/* Button and Links */}
 				<Stack
+					className="links"
 					alignSelf={{ xs: "stretch", "700": "center !important" }}
 					justifyContent={"space-between"}
 					gap={3}
@@ -73,6 +79,7 @@ export default function Footer() {
 						</a>
 					</Box>
 					<Button
+						className="connect-wallet-button"
 						variant="contained"
 						startIcon={<img alt="" src="/images/wallet.svg" />}
 						sx={{ display: { sm: "none !important", xs: "inline-flex" } }}
@@ -92,6 +99,7 @@ export default function Footer() {
 						</a>
 					</Box>
 					<Button
+						className="connect-wallet-button"
 						variant="contained"
 						startIcon={<img alt="" src={assets.wallet} />}
 						sx={{
@@ -107,9 +115,9 @@ export default function Footer() {
 			</Stack>
 
 			<Typography
+				className="all-rights-reserverd"
 				sx={{
 					mb: 3,
-					color: "white",
 					opacity: 0.6,
 					left: "50%",
 					textAlign: "center",

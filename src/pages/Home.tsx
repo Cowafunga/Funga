@@ -7,9 +7,8 @@ import JoinDiscord from "components/home/JoinDiscord";
 import LoadingScreen from "components/LoadingScreen";
 import Footer from "components/Footer";
 import assets from "data/assets";
-import AppProvider from "contexts/AppContext";
 
-function AppComponent() {
+export default function Home() {
 	function playAudio() {
 		const audio = document.querySelector("#mainAudioFile") as HTMLAudioElement;
 		audio
@@ -150,12 +149,5 @@ function LinearGradientInTheBottom() {
 				zIndex: 20,
 			}}
 		></Box>
-	);
-}
-export default function Home() {
-	return (
-		<AppProvider>
-			<AppComponent></AppComponent>
-		</AppProvider>
 	);
 }

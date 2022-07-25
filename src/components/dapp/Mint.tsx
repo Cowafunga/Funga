@@ -12,6 +12,7 @@ import { useCallback, useEffect, useState } from "react";
 import { Box, Button, Stack, Typography } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
 import Alert from "@mui/material/Alert";
+import assets from "data/assets";
 
 export default function Mint() {
 	const stateEthers = new ethers.providers.JsonRpcProvider(
@@ -86,7 +87,7 @@ export default function Mint() {
 		setState((s) => ({
 			...s,
 			isLoading: true,
-			loadingText: "retrieving smart contract state",
+			loadingText: "Retrieving smart contract state",
 		}));
 		timerOperations();
 
@@ -294,7 +295,26 @@ export default function Mint() {
 	console.log(state.isLoading);
 
 	return (
-		<Stack px={1} gap={2} alignItems="center">
+		<Stack
+			maxWidth="100%"
+			sx={{ boxSizing: "border-box" }}
+			px={2}
+			gap={2}
+			alignItems="center"
+		>
+			<Button
+				onClick={() => {
+					setState((s) => ({ ...s, errorText: "" }));
+					mintBtnPressed();
+				}}
+				sx={{ textTransform: "initial" }}
+				variant="contained"
+				size="large"
+				startIcon={<img alt="Mint icon" src={assets.medicalKit} />}
+			>
+				Mint a funga
+			</Button>
+
 			{state.totalMinted && state.totalMinted >= state.maxSupply && (
 				<Box>
 					<br />
@@ -306,7 +326,7 @@ export default function Mint() {
 			)}
 
 			{state.totalMinted < state.maxSupply - 20 && !state.isLoading && (
-				<Box p={5} m={5} boxShadow={1}>
+				<Box p={3} boxShadow={1}>
 					<Box mt={5}>
 						<form>
 							<div>
@@ -343,16 +363,6 @@ export default function Mint() {
 			)}
 			{!state.isLoading && <StageStatus stage={state.stage} />}
 
-			<Button
-				onClick={() => {
-					setState((s) => ({ ...s, errorText: "" }));
-					mintBtnPressed();
-				}}
-				variant="contained"
-			>
-				Mint
-			</Button>
-
 			{state.isLoading && (
 				<Stack alignItems="center" gap={2}>
 					<CircularProgress />
@@ -360,7 +370,7 @@ export default function Mint() {
 				</Stack>
 			)}
 			{state.boxError && (
-				<Alert sx={{ width: "500px", maxWidth: "100%" }} severity="error">
+				<Alert sx={{ width: "500px", maxWidth: "90%" }} severity="error">
 					{state.errorText}
 				</Alert>
 			)}
@@ -389,23 +399,23 @@ export default function Mint() {
 			)}
 
 			<Box>
-				<p>
+				<p style={{ textAlign: "center" }}>
 					<a target="_blank" href={state.openseaLink} rel="noreferrer">
-						opensea
+						Opensea
 					</a>
 					<span> | </span>
 
-					<a href="/other/disclaimer">disclaimer</a>
+					<a href="/other/disclaimer">Disclaimer</a>
 				</p>
 
 				<p>
-					please use
+					Please use &nbsp;
 					<a
 						href="https://metamask.io/download.html"
 						target="_blank"
 						rel="noreferrer"
 					>
-						metamask
+						metamask &nbsp;
 					</a>
 					desktop when minting
 				</p>

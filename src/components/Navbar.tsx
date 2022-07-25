@@ -6,7 +6,11 @@ import { Box } from "@mui/material";
 import { useAppData } from "../contexts/AppContext";
 import assets from "data/assets";
 
-export default function Navbar() {
+interface INavbar {
+	connectWalletBtn?: React.ReactNode;
+}
+
+export default function Navbar({ connectWalletBtn }: INavbar) {
 	const [appData, setAppData] = useAppData();
 	const { connectWalletPressed } = appData;
 	function handleWalletPress() {
@@ -69,14 +73,16 @@ export default function Navbar() {
 						<img src={assets.discordContained} alt="" />
 					</a>
 				</Box>
-				<Button
-					variant="contained"
-					startIcon={<img alt="" src="/images/wallet.svg" />}
-					onClick={handleWalletPress}
-					color={connectWalletPressed ? "secondary" : "primary"}
-				>
-					{connectWalletPressed ? "(NOT YET)" : "Connect Wallet"}
-				</Button>
+				{connectWalletBtn || (
+					<Button
+						variant="contained"
+						startIcon={<img alt="" src="/images/wallet.svg" />}
+						onClick={handleWalletPress}
+						color={connectWalletPressed ? "secondary" : "primary"}
+					>
+						{connectWalletPressed ? "(NOT YET)" : "Connect Wallet"}
+					</Button>
+				)}
 			</Stack>
 		</Stack>
 	);

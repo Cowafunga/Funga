@@ -11,6 +11,7 @@ let assets = {
 	fungaAndFriendsTxt: "/images/funga text.png",
 	joinDiscordText: "/images/join discord text.png",
 	mintInfoText: "/images/mint info text.png",
+	freeMintText: "/images/free mint text trimmed.png",
 
 	// icons
 	arrowDown: "/images/arrow down.png",
@@ -38,5 +39,8 @@ let assets = {
 
 	waterBush: "/images/ground bush trimmed.png",
 	water: "/images/water.png",
+
+	theTrio: "/images/the trio.png",
+	mintPageImages: "/images/mint page images.png",
 };
 export default assets;

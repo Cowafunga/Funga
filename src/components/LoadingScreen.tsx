@@ -66,8 +66,13 @@ export default function LoadingScreen({ playAudio }: { playAudio?(): any }) {
 		}
 	}, [show, data.isLoading, setAppData]);
 
+	let styles = {};
 	if (!data.isLoading) {
-		return <></>;
+		styles = {
+			transform: "scale(0) rotate(360deg)",
+			opacity: 0,
+			transition: "2000ms",
+		};
 	}
 	function getTotalProgress() {
 		const total = progress.reduce((prev, current) => {
@@ -79,11 +84,11 @@ export default function LoadingScreen({ playAudio }: { playAudio?(): any }) {
 	return (
 		<Box
 			sx={{
-				position: "sticky",
+				position: "fixed",
 				top: 0,
 				left: 0,
 				zIndex: 9999999,
-				transform: "translateX(0)",
+				transform: "scale(1) rotate(0) translateX(0)",
 				height: "100vh",
 				width: "100vw",
 				fontSize: "50px",
@@ -96,6 +101,7 @@ export default function LoadingScreen({ playAudio }: { playAudio?(): any }) {
 				backgroundColor: "#5f3b60",
 				backgroundPosition: "center center",
 				backgroundSize: "cover",
+				...styles,
 			}}
 		>
 			{getTotalProgress() < 100 && (
