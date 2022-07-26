@@ -3,13 +3,12 @@ import injectedModule from "@web3-onboard/injected-wallets";
 import { NETWORK_ID, NETWORK_NAME, RPC_PROVIDER } from "data/constants";
 import Mint from "components/newDapp/Mint";
 import { Alert, Button } from "@mui/material";
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Box, Stack, ThemeProvider } from "@mui/material";
 import Navbar from "components/Navbar";
 import Footer from "components/Footer";
 import assets from "data/assets";
 import theme from "contexts/theme";
-import Onboard from "@web3-onboard/core";
 import walletConnectModule from "@web3-onboard/walletconnect";
 import { useSetChain } from "@web3-onboard/react";
 
@@ -50,9 +49,9 @@ const walletConnect = walletConnectModule({
 // });
 // onboard.connectWallet();
 // Sign up to get your free API key at https://explorer.blocknative.com/?signup=true
-const dappId = "1730eff0-9d50-4382-a3fe-89f0d34a2070";
+// const dappId = "1730eff0-9d50-4382-a3fe-89f0d34a2070";
 
-const infuraKey = "<INFURA_KEY>";
+// const infuraKey = "<INFURA_KEY>";
 
 // initialize Onboard
 init({

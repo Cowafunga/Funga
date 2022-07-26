@@ -15,7 +15,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import Alert from "@mui/material/Alert";
 import assets from "data/assets";
 import { toast } from "react-toastify";
-import { init, useConnectWallet } from "@web3-onboard/react";
+import { useConnectWallet } from "@web3-onboard/react";
 import { WalletState } from "@web3-onboard/core";
 
 export default function Mint() {
