@@ -1,13 +1,14 @@
 import { ethers } from "ethers";
 import {
 	CONTRACT_ADDR,
-	RPC_PROVIDER,
 	NETWORK_ID,
 	EXPLORER_URI,
 	OPENSEA_LINK,
 } from "data/constants";
 import { ERC721_ABI } from "data/erc721_abi";
 import whitelistData from "data/whitelist.json";
+import whitelistData1 from "data/whitelist1.json";
+import whitelistData2 from "data/whitelist2.json";
 import { useCallback, useEffect, useState } from "react";
 import { Box, Button, Stack, Typography } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -18,7 +19,7 @@ import { init, useConnectWallet } from "@web3-onboard/react";
 import { WalletState } from "@web3-onboard/core";
 
 export default function Mint() {
-	const [{ wallet, connecting }, connect, disconnect] = useConnectWallet();
+	const [{ wallet }] = useConnectWallet();
 	// this means, component should not be renderd if not wallt
 	let nonNullWallet = wallet as WalletState;
 
@@ -28,6 +29,8 @@ export default function Mint() {
 	);
 	const [state, setState] = useState({
 		whitelist: whitelistData,
+		whitelist1: whitelistData1,
+		whitelist2: whitelistData2,
 		totalMinted: 0,
 		amount: 1,
 		stage: null as null | number,
@@ -119,11 +122,10 @@ export default function Mint() {
 				await publicSale(state.amount);
 				return;
 			case 1:
-				await preSaleBuy(state.amount);
+				await preSaleBuy(state.amount, state.whitelist1);
 				return;
 			case 2:
-				//TODO!
-				await preSaleBuy(state.amount);
+				await preSaleBuy(state.amount, state.whitelist2);
 				return;
 			case 999:
 				setState((s) => ({
@@ -140,7 +142,10 @@ export default function Mint() {
 		}
 	}
 
-	async function preSaleBuy(quantity: number) {
+	async function preSaleBuy(
+		quantity: number,
+		whitelist: typeof state.whitelist
+	) {
 		console.log("pre sale buy");
 		const txHash = "";
 		const boxError = false;
@@ -167,13 +172,13 @@ export default function Mint() {
 		setState((s) => ({ ...s, signer, contract, account }));
 
 		//WHITELIST
-		let whitelistInfo: typeof state.whitelist[0] | null = null;
-		for (let i = 0; i < state.whitelist.length; i++) {
+		let whitelistInfo: typeof whitelist[0] | null = null;
+		for (let i = 0; i < whitelist.length; i++) {
 			if (
-				String(state.whitelist[i]["Address"]).toLowerCase() ===
-				String(state.account).toLowerCase()
+				String(whitelist[i]["Address"]).toLowerCase() ===
+				String(account).toLowerCase()
 			) {
-				whitelistInfo = state.whitelist[i];
+				whitelistInfo = whitelist[i];
 			}
 		}
 		if (!whitelistInfo) {
@@ -333,14 +338,20 @@ export default function Mint() {
 				Mint a funga
 			</Button>
 
-			{state.totalMinted && state.totalMinted >= state.maxSupply && (
-				<Box>
-					<br />
-					<span>SOLD OUT!</span>
-					<br />
-					Please check Opensea if you want to buy one!
-					<br />
-				</Box>
+			{state.totalMinted ? (
+				state.totalMinted >= state.maxSupply ? (
+					<Box>
+						<br />
+						<span>SOLD OUT!</span>
+						<br />
+						Please check Opensea if you want to buy one!
+						<br />
+					</Box>
+				) : (
+					<></>
+				)
+			) : (
+				<></>
 			)}
 
 			{/* {state.totalMinted < state.maxSupply - 20 && !state.isLoading && (
@@ -441,8 +452,9 @@ function StageStatus({ stage }: { stage: number | null }) {
 		<Box>
 			{stage === 900 && <p>stage: SOLD OUT!</p>}
 			{stage === 0 && <p>mint not started yet</p>}
-			{stage === 1 && <p>stage: whitelist mint</p>}
-			{stage === 2 && <p>stage: public mint</p>}
+			{stage === 1 && <p>stage: whitelist #1 mint</p>}
+			{stage === 2 && <p>stage: whitelist #2 mint</p>}
+			{stage === 3 && <p>stage: public mint</p>}
 		</Box>
 	);
 }

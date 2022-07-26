@@ -2,7 +2,7 @@ import { init, useConnectWallet } from "@web3-onboard/react";
 import injectedModule from "@web3-onboard/injected-wallets";
 import { NETWORK_ID, NETWORK_NAME, RPC_PROVIDER } from "data/constants";
 import Mint from "components/newDapp/Mint";
-import { Button } from "@mui/material";
+import { Alert, Button } from "@mui/material";
 import React, { useEffect, useRef } from "react";
 import { Box, Stack, ThemeProvider } from "@mui/material";
 import Navbar from "components/Navbar";
@@ -11,6 +11,8 @@ import assets from "data/assets";
 import theme from "contexts/theme";
 import Onboard from "@web3-onboard/core";
 import walletConnectModule from "@web3-onboard/walletconnect";
+import { useSetChain } from "@web3-onboard/react";
+
 window.Buffer = window.Buffer || require("buffer").Buffer;
 
 const rpcUrl = RPC_PROVIDER;
@@ -65,8 +67,14 @@ init({
 	],
 });
 
-export default function NewApp() {
+export default function NewDapp() {
 	const [{ wallet, connecting }, connect, disconnect] = useConnectWallet();
+	const [
+		{
+			connectedChain, // the current chain the user's wallet is
+		},
+	] = useSetChain();
+	console.log(!connectedChain ? "no chaing" : connectedChain.id);
 
 	const containerRef = useRef<HTMLDivElement>(null);
 	const imgContainerRef = useRef<HTMLDivElement>(null);
@@ -88,7 +96,7 @@ export default function NewApp() {
 	}, []);
 	// position the element created by dapp library
 	useEffect(() => {
-		setInterval(() => {
+		const interval = setInterval(() => {
 			if (wallet) {
 				let elem = document.querySelector("onboard-v2") as HTMLElement;
 				if (!elem) return;
@@ -97,23 +105,16 @@ export default function NewApp() {
 				if (!parent) return;
 
 				let content = parent.querySelector("div");
-				if (!content) console.log("No-content");
 
 				if (!content) return;
 				content.style.top = "50px";
 			}
 		}, 1000);
+		return () => clearInterval(interval);
 	}, [wallet]);
 
 	return (
 		<div>
-			{/* <button
-				disabled={connecting}
-				onClick={() => (wallet ? disconnect(wallet) : connect())}
-			>
-				{connecting ? "connecting" : wallet ? "disconnect" : "connect"}
-			</button> */}
-
 			<ThemeProvider
 				theme={{
 					...theme,
@@ -184,11 +185,7 @@ export default function NewApp() {
 								alt="three fungus"
 							/>
 						</Box>
-						{/* <img
-					style={{ width: "min(389px, 80%)", display: "block", margin: "auto" }}
-					src={assets.freeMintText}
-					alt="free mint"
-				/> */}
+
 						<Box
 							sx={{
 								// py: 10,
@@ -219,6 +216,15 @@ export default function NewApp() {
 							)}
 						</Box>
 					</Box>
+					{connectedChain && Number(connectedChain.id) !== NETWORK_ID && (
+						<Alert
+							sx={{ my: 2, alignSelf: "center", mx: "atuo", width: "90%" }}
+							color="error"
+						>
+							Warning! Not connected to the
+							{NETWORK_NAME} network!
+						</Alert>
+					)}
 					<Footer
 						sx={{
 							marginTop: "50px",
