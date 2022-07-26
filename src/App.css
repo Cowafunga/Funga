@@ -1,9 +1,5 @@
 :root {
-	/* --onboard-modal-z-index */
-	--onboard-modal-top: 150px;
-	/* --onboard-modal-bottom */
-	/* --onboard-modal-right: */
-	--onboard-modal-left: 50%;
+	--account-center-z-index: -10;
 }
 
 .App {

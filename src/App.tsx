@@ -4,7 +4,7 @@ import AppRoutes from "Routes";
 import AppProvider from "contexts/AppContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import "./App.css";
 // import crypto from "crypto";
 // console.log(crypto);
 export default function App() {

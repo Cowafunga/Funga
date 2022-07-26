@@ -78,8 +78,10 @@ export default function NewDapp() {
 		const container = containerRef.current as HTMLDivElement;
 		const imgContainer = imgContainerRef.current as HTMLDivElement;
 		function handler() {
+			const multiplier = window.innerWidth < 700 ? 0.4 : 0.33;
 			container.style.minHeight = window.innerHeight + "px";
-			imgContainer.style.marginTop = imgContainer.offsetHeight * 0.3 + "px";
+			imgContainer.style.marginTop =
+				imgContainer.offsetHeight * multiplier + "px";
 		}
 		handler();
 		const img = imgContainer.querySelector("img");
@@ -91,6 +93,16 @@ export default function NewDapp() {
 	}, []);
 	// position the element created by dapp library
 	useEffect(() => {
+		// const container = containerRef.current as HTMLDivElement;
+		// const navbar = container.querySelector(".navbar") as HTMLDivElement;
+
+		// if (wallet) {
+		// 	// navbar.style.marginBottom = "40px";
+		// } else {
+		// 	navbar.style.marginBottom = "0";
+		// }
+		const container = containerRef.current as HTMLDivElement;
+
 		const interval = setInterval(() => {
 			if (wallet) {
 				let elem = document.querySelector("onboard-v2") as HTMLElement;
@@ -107,12 +119,13 @@ export default function NewDapp() {
 
 				content.style.transform = "translateX(50%) translateZ(100px)";
 				content.style.zIndex = "3";
+				content.style.background = "white";
 				content.style.width = "max-content";
 				// content.style.position = "absolute";
 				// content.style.left = "50%";
 				// content.style.transform = "translateX(-50%)";
 			}
-		}, 1000);
+		}, 100);
 		return () => clearInterval(interval);
 	}, [wallet]);
 
@@ -133,6 +146,8 @@ export default function NewDapp() {
 						minHeight: "100vh",
 						overflow: "hidden",
 						maxWidth: "100%",
+						// position: "relative",
+						// zIndex: 9999,
 						minWidth: "100%",
 						justifyContent: "space-between",
 					}}

@@ -22,6 +22,7 @@ export default function Navbar({ connectWalletBtn, sx = {} }: INavbar) {
 	const { palette } = useTheme();
 	return (
 		<Stack
+			className="navbar"
 			sx={{
 				alignSelf: "start",
 				position: "static",
