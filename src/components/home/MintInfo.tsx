@@ -344,7 +344,6 @@ function GrassHorizontal() {
 	const grassRef = useRef<HTMLDivElement>(null);
 	useEffect(() => {
 		const container = containerRef.current as HTMLDivElement;
-		// const grass = grassRef.current as HTMLDivElement;
 		function handleResize() {
 			let multiplier = 0;
 			let aspectRatio = 0;
@@ -380,7 +379,6 @@ function GrassHorizontal() {
 				position: "relative",
 			}}
 		>
-			{/* for md up screen */}
 			<Box
 				ref={grassRef}
 				sx={{
@@ -393,26 +391,6 @@ function GrassHorizontal() {
 				}}
 			>
 				<img style={{ width: "100%" }} src={assets.grassFront} alt="Grass" />
-			</Box>
-
-			{/* for small screen */}
-			<Box
-				sx={{
-					position: "absolute",
-					top: "0%",
-					width: "100%",
-					display: { xs: "none", md: "none" },
-					// transform: {
-					// 	xs: "translateY(-35%) scaleY(1)",
-					// 	md: "translateY(-35%) scale(1)",
-					// },
-				}}
-			>
-				<img
-					style={{ width: "100%" }}
-					src={assets.grassFrontMobile}
-					alt="Grass"
-				/>
 			</Box>
 		</Box>
 	);

@@ -11,10 +11,7 @@ import assets from "data/assets";
 export default function Home() {
 	function playAudio() {
 		const audio = document.querySelector("#mainAudioFile") as HTMLAudioElement;
-		audio
-			.play()
-			.then(() => console.log("Audio playing"))
-			.catch((err) => console.log(err));
+		audio.play();
 	}
 	return (
 		<>

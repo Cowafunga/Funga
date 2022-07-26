@@ -1,6 +1,5 @@
-import { init, useConnectWallet } from "@web3-onboard/react";
-import injectedModule from "@web3-onboard/injected-wallets";
-import { NETWORK_ID, NETWORK_NAME, RPC_PROVIDER } from "data/constants";
+import { useConnectWallet } from "@web3-onboard/react";
+import { NETWORK_ID, NETWORK_NAME } from "data/constants";
 import Mint from "components/newDapp/Mint";
 import { Alert, Button } from "@mui/material";
 import { useEffect, useRef } from "react";
@@ -9,59 +8,7 @@ import Navbar from "components/Navbar";
 import Footer from "components/Footer";
 import assets from "data/assets";
 import theme from "contexts/theme";
-import walletConnectModule from "@web3-onboard/walletconnect";
 import { useSetChain } from "@web3-onboard/react";
-import trezorModule from "@web3-onboard/trezor";
-import ledgerModule from "@web3-onboard/ledger";
-
-const rpcUrl = RPC_PROVIDER;
-const injected = injectedModule();
-
-const walletConnect = walletConnectModule({
-	bridge: "https://bridge.walletconnect.org/",
-	qrcodeModalOptions: {
-		mobileLinks: [
-			"metamask",
-			"trust",
-			"rainbow",
-			"argent",
-			"imtoken",
-			"pillar",
-		],
-	},
-});
-
-// const infuraKey = "<INFURA_KEY>";
-
-// initialize Onboard
-init({
-	wallets: [
-		injected,
-		walletConnect,
-		trezorModule({
-			email: "Alex@funga.io",
-			appUrl: window.location.href,
-		}),
-		ledgerModule(),
-	],
-	chains: [
-		{
-			id: `0x${NETWORK_ID}`,
-			token: "ETH",
-			label: NETWORK_NAME,
-			rpcUrl,
-		},
-	],
-	appMetadata: {
-		name: "Funga and Friends",
-		icon: window.location.origin + assets.logo,
-		description: "Mint awesome NFTs",
-		recommendedInjectedWallets: [
-			{ name: "MetaMask", url: "https://metamask.io/" },
-		],
-	},
-});
-console.log(window.location.origin + assets.logo);
 
 export default function NewDapp() {
 	const [{ wallet, connecting }, connect, disconnect] = useConnectWallet();
@@ -93,16 +40,6 @@ export default function NewDapp() {
 	}, []);
 	// position the element created by dapp library
 	useEffect(() => {
-		// const container = containerRef.current as HTMLDivElement;
-		// const navbar = container.querySelector(".navbar") as HTMLDivElement;
-
-		// if (wallet) {
-		// 	// navbar.style.marginBottom = "40px";
-		// } else {
-		// 	navbar.style.marginBottom = "0";
-		// }
-		const container = containerRef.current as HTMLDivElement;
-
 		const interval = setInterval(() => {
 			if (wallet) {
 				let elem = document.querySelector("onboard-v2") as HTMLElement;
@@ -125,17 +62,13 @@ export default function NewDapp() {
 				const network = content.querySelector(".network") as HTMLDivElement;
 				const address = content.querySelector(".address") as HTMLDivElement;
 				const balance = content.querySelector(".balance") as HTMLDivElement;
-				console.log({ network, address, balance });
 				if (!network || !address || !balance) return;
 				balance.style.whiteSpace = "nowrap";
 				address.style.whiteSpace = "nowrap";
 
 				network.style.marginLeft = "10px";
-				// content.style.position = "absolute";
-				// content.style.left = "50%";
-				// content.style.transform = "translateX(-50%)";
 			}
-		}, 100);
+		}, 1000);
 		return () => clearInterval(interval);
 	}, [wallet]);
 
@@ -156,8 +89,6 @@ export default function NewDapp() {
 						minHeight: "100vh",
 						overflow: "hidden",
 						maxWidth: "100%",
-						// position: "relative",
-						// zIndex: 9999,
 						minWidth: "100%",
 						justifyContent: "space-between",
 					}}
@@ -184,8 +115,6 @@ export default function NewDapp() {
 								position: "relative",
 								".star-img": {
 									transform: "translateX(-50%) translateY(-50%)",
-									// maxWidth: "100vw",
-									// maxHeight: "100vh",
 								},
 							}}
 							ref={imgContainerRef}

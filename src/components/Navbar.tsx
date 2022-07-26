@@ -85,7 +85,6 @@ export default function Navbar({ connectWalletBtn, sx = {} }: INavbar) {
 				>
 					<a href={DISCORD_LINK}>
 						<DiscordFilled />
-						{/* <img src={assets.discordContained} alt="" /> */}
 					</a>
 				</Box>
 				{connectWalletBtn || (

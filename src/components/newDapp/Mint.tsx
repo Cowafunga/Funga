@@ -77,9 +77,6 @@ export default function Mint() {
 			]);
 			const isLoading = false;
 
-			console.log("minted = ", totalMinted, " / ", state.maxSupply);
-			console.log("stage =", stage);
-
 			let pricePerNFTWei = state.pricePerNFTWei;
 			if (stage === 2) {
 				pricePerNFTWei = 20000000000000000;
@@ -95,7 +92,7 @@ export default function Mint() {
 				totalMinted,
 			}));
 		},
-		[state.contract, state.maxSupply, state.pricePerNFTWei]
+		[state.contract, state.pricePerNFTWei]
 	);
 
 	useEffect(() => {
@@ -110,7 +107,6 @@ export default function Mint() {
 		}));
 		timerOperations();
 
-		console.log("Time operations ran");
 		return () => {
 			clearInterval(timer);
 		};
@@ -146,7 +142,6 @@ export default function Mint() {
 		quantity: number,
 		whitelist: typeof state.whitelist
 	) {
-		console.log("pre sale buy");
 		const txHash = "";
 		const boxError = false;
 		const errorText = "";
@@ -228,7 +223,6 @@ export default function Mint() {
 		txHash: string,
 		stateEthers: ethers.providers.JsonRpcProvider
 	) {
-		console.log("onTxHashLogic ran");
 		setState((s) => ({
 			...s,
 			isLoading: true,
@@ -250,26 +244,19 @@ export default function Mint() {
 			// let receipt = await state.ethers.getTransactionReceipt(txHash);
 			let receipt = await stateEthers.getTransactionReceipt(txHash);
 			if (receipt === null) {
-				console.log(`Failed to get tx receipt....`);
 				await sleep(3000);
 			}
 		} catch (er) {
-			console.log(`Receipt error:`, er);
 		} finally {
 			setState((s) => ({ ...s, isLoading: false }));
 		}
 	}
 
 	async function publicSale(quantity: number) {
-		console.log("Public sale");
 		const txHash = "";
 		const boxError = false;
 		const errorText = "";
 
-		// const stateEthers = new ethers.providers.Web3Provider(
-		// 	window.ethereum,
-		// 	"any"
-		// );
 		const stateEthers = state.ethers;
 		setState((s) => ({
 			...s,
@@ -296,7 +283,6 @@ export default function Mint() {
 				await onTxHashLogic(tx.hash, stateEthers);
 			}
 		} catch (err: any) {
-			console.log("caught error");
 			const isLoading = false;
 			let boxError = true;
 			let errorText = "";
@@ -310,11 +296,9 @@ export default function Mint() {
 			} else {
 				errorText = err.message;
 			}
-			console.log("Setting state", { isLoading });
 			setState((s) => ({ ...s, errorText, boxError, isLoading }));
 		}
 	}
-	console.log(state.isLoading);
 
 	return (
 		<Stack

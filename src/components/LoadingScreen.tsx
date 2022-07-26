@@ -106,7 +106,6 @@ export default function LoadingScreen({ playAudio }: { playAudio?(): any }) {
 		>
 			{getTotalProgress() < 100 && (
 				<>
-					{/* <Box>Creating your experience {Math.floor(getTotalProgress())}%</Box> */}
 					<img
 						style={{ width: "min(90%,700px)" }}
 						src="/images/its loading text.png"

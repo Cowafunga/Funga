@@ -1,7 +1,7 @@
 import { Box, Button, Stack, useTheme } from "@mui/material";
 import assets from "data/assets";
 import React, { useEffect, useRef } from "react";
-import { DISCORD_LINK } from "../../constants";
+import { DISCORD_LINK } from "data/constants";
 import RepeatElement from "./../RepeatElement";
 
 const GroundContext =
@@ -19,7 +19,6 @@ export default function JoinDiscord() {
 				alignSelf="stretch"
 				sx={{
 					overflow: "visible",
-					// mt: 15,
 					mb: 0,
 					position: "relative",
 					zIndex: 9999,
@@ -238,7 +237,6 @@ function Content() {
 					position: "relative",
 					alignSelf: "flex-end",
 					top: { xs: "0px", md: "140px", lg: "240px" },
-					// transform: "scale(1.2)",
 					left: { xs: 0, md: "40px" },
 					width: { xs: "70%", md: "47%" },
 					flexShrink: 0,
@@ -263,13 +261,6 @@ function Sunset() {
 			{/* whote sunset */}
 			<Box sx={{ maxWidth: "100%", position: "relative", zIndex: 2 }}>
 				<Box style={{ width: "100%", position: "absolute", top: 0, left: 0 }}>
-					{/* placeholder image */}
-					{/* <img
-						style={{ maxWidth: "100%" }}
-						src={"/sunset.png"}
-						alt="visual illustration"
-					/> */}
-
 					<Video />
 				</Box>
 

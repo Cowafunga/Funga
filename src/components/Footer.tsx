@@ -106,7 +106,6 @@ export default function Footer({ sx = {} }: IFooter) {
 					>
 						<a href={DISCORD_LINK}>
 							<DiscordFilled />
-							{/* <img src={assets.discordContained} alt="" /> */}
 						</a>
 					</Box>
 					<Button

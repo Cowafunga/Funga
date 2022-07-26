@@ -1,7 +1,8 @@
-import "./defineBuffer";
+import "./index.css";
+import "./init/defineBuffer";
+import "./init/wallets";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
