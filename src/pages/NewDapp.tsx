@@ -127,6 +127,8 @@ export default function NewApp() {
 						background:
 							"linear-gradient(0.13deg, #CCFFF0 0.1%, #FFFFFF 74.99%)",
 						minHeight: "100vh",
+						overflow: "hidden",
+						maxWidth: "100%",
 						justifyContent: "space-between",
 					}}
 				>
@@ -152,6 +154,8 @@ export default function NewApp() {
 								position: "relative",
 								".star-img": {
 									transform: "translateX(-50%) translateY(-50%)",
+									// maxWidth: "100vw",
+									// maxHeight: "100vh",
 								},
 							}}
 							ref={imgContainerRef}
@@ -228,6 +232,11 @@ export default function NewApp() {
 							},
 							".top-row, .links": {
 								flexDirection: "row !important",
+							},
+							".links": {
+								"&>*": {
+									ml: "8px",
+								},
 							},
 						}}
 					/>
