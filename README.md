@@ -1,3 +1,5 @@
+#### scripts folder has a script that will replace the webpack.config.file in node_modules react scripts to add a fallback for crypto library
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -11,8 +11,8 @@ import assets from "data/assets";
 import theme from "contexts/theme";
 import walletConnectModule from "@web3-onboard/walletconnect";
 import { useSetChain } from "@web3-onboard/react";
-
-window.Buffer = window.Buffer || require("buffer").Buffer;
+import trezorModule from "@web3-onboard/trezor";
+import ledgerModule from "@web3-onboard/ledger";
 
 const rpcUrl = RPC_PROVIDER;
 const injected = injectedModule();
@@ -31,31 +31,19 @@ const walletConnect = walletConnectModule({
 	},
 });
 
-// const onboard = Onboard({
-// 	// ... other Onboard options
-// 	wallets: [
-// 		walletConnect,
-// 		injected,
-// 		//... other wallets
-// 	],
-// 	chains: [
-// 		{
-// 			id: `0x${NETWORK_ID}`,
-// 			token: "ETH",
-// 			label: NETWORK_NAME,
-// 			rpcUrl,
-// 		},
-// 	],
-// });
-// onboard.connectWallet();
-// Sign up to get your free API key at https://explorer.blocknative.com/?signup=true
-// const dappId = "1730eff0-9d50-4382-a3fe-89f0d34a2070";
-
 // const infuraKey = "<INFURA_KEY>";
 
 // initialize Onboard
 init({
-	wallets: [injected, walletConnect],
+	wallets: [
+		injected,
+		walletConnect,
+		trezorModule({
+			email: "Alex@funga.io",
+			appUrl: window.location.href,
+		}),
+		ledgerModule(),
+	],
 	chains: [
 		{
 			id: `0x${NETWORK_ID}`,
@@ -64,7 +52,16 @@ init({
 			rpcUrl,
 		},
 	],
+	appMetadata: {
+		name: "Funga and Friends",
+		icon: window.location.origin + assets.logo,
+		description: "Mint awesome NFTs",
+		recommendedInjectedWallets: [
+			{ name: "MetaMask", url: "https://metamask.io/" },
+		],
+	},
 });
+console.log(window.location.origin + assets.logo);
 
 export default function NewDapp() {
 	const [{ wallet, connecting }, connect, disconnect] = useConnectWallet();
@@ -73,7 +70,6 @@ export default function NewDapp() {
 			connectedChain, // the current chain the user's wallet is
 		},
 	] = useSetChain();
-	console.log(!connectedChain ? "no chaing" : connectedChain.id);
 
 	const containerRef = useRef<HTMLDivElement>(null);
 	const imgContainerRef = useRef<HTMLDivElement>(null);
