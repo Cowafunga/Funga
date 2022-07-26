@@ -7,7 +7,7 @@
 // export const OPENSEA_LINK = 'https://opensea.io/collection/xxxxxxxxx'
 
 //rinkeby!
-export const CONTRACT_ADDR = "0xdA61a5cFaae8dE6feb34B40F88Be2348e17b75ef";
+export const CONTRACT_ADDR = "0x9E11a94e140D3AACb5c4c604560A33e1F390fa85";
 export const NETWORK_ID = 4;
 export const NETWORK_NAME = "RINKEBY";
 export const RPC_PROVIDER =
