@@ -166,7 +166,7 @@ export default function NewDapp() {
 									width: "min(522px, 90%)",
 									position: "relative",
 									left: "50%",
-									zIndex: 99,
+									zIndex: 2,
 									transform: "translateX(-50%)",
 									display: "block",
 								}}
