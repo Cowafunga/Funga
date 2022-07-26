@@ -99,10 +99,18 @@ export default function NewDapp() {
 
 				if (!parent) return;
 
-				let content = parent.querySelector("div");
+				let content = parent.querySelector("style + div") as HTMLDivElement;
 
 				if (!content) return;
-				content.style.top = "50px";
+				content.style.top = "60px";
+				content.style.right = "50%";
+
+				content.style.transform = "translateX(50%) translateZ(100px)";
+				content.style.zIndex = "3";
+				content.style.width = "max-content";
+				// content.style.position = "absolute";
+				// content.style.left = "50%";
+				// content.style.transform = "translateX(-50%)";
 			}
 		}, 1000);
 		return () => clearInterval(interval);
@@ -125,12 +133,13 @@ export default function NewDapp() {
 						minHeight: "100vh",
 						overflow: "hidden",
 						maxWidth: "100%",
+						minWidth: "100%",
 						justifyContent: "space-between",
 					}}
 				>
 					<Box>
 						<Navbar
-							sx={{ zIndex: 100, position: "relative" }}
+							sx={{ zIndex: 3, position: "relative" }}
 							connectWalletBtn={
 								<Button
 									onClick={() => (wallet ? disconnect(wallet) : connect())}
