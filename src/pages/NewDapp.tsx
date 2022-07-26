@@ -76,9 +76,11 @@ export default function NewApp() {
 		const imgContainer = imgContainerRef.current as HTMLDivElement;
 		function handler() {
 			container.style.minHeight = window.innerHeight + "px";
-			imgContainer.style.marginTop = imgContainer.offsetHeight * 0.35 + "px";
+			imgContainer.style.marginTop = imgContainer.offsetHeight * 0.3 + "px";
 		}
 		handler();
+		const img = imgContainer.querySelector("img");
+		img?.addEventListener("load", handler);
 		window.addEventListener("resize", handler);
 		return () => {
 			window.removeEventListener("resize", handler);
