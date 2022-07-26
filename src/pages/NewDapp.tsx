@@ -130,6 +130,7 @@ export default function NewApp() {
 				>
 					<Box>
 						<Navbar
+							sx={{ zIndex: 100, position: "relative" }}
 							connectWalletBtn={
 								<Button
 									onClick={() => (wallet ? disconnect(wallet) : connect())}

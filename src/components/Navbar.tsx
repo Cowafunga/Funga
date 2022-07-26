@@ -2,7 +2,7 @@ import React from "react";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { DISCORD_LINK, INNER_WIDTH, TWITTER_LINK } from "data/constants";
-import { Box, useTheme } from "@mui/material";
+import { Box, SxProps, useTheme } from "@mui/material";
 import { useAppData } from "../contexts/AppContext";
 import assets from "data/assets";
 import Twitter from "./svg/Twitter";
@@ -10,9 +10,10 @@ import DiscordFilled from "./svg/DiscordFilled";
 
 interface INavbar {
 	connectWalletBtn?: React.ReactNode;
+	sx?: SxProps;
 }
 
-export default function Navbar({ connectWalletBtn }: INavbar) {
+export default function Navbar({ connectWalletBtn, sx = {} }: INavbar) {
 	const [appData, setAppData] = useAppData();
 	const { connectWalletPressed } = appData;
 	function handleWalletPress() {
@@ -32,6 +33,7 @@ export default function Navbar({ connectWalletBtn }: INavbar) {
 				width: `min(${INNER_WIDTH}px, 100%)`,
 				zIndex: 10,
 				gap: 1,
+				...sx,
 			}}
 			alignItems="center"
 			flexDirection={{ xs: "column", "300": "row !important" } as any}
