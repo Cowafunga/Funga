@@ -69,11 +69,14 @@ export default function NewApp() {
 	const [{ wallet, connecting }, connect, disconnect] = useConnectWallet();
 
 	const containerRef = useRef<HTMLDivElement>(null);
+	const imgContainerRef = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
 		const container = containerRef.current as HTMLDivElement;
+		const imgContainer = imgContainerRef.current as HTMLDivElement;
 		function handler() {
 			container.style.minHeight = window.innerHeight + "px";
+			imgContainer.style.marginTop = imgContainer.offsetHeight * 0.35 + "px";
 		}
 		handler();
 		window.addEventListener("resize", handler);
@@ -141,17 +144,39 @@ export default function NewApp() {
 								</Button>
 							}
 						/>
-						<img
-							style={{
-								width: "min(926px, 130%)",
+						<Box
+							sx={{
 								position: "relative",
-								left: "50%",
-								transform: "translateX(-50%)",
-								display: "block",
+								".star-img": {
+									transform: "translateX(-50%) translateY(-50%)",
+								},
 							}}
-							src={assets.mintPageImages}
-							alt="three fungus"
-						/>
+							ref={imgContainerRef}
+						>
+							<img
+								style={{
+									width: "min(522px, 90%)",
+									position: "relative",
+									left: "50%",
+									transform: "translateX(-50%)",
+									display: "block",
+								}}
+								src={assets.mintPage2Images}
+								alt="three fungus"
+							/>
+							<img
+								className="star-img"
+								style={{
+									width: "min(1300px, 200%)",
+									position: "absolute",
+									top: "50%",
+									left: "50%",
+									transform: "translateX(-50) translateY(-50%)",
+								}}
+								src={assets.star}
+								alt="three fungus"
+							/>
+						</Box>
 						{/* <img
 					style={{ width: "min(389px, 80%)", display: "block", margin: "auto" }}
 					src={assets.freeMintText}
@@ -189,6 +214,7 @@ export default function NewApp() {
 					</Box>
 					<Footer
 						sx={{
+							marginTop: "50px",
 							color: "black",
 							".all-rights-reserverd": {
 								opacity: "1 !important",

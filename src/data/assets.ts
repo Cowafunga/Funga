@@ -42,5 +42,7 @@ let assets = {
 
 	theTrio: "/images/the trio.png",
 	mintPageImages: "/images/mint page images.png",
+	mintPage2Images: "/images/mint page 2 images.png",
+	mintStar: "/images/mint star.png",
 };
 export default assets;
