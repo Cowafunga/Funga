@@ -335,21 +335,21 @@ export default function Mint() {
 			{state.txHash && (
 				<Box>
 					<p>
-						View Transaction on
+						View Transaction on &nbsp;
 						<span>
 							<a
 								target="_blank"
 								href={`${state.explorerURI}/tx/${state.txHash}`}
 								rel="noreferrer"
 							>
-								etherscan
+								Etherscan
 							</a>
 						</span>
 						<br />
-						Your NFT will show up in
+						Your NFT will show up in &nbsp;
 						<a target="_blank" href={state.openseaLink} rel="noreferrer">
-							opensea
-						</a>{" "}
+							Opensea &nbsp;
+						</a>
 						shortly
 					</p>
 				</Box>
