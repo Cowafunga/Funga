@@ -11,7 +11,7 @@ let assets = {
 	fungaAndFriendsTxt: "/images/funga text.png",
 	joinDiscordText: "/images/join discord text.png",
 	mintInfoText: "/images/mint info text.png",
-	freeMintText: "/images/free mint text trimmed.png",
+	// freeMintText: "/images/free mint text trimmed.png",
 
 	// icons
 	arrowDown: "/images/arrow down.png",

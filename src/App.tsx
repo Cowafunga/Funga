@@ -1,20 +1,19 @@
 import theme from "contexts/theme";
 import { Box, ThemeProvider, useTheme } from "@mui/material";
 import AppRoutes from "Routes";
-import AppProvider from "contexts/AppContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
-// import crypto from "crypto";
-// console.log(crypto);
+import MintProvider from "contexts/MintContext";
+
 export default function App() {
 	const { palette } = useTheme();
 	return (
 		<div className="App">
 			<ThemeProvider theme={theme}>
-				<AppProvider>
+				<MintProvider>
 					<AppRoutes />
-				</AppProvider>
+				</MintProvider>
 				<Box
 					sx={{
 						"& .Toastify__toast ": {

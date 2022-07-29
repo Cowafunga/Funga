@@ -1,24 +1,19 @@
 import React from "react";
 import Stack from "@mui/material/Stack";
-import Button from "@mui/material/Button";
 import { DISCORD_LINK, INNER_WIDTH, TWITTER_LINK } from "data/constants";
 import { Box, SxProps, Typography, useTheme } from "@mui/material";
-import { useAppData } from "../contexts/AppContext";
 import assets from "data/assets";
 import Twitter from "./svg/Twitter";
 import DiscordFilled from "./svg/DiscordFilled";
+import { Link } from "react-router-dom";
+import ConnectWalletBtn from "./ConnectWalletBtn";
 
 interface IFooter {
 	sx?: SxProps;
 }
 
 export default function Footer({ sx = {} }: IFooter) {
-	const [appData, setAppData] = useAppData();
-	const { connectWalletPressed } = appData;
 	const { palette } = useTheme();
-	function handleWalletPress() {
-		setAppData(() => ({ ...appData, connectWalletPressed: true }));
-	}
 
 	return (
 		<Stack sx={{ ...sx }}>
@@ -45,8 +40,9 @@ export default function Footer({ sx = {} }: IFooter) {
 				direction="row"
 			>
 				{/* Logo */}
-				<a href="/#">
+				<Link to={{ pathname: "/", search: "#" }}>
 					<Box
+						onClick={() => document.body.scrollTo({ top: 0 })}
 						sx={{
 							display: "grid",
 							placeItems: "center",
@@ -59,7 +55,7 @@ export default function Footer({ sx = {} }: IFooter) {
 							alt=""
 						/>
 					</Box>
-				</a>
+				</Link>
 
 				{/* Button and Links */}
 				<Stack
@@ -84,16 +80,10 @@ export default function Footer({ sx = {} }: IFooter) {
 							<Twitter />
 						</a>
 					</Box>
-					<Button
+					<ConnectWalletBtn
 						className="connect-wallet-button"
-						variant="contained"
-						startIcon={<img alt="" src="/images/wallet.svg" />}
 						sx={{ display: { sm: "none !important", xs: "inline-flex" } }}
-						onClick={handleWalletPress}
-						color={connectWalletPressed ? "secondary" : "primary"}
-					>
-						{connectWalletPressed ? "(NOT YET)" : "Connect Wallet"}
-					</Button>
+					></ConnectWalletBtn>
 					<Box
 						sx={{
 							"&,a": { display: { xs: "grid" } },
@@ -108,19 +98,13 @@ export default function Footer({ sx = {} }: IFooter) {
 							<DiscordFilled />
 						</a>
 					</Box>
-					<Button
+					<ConnectWalletBtn
 						className="connect-wallet-button"
-						variant="contained"
-						startIcon={<img alt="" src={assets.wallet} />}
 						sx={{
 							width: "max-content",
 							display: { sm: "inline-flex !important", xs: "none" },
 						}}
-						onClick={handleWalletPress}
-						color={connectWalletPressed ? "secondary" : "primary"}
-					>
-						{connectWalletPressed ? "(NOT YET)" : "Connect Wallet"}
-					</Button>
+					></ConnectWalletBtn>
 				</Stack>
 			</Stack>
 

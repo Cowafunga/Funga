@@ -60,7 +60,7 @@ export default function LoadingScreen({ playAudio }: { playAudio?(): any }) {
 
 	useEffect(() => {
 		if (!show) {
-			document.body.style.overflow = "initial";
+			document.body.style.overflow = "auto";
 
 			data.isLoading && setAppData((d) => ({ ...d, isLoading: false }));
 		}
@@ -68,6 +68,7 @@ export default function LoadingScreen({ playAudio }: { playAudio?(): any }) {
 
 	let styles = {};
 	if (!data.isLoading) {
+		document.body.style.overflow = "auto";
 		styles = {
 			transform: "scale(0) rotate(360deg)",
 			opacity: 0,

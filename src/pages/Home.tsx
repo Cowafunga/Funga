@@ -7,12 +7,26 @@ import JoinDiscord from "components/home/JoinDiscord";
 import LoadingScreen from "components/LoadingScreen";
 import Footer from "components/Footer";
 import assets from "data/assets";
+import AppProvider from "contexts/AppContext";
+import styleWeb3Account from "utils/styleWeb3Account";
+import { useConnectWallet } from "@web3-onboard/react";
+import { useEffect } from "react";
 
-export default function Home() {
+function HomeCompoenent() {
+	const [{ wallet }] = useConnectWallet();
+
 	function playAudio() {
 		const audio = document.querySelector("#mainAudioFile") as HTMLAudioElement;
 		audio.play();
 	}
+	useEffect(() => {
+		const interval = setInterval(() => {
+			if (wallet) {
+				styleWeb3Account();
+			}
+		}, 1000);
+		return () => clearInterval(interval);
+	}, [wallet]);
 	return (
 		<>
 			<LoadingScreen playAudio={playAudio} />
@@ -29,7 +43,7 @@ export default function Home() {
 				alignItems="center"
 				maxWidth="1440px"
 				width="min(100%, 1440px)"
-				sx={{ mx: "auto", overflow: "hidden", position: "relative" }}
+				sx={{ zIndex: 0, mx: "auto", overflow: "hidden", position: "relative" }}
 			>
 				<Layout sx={{ mx: "auto" }}>
 					<Box
@@ -123,6 +137,14 @@ export default function Home() {
 				</Box>
 			</Stack>
 		</>
+	);
+}
+
+export default function Home() {
+	return (
+		<AppProvider>
+			<HomeCompoenent />
+		</AppProvider>
 	);
 }
 

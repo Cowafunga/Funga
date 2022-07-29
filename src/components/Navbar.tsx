@@ -1,12 +1,12 @@
 import React from "react";
 import Stack from "@mui/material/Stack";
-import Button from "@mui/material/Button";
 import { DISCORD_LINK, INNER_WIDTH, TWITTER_LINK } from "data/constants";
 import { Box, SxProps, useTheme } from "@mui/material";
-import { useAppData } from "../contexts/AppContext";
 import assets from "data/assets";
 import Twitter from "./svg/Twitter";
 import DiscordFilled from "./svg/DiscordFilled";
+import { Link } from "react-router-dom";
+import ConnectWalletBtn from "components/ConnectWalletBtn";
 
 interface INavbar {
 	connectWalletBtn?: React.ReactNode;
@@ -14,11 +14,6 @@ interface INavbar {
 }
 
 export default function Navbar({ connectWalletBtn, sx = {} }: INavbar) {
-	const [appData, setAppData] = useAppData();
-	const { connectWalletPressed } = appData;
-	function handleWalletPress() {
-		setAppData(() => ({ ...appData, connectWalletPressed: true }));
-	}
 	const { palette } = useTheme();
 	return (
 		<Stack
@@ -41,7 +36,7 @@ export default function Navbar({ connectWalletBtn, sx = {} }: INavbar) {
 			justifyContent={{ xs: "space-evenly", vsm: "space-between !Important" }}
 			direction="row"
 		>
-			<a href="/#">
+			<Link to={{ pathname: "/#" }}>
 				<Box
 					sx={{
 						display: "grid",
@@ -55,7 +50,7 @@ export default function Navbar({ connectWalletBtn, sx = {} }: INavbar) {
 				>
 					<img src={assets.logo} alt="" />
 				</Box>
-			</a>
+			</Link>
 			<Stack gap={3} direction="row" alignItems={"center"}>
 				<Box
 					sx={{
@@ -72,7 +67,6 @@ export default function Navbar({ connectWalletBtn, sx = {} }: INavbar) {
 						<Twitter />
 					</a>
 				</Box>
-
 				<Box
 					sx={{
 						"&,a": { display: { xs: "none", sm: "grid" } },
@@ -87,16 +81,7 @@ export default function Navbar({ connectWalletBtn, sx = {} }: INavbar) {
 						<DiscordFilled />
 					</a>
 				</Box>
-				{connectWalletBtn || (
-					<Button
-						variant="contained"
-						startIcon={<img alt="" src="/images/wallet.svg" />}
-						onClick={handleWalletPress}
-						color={connectWalletPressed ? "secondary" : "primary"}
-					>
-						{connectWalletPressed ? "(NOT YET)" : "Connect Wallet"}
-					</Button>
-				)}
+				<ConnectWalletBtn></ConnectWalletBtn>
 			</Stack>
 		</Stack>
 	);

@@ -1,76 +1,24 @@
 import { ethers } from "ethers";
-import {
-	CONTRACT_ADDR,
-	NETWORK_ID,
-	EXPLORER_URI,
-	OPENSEA_LINK,
-} from "data/constants";
+import { CONTRACT_ADDR } from "data/constants";
 import { ERC721_ABI } from "data/erc721_abi";
-import whitelistData from "data/whitelist.json";
-import whitelistData1 from "data/whitelist1.json";
-import whitelistData2 from "data/whitelist2.json";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect } from "react";
 import { Box, Button, Stack, Typography } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
 import Alert from "@mui/material/Alert";
 import assets from "data/assets";
 import { toast } from "react-toastify";
-import { useConnectWallet } from "@web3-onboard/react";
-import { WalletState } from "@web3-onboard/core";
+import { useMint } from "contexts/MintContext";
+import useSoldout from "hooks/useSoldout";
 
 export default function Mint() {
-	const [{ wallet }] = useConnectWallet();
-	// this means, component should not be renderd if not wallt
-	let nonNullWallet = wallet as WalletState;
-
-	const stateEthers = new ethers.providers.Web3Provider(
-		nonNullWallet.provider,
-		NETWORK_ID
-	);
-	const [state, setState] = useState({
-		whitelist: whitelistData,
-		whitelist1: whitelistData1,
-		whitelist2: whitelistData2,
-		totalMinted: 0,
-		amount: 1,
-		stage: null as null | number,
-
-		balanceOf: null,
-		dialogConfirmation: false,
-		tokenID: null,
-		contract: new ethers.Contract(CONTRACT_ADDR, ERC721_ABI, stateEthers),
-		account: null as string | null,
-		contractAddress: CONTRACT_ADDR,
-		txHash: "",
-		ethers: stateEthers,
-		signer: null as null | ethers.providers.JsonRpcSigner,
-		provider: "not_web3",
-		isLoading: false,
-		loadingText: "loading...",
-		boxError: false,
-		errorText: "",
-		dialogAdoptMany: false,
-		dialogError: false,
-		walletAddress: null,
-		pricePerNFTWei: 10000000000000000,
-		maxSupply: 1000,
-		maxFlashSale: null,
-		explorerURI: EXPLORER_URI,
-		openseaLink: OPENSEA_LINK,
-		ownedNFTs: [],
-		id: "",
-	});
-
-	useEffect(() => {
-		const stateEthers = new ethers.providers.Web3Provider(
-			nonNullWallet.provider,
-			NETWORK_ID
-		);
-		setState((s) => ({ ...s, ethers: stateEthers }));
-	}, [nonNullWallet.provider]);
-
+	const [state, setState] = useMint();
+	const soldout = useSoldout();
 	const timerOperations = useCallback(
 		async function () {
+			// if (!state.contract)
+			// 	throw new Error(`State contract is ${state.contract}`);
+			if (!state.contract) return;
+
 			const [totalMinted, stage] = await Promise.all([
 				Number(await state.contract.totalSupply()),
 				Number(await state.contract.getStage()),
@@ -92,7 +40,7 @@ export default function Mint() {
 				totalMinted,
 			}));
 		},
-		[state.contract, state.pricePerNFTWei]
+		[state.contract, state.pricePerNFTWei, setState]
 	);
 
 	useEffect(() => {
@@ -110,7 +58,7 @@ export default function Mint() {
 		return () => {
 			clearInterval(timer);
 		};
-	}, [timerOperations]);
+	}, [timerOperations, setState]);
 
 	async function mintBtnPressed() {
 		switch (state.stage) {
@@ -150,6 +98,8 @@ export default function Mint() {
 		// 	"any"
 		// );
 		const stateEthers = state.ethers;
+
+		if (!stateEthers) throw new Error(`State ethers is ${stateEthers}`);
 
 		setState((s) => ({
 			...s,
@@ -265,7 +215,7 @@ export default function Mint() {
 			errorText,
 			ethers: stateEthers,
 		}));
-
+		if (!stateEthers) throw new Error(`state.ethers is ${state.ethers}`);
 		await stateEthers.send("eth_requestAccounts", []);
 
 		const signer = stateEthers.getSigner();
@@ -322,7 +272,7 @@ export default function Mint() {
 				Mint a funga
 			</Button>
 
-			{state.totalMinted ? (
+			{soldout ? (
 				state.totalMinted >= state.maxSupply ? (
 					<Box>
 						<br />

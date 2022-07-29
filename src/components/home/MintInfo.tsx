@@ -9,12 +9,10 @@ import {
 } from "@mui/material";
 import assets from "data/assets";
 import { useEffect, useRef } from "react";
-import { useAppData } from "../../contexts/AppContext";
+import { useNavigate } from "react-router-dom";
 
 export default function MintInfo() {
-	const [appData, setAppData] = useAppData();
-	const { mintBtnPressed } = appData;
-
+	let navigate = useNavigate();
 	return (
 		<Stack
 			justifyContent="space-between"
@@ -81,12 +79,14 @@ export default function MintInfo() {
 							height: "45px",
 							display: { md: "none", xs: "flex" },
 						}}
-						onClick={() => setAppData((d) => ({ ...d, mintBtnPressed: true }))}
+						onClick={() => {
+							// setAppData((d) => ({ ...d, mintBtnPressed: true }));
+							navigate("/new-mint");
+						}}
 						startIcon={<img src={assets.medicalKit} alt="Medical kit" />}
 						variant="contained"
-						color={mintBtnPressed ? "secondary" : "success"}
 					>
-						{mintBtnPressed ? "Coming soon..." : "Minting page"}
+						Minting page
 					</Button>
 				</Grid>
 			</Grid>
@@ -197,8 +197,7 @@ function Star() {
 
 function MintInfoDetails() {
 	const { palette } = useTheme();
-	const [appData, setAppData] = useAppData();
-	const { mintBtnPressed } = appData;
+	let navigate = useNavigate();
 
 	return (
 		<Stack
@@ -293,12 +292,13 @@ function MintInfoDetails() {
 					height: "54px",
 					display: { xs: "none", md: "inline-flex" },
 				}}
-				onClick={() => setAppData((d) => ({ ...d, mintBtnPressed: true }))}
+				onClick={() => {
+					navigate("/new-mint");
+				}}
 				startIcon={<img src={assets.medicalKit} alt="Medical kit" />}
 				variant="contained"
-				color={mintBtnPressed ? "secondary" : "success"}
 			>
-				{mintBtnPressed ? "Coming soon..." : "Minting page"}
+				Minting page
 			</Button>
 		</Stack>
 	);
@@ -309,7 +309,9 @@ function Arrow() {
 		<Stack
 			alignItems="center"
 			sx={{
-				my: { xs: 5, md: 10 },
+				my: { xs: 5, md: 12 },
+				position: "relative",
+				zIndex: 100,
 			}}
 		>
 			<img src={assets.arrowDown} alt="arrow" />
@@ -327,7 +329,7 @@ function Grass({ sx = {} }: IGrass) {
 			sx={{
 				maxWidth: "100%",
 				width: "100%",
-				top: -100,
+				top: -80,
 				position: "absolute",
 				left: 0,
 				img: { width: "70%" },

@@ -1,5 +1,5 @@
 import { useConnectWallet } from "@web3-onboard/react";
-import { NETWORK_ID, NETWORK_NAME } from "data/constants";
+import { NETWORK_ID, NETWORK_NAME, OPENSEA_LINK } from "data/constants";
 import Mint from "components/newDapp/Mint";
 import { Alert, Button } from "@mui/material";
 import { useEffect, useRef } from "react";
@@ -9,9 +9,12 @@ import Footer from "components/Footer";
 import assets from "data/assets";
 import theme from "contexts/theme";
 import { useSetChain } from "@web3-onboard/react";
+import styleWeb3Account from "utils/styleWeb3Account";
+import useSoldout from "hooks/useSoldout";
 
 export default function NewDapp() {
-	const [{ wallet, connecting }, connect, disconnect] = useConnectWallet();
+	const [{ wallet }, connect, disconnect] = useConnectWallet();
+	const soldout = useSoldout();
 	const [
 		{
 			connectedChain, // the current chain the user's wallet is
@@ -42,31 +45,7 @@ export default function NewDapp() {
 	useEffect(() => {
 		const interval = setInterval(() => {
 			if (wallet) {
-				let elem = document.querySelector("onboard-v2") as HTMLElement;
-				if (!elem) return;
-				let parent = elem.shadowRoot as ShadowRoot;
-
-				if (!parent) return;
-
-				let content = parent.querySelector("style + div") as HTMLDivElement;
-
-				if (!content) return;
-				content.style.top = "60px";
-				content.style.right = "50%";
-
-				content.style.transform = "translateX(50%) translateZ(100px)";
-				content.style.zIndex = "3";
-				content.style.background = "white";
-				content.style.width = "max-content";
-
-				const network = content.querySelector(".network") as HTMLDivElement;
-				const address = content.querySelector(".address") as HTMLDivElement;
-				const balance = content.querySelector(".balance") as HTMLDivElement;
-				if (!network || !address || !balance) return;
-				balance.style.whiteSpace = "nowrap";
-				address.style.whiteSpace = "nowrap";
-
-				network.style.marginLeft = "10px";
+				styleWeb3Account();
 			}
 		}, 1000);
 		return () => clearInterval(interval);
@@ -94,22 +73,7 @@ export default function NewDapp() {
 					}}
 				>
 					<Box>
-						<Navbar
-							sx={{ zIndex: 3, position: "relative" }}
-							connectWalletBtn={
-								<Button
-									onClick={() => (wallet ? disconnect(wallet) : connect())}
-									startIcon={<img alt="" src={assets.wallet} />}
-									variant="contained"
-								>
-									{connecting
-										? "connecting"
-										: wallet
-										? "disconnect"
-										: "Connect Wallet"}{" "}
-								</Button>
-							}
-						/>
+						<Navbar sx={{ zIndex: 3, position: "relative" }} />
 						<Box
 							sx={{
 								position: "relative",
@@ -159,11 +123,17 @@ export default function NewDapp() {
 							}}
 						>
 							{/* <ConnectWallet /> */}
-							{wallet ? (
+							{wallet && !soldout ? (
 								<Mint />
 							) : (
 								<Button
-									onClick={() => (wallet ? disconnect(wallet) : connect())}
+									onClick={() => {
+										if (soldout) {
+											window.open(OPENSEA_LINK);
+										} else {
+											wallet ? disconnect(wallet) : connect();
+										}
+									}}
 									sx={{ textTransform: "initial" }}
 									variant="contained"
 									size="large"
