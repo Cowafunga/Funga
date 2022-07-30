@@ -7,7 +7,7 @@
 // export const OPENSEA_LINK = 'https://opensea.io/collection/xxxxxxxxx'
 
 //rinkeby!
-export const CONTRACT_ADDR = "0x1da8770F3b1E9E06dcb379485228eFac64c634EC";
+export const CONTRACT_ADDR = "0x80151bf10579df3aeb59e747d3ac0201e4290986";
 export const NETWORK_ID = 1;
 export const RPC_PROVIDER =
 	"https://eth-mainnet.g.alchemy.com/v2/qLs3tNrS6vIUQbcNzwlne-ZNlVnqq-63";

@@ -16,7 +16,7 @@ import { useConnectWallet } from "@web3-onboard/react";
 const initialState = {
 	whitelist: whitelistData,
 	whitelist1: whitelistData1,
-	whitelist2: whitelistData2,
+	whitelist2: whitelistData2 as typeof whitelistData1,
 	totalMinted: 0,
 	amount: 1,
 	stage: null as null | number,
