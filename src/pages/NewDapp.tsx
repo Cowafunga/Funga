@@ -126,16 +126,17 @@ export default function NewDapp() {
 							}}
 						>
 							{/* <ConnectWallet /> */}
-							{wallet && !soldout ? (
+							{wallet ? (
 								<Mint />
 							) : (
 								<Button
 									onClick={() => {
-										if (soldout) {
-											window.open(OPENSEA_LINK);
-										} else {
-											wallet ? disconnect(wallet) : connect();
-										}
+										// if (soldout) {
+										// 	window.open(OPENSEA_LINK);
+										// } else {
+										// 	wallet ? disconnect(wallet) : connect();
+										// }
+										wallet ? disconnect(wallet) : connect();
 									}}
 									sx={{ textTransform: "initial" }}
 									variant="contained"
