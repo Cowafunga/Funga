@@ -386,7 +386,7 @@ function StageStatus({ stage }: { stage: number | null }) {
 	return (
 		<Box>
 			{stage === 900 && <p>Stage: SOLD OUT!</p>}
-			{stage === 0 && <p>Mint not started yet</p>}
+			{stage === 0 && <p>Hang tight, Fungas on the way</p>}
 			{stage === 1 && <p>Stage: Whitelist #1 mint</p>}
 			{stage === 2 && <p>Stage: Whitelist #2 mint</p>}
 			{stage === 3 && <p>Stage:Public mint</p>}
