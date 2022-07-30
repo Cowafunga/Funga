@@ -266,6 +266,7 @@ export default function Mint() {
 				sx={{ textTransform: "initial" }}
 				variant="contained"
 				size="large"
+				disabled={state.stage === 0}
 				// color="success"
 				startIcon={<img alt="Mint icon" src={assets.medicalKit} />}
 			>
@@ -384,11 +385,11 @@ export default function Mint() {
 function StageStatus({ stage }: { stage: number | null }) {
 	return (
 		<Box>
-			{stage === 900 && <p>stage: SOLD OUT!</p>}
-			{stage === 0 && <p>mint not started yet</p>}
-			{stage === 1 && <p>stage: whitelist #1 mint</p>}
-			{stage === 2 && <p>stage: whitelist #2 mint</p>}
-			{stage === 3 && <p>stage: public mint</p>}
+			{stage === 900 && <p>Stage: SOLD OUT!</p>}
+			{stage === 0 && <p>Mint not started yet</p>}
+			{stage === 1 && <p>Stage: Whitelist #1 mint</p>}
+			{stage === 2 && <p>Stage: Whitelist #2 mint</p>}
+			{stage === 3 && <p>Stage:Public mint</p>}
 		</Box>
 	);
 }
