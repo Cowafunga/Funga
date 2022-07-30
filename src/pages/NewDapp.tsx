@@ -1,5 +1,5 @@
 import { useConnectWallet } from "@web3-onboard/react";
-import { NETWORK_ID, NETWORK_NAME, OPENSEA_LINK } from "data/constants";
+import { NETWORK_ID, NETWORK_NAME } from "data/constants";
 import Mint from "components/newDapp/Mint";
 import { Alert, Button } from "@mui/material";
 import { useEffect, useRef } from "react";
@@ -10,11 +10,9 @@ import assets from "data/assets";
 import theme from "contexts/theme";
 import { useSetChain } from "@web3-onboard/react";
 import styleWeb3Account from "utils/styleWeb3Account";
-import useSoldout from "hooks/useSoldout";
 
 export default function NewDapp() {
 	const [{ wallet }, connect, disconnect] = useConnectWallet();
-	const soldout = useSoldout();
 	const [
 		{
 			connectedChain, // the current chain the user's wallet is
