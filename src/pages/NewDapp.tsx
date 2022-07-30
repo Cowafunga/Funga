@@ -102,6 +102,7 @@ export default function NewDapp() {
 									position: "absolute",
 									top: "50%",
 									left: "50%",
+									zIndex: 0,
 									transform: "translateX(-50) translateY(-50%)",
 								}}
 								src={assets.star}
@@ -111,6 +112,8 @@ export default function NewDapp() {
 
 						<Box
 							sx={{
+								position: "relative",
+								zIndex: 5,
 								// py: 10,
 								display: "flex",
 								alignItems: "center",
@@ -156,6 +159,8 @@ export default function NewDapp() {
 					)}
 					<Footer
 						sx={{
+							position: "relative",
+							zIndex: 5,
 							marginTop: "50px",
 							color: "black",
 							".all-rights-reserverd": {

@@ -1,5 +1,5 @@
 import { ethers } from "ethers";
-import { CONTRACT_ADDR } from "data/constants";
+import { CONTRACT_ADDR, OPENSEA_LINK } from "data/constants";
 import { ERC721_ABI } from "data/erc721_abi";
 import { useCallback, useEffect } from "react";
 import { Box, Button, Stack, Typography } from "@mui/material";
@@ -253,7 +253,7 @@ export default function Mint() {
 	return (
 		<Stack
 			maxWidth="100%"
-			sx={{ boxSizing: "border-box" }}
+			sx={{ position: "relative", zIndex: 500, boxSizing: "border-box" }}
 			px={2}
 			gap={4}
 			alignItems="center"
@@ -274,17 +274,14 @@ export default function Mint() {
 			</Button>
 
 			{soldout ? (
-				state.totalMinted >= state.maxSupply ? (
-					<Box>
-						<br />
-						<span>SOLD OUT!</span>
-						<br />
-						Please check Opensea if you want to buy one!
-						<br />
-					</Box>
-				) : (
-					<></>
-				)
+				<Box>
+					<br />
+					<span>SOLD OUT!</span>
+					<br />
+					Please check <a href={OPENSEA_LINK}>Opensea</a> if you want to buy
+					one!
+					<br />
+				</Box>
 			) : (
 				<></>
 			)}
