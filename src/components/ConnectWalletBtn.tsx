@@ -21,7 +21,7 @@ export default function ConnectWalletBtn({
 			variant="contained"
 			startIcon={<img alt="" src="/images/wallet.svg" />}
 			onClick={() => {
-				if (soldout) {
+				if (soldout && !wallet) {
 					window.open(OPENSEA_LINK);
 				} else {
 					wallet ? disconnect(wallet) : connect();
