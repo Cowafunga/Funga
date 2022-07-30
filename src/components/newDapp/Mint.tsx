@@ -1,5 +1,8 @@
 import { ethers } from "ethers";
-import { CONTRACT_ADDR, OPENSEA_LINK } from "data/constants";
+import {
+	CONTRACT_ADDR,
+	// OPENSEA_LINK
+} from "data/constants";
 import { ERC721_ABI } from "data/erc721_abi";
 import { useCallback, useEffect } from "react";
 import { Box, Button, Stack, Typography } from "@mui/material";
@@ -8,11 +11,11 @@ import Alert from "@mui/material/Alert";
 import assets from "data/assets";
 import { toast } from "react-toastify";
 import { useMint } from "contexts/MintContext";
-import useSoldout from "hooks/useSoldout";
+// import useSoldout from "hooks/useSoldout";
 
 export default function Mint() {
 	const [state, setState] = useMint();
-	const soldout = useSoldout();
+	// const soldout = useSoldout();
 	const timerOperations = useCallback(
 		async function () {
 			// if (!state.contract)
@@ -273,7 +276,7 @@ export default function Mint() {
 				Mint a funga
 			</Button>
 
-			{soldout ? (
+			{/* {soldout ? (
 				<Box>
 					<br />
 					<span>SOLD OUT!</span>
@@ -284,7 +287,7 @@ export default function Mint() {
 				</Box>
 			) : (
 				<></>
-			)}
+			)} */}
 
 			{/* {state.totalMinted < state.maxSupply - 20 && !state.isLoading && (
 				<Box p={3} boxShadow={1}>
@@ -382,7 +385,7 @@ export default function Mint() {
 function StageStatus({ stage }: { stage: number | null }) {
 	return (
 		<Box>
-			{stage === 900 && <p>Stage: SOLD OUT!</p>}
+			{/* {stage === 900 && <p>Stage: SOLD OUT!</p>} */}
 			{stage === 0 && <p>Hang tight, Fungas on the way</p>}
 			{stage === 1 && <p>Stage: Whitelist #1 mint</p>}
 			{stage === 2 && <p>Stage: Whitelist #2 mint</p>}
