@@ -39,7 +39,7 @@ const initialState = {
 	dialogError: false,
 	walletAddress: null,
 	pricePerNFTWei: 10000000000000000,
-	maxSupply: 1000,
+	maxSupply: 3333,
 	maxFlashSale: null,
 	explorerURI: EXPLORER_URI,
 	openseaLink: OPENSEA_LINK,
