@@ -13,7 +13,7 @@ export const RPC_PROVIDER =
 	"https://eth-mainnet.g.alchemy.com/v2/qLs3tNrS6vIUQbcNzwlne-ZNlVnqq-63";
 export const EXPLORER_URI = "https://etherscan.io";
 export const OPENSEA_LINK =
-	"https://opensea.io/assets/ethereum/0x1da8770f3b1e9e06dcb379485228efac64c634ec/";
+	"https://opensea.io/assets/ethereum/0x80151bf10579df3aeb59e747d3ac0201e4290986";
 export const NETWORK_NAME = "Ethereum Mainnet";
 
 export const INNER_WIDTH = 1170;
