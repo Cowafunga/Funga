@@ -7,14 +7,14 @@
 // export const OPENSEA_LINK = 'https://opensea.io/collection/xxxxxxxxx'
 
 //rinkeby!
-export const CONTRACT_ADDR = "0x9E11a94e140D3AACb5c4c604560A33e1F390fa85";
-export const NETWORK_ID = 4;
-export const NETWORK_NAME = "RINKEBY";
+export const CONTRACT_ADDR = "0x1da8770F3b1E9E06dcb379485228eFac64c634EC";
+export const NETWORK_ID = 1;
 export const RPC_PROVIDER =
-	"https://eth-rinkeby.alchemyapi.io/v2/zd8mzR67bkZlNs0TZj1fVqpRu1xsLZ9V";
-export const EXPLORER_URI = "https://rinkeby.etherscan.io";
+	"https://eth-mainnet.g.alchemy.com/v2/qLs3tNrS6vIUQbcNzwlne-ZNlVnqq-63";
+export const EXPLORER_URI = "https://etherscan.io";
 export const OPENSEA_LINK =
-	"https://testnets.opensea.io/assets/XXXXXXXXXXXXXX/";
+	"https://opensea.io/assets/ethereum/0x1da8770f3b1e9e06dcb379485228efac64c634ec/";
+export const NETWORK_NAME = "Ethereum Mainnet";
 
 export const INNER_WIDTH = 1170;
 export const TWITTER_LINK = "https://twitter.com/FungaNFT";
