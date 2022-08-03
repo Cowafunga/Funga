@@ -11,6 +11,7 @@ import assets from "data/assets";
 import Twitter from "./svg/Twitter";
 import DiscordFilled from "./svg/DiscordFilled";
 import { Link } from "react-router-dom";
+import OpenseaIcon from "./svg/Opensea";
 // import ConnectWalletBtn from "./ConnectWalletBtn";
 
 interface IFooter {
@@ -90,10 +91,7 @@ export default function Footer({ sx = {} }: IFooter) {
 						sx={{ display: { sm: "none !important", xs: "inline-flex" } }}
 					>
 						<a href={OPENSEA_COLLECTION}>
-							<Button
-								startIcon={<img alt="" src={assets.wallet} />}
-								variant="contained"
-							>
+							<Button startIcon={<OpenseaIcon />} variant="contained">
 								Buy on OS
 							</Button>
 						</a>
@@ -121,7 +119,8 @@ export default function Footer({ sx = {} }: IFooter) {
 					>
 						<a href={OPENSEA_COLLECTION}>
 							<Button
-								startIcon={<img alt="" src={assets.wallet} />}
+								// startIcon={<img alt="" src={assets.wallet} />}
+								startIcon={<OpenseaIcon />}
 								variant="contained"
 							>
 								Buy on OS

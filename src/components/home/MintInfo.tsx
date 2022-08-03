@@ -7,6 +7,7 @@ import {
 	Typography,
 	useTheme,
 } from "@mui/material";
+import OpenseaIcon from "components/svg/Opensea";
 import assets from "data/assets";
 import { OPENSEA_COLLECTION } from "data/constants";
 import { useEffect, useRef } from "react";
@@ -81,7 +82,8 @@ export default function MintInfo() {
 								height: "45px",
 								display: { md: "none", xs: "flex" },
 							}}
-							startIcon={<img src={assets.wallet} alt="Medical kit" />}
+							// startIcon={<img src={assets.wallet} alt="Medical kit" />}
+							startIcon={<OpenseaIcon />}
 							variant="contained"
 						>
 							BUY ON OPENSEA
@@ -295,7 +297,7 @@ function MintInfoDetails() {
 						height: "54px",
 						display: { xs: "none", md: "inline-flex" },
 					}}
-					startIcon={<img src={assets.wallet} alt="Medical kit" />}
+					startIcon={<OpenseaIcon />}
 					variant="contained"
 				>
 					Buy on Opensea

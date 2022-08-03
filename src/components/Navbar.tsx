@@ -11,6 +11,7 @@ import assets from "data/assets";
 import Twitter from "./svg/Twitter";
 import DiscordFilled from "./svg/DiscordFilled";
 import { Link } from "react-router-dom";
+import OpenseaIcon from "./svg/Opensea";
 
 interface INavbar {
 	connectWalletBtn?: React.ReactNode;
@@ -87,7 +88,8 @@ export default function Navbar({ connectWalletBtn, sx = {} }: INavbar) {
 				</Box>
 				<a href={OPENSEA_COLLECTION}>
 					<Button
-						startIcon={<img alt="" src={assets.wallet} />}
+						// startIcon={<img alt="" src={assets.wallet} />}
+						startIcon={<OpenseaIcon />}
 						variant="contained"
 					>
 						Buy on OS
