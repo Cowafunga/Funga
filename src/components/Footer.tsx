@@ -11,7 +11,7 @@ import assets from "data/assets";
 import Twitter from "./svg/Twitter";
 import DiscordFilled from "./svg/DiscordFilled";
 import { Link } from "react-router-dom";
-import OpenseaIcon from "./svg/Opensea";
+import OpenseaIcon from "components/svg/Opensea";
 // import ConnectWalletBtn from "./ConnectWalletBtn";
 
 interface IFooter {
