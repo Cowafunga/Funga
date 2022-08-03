@@ -1,12 +1,17 @@
 import React from "react";
 import Stack from "@mui/material/Stack";
-import { DISCORD_LINK, INNER_WIDTH, TWITTER_LINK } from "data/constants";
-import { Box, SxProps, Typography, useTheme } from "@mui/material";
+import {
+	DISCORD_LINK,
+	INNER_WIDTH,
+	OPENSEA_COLLECTION,
+	TWITTER_LINK,
+} from "data/constants";
+import { Box, Button, SxProps, Typography, useTheme } from "@mui/material";
 import assets from "data/assets";
 import Twitter from "./svg/Twitter";
 import DiscordFilled from "./svg/DiscordFilled";
 import { Link } from "react-router-dom";
-import ConnectWalletBtn from "./ConnectWalletBtn";
+// import ConnectWalletBtn from "./ConnectWalletBtn";
 
 interface IFooter {
 	sx?: SxProps;
@@ -80,10 +85,14 @@ export default function Footer({ sx = {} }: IFooter) {
 							<Twitter />
 						</a>
 					</Box>
-					<ConnectWalletBtn
+					<Box
 						className="connect-wallet-button"
 						sx={{ display: { sm: "none !important", xs: "inline-flex" } }}
-					></ConnectWalletBtn>
+					>
+						<a href={OPENSEA_COLLECTION}>
+							<Button variant="contained">Buy on OS</Button>
+						</a>
+					</Box>
 					<Box
 						sx={{
 							"&,a": { display: { xs: "grid" } },
@@ -98,13 +107,17 @@ export default function Footer({ sx = {} }: IFooter) {
 							<DiscordFilled />
 						</a>
 					</Box>
-					<ConnectWalletBtn
-						className="connect-wallet-button"
+					<Box
 						sx={{
 							width: "max-content",
 							display: { sm: "inline-flex !important", xs: "none" },
 						}}
-					></ConnectWalletBtn>
+						className="connect-wallet-button"
+					>
+						<a href={OPENSEA_COLLECTION}>
+							<Button variant="contained">Buy on OS</Button>
+						</a>
+					</Box>
 				</Stack>
 			</Stack>
 

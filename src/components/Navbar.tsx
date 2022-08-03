@@ -1,12 +1,16 @@
 import React from "react";
 import Stack from "@mui/material/Stack";
-import { DISCORD_LINK, INNER_WIDTH, TWITTER_LINK } from "data/constants";
-import { Box, SxProps, useTheme } from "@mui/material";
+import {
+	DISCORD_LINK,
+	INNER_WIDTH,
+	OPENSEA_COLLECTION,
+	TWITTER_LINK,
+} from "data/constants";
+import { Box, Button, SxProps, useTheme } from "@mui/material";
 import assets from "data/assets";
 import Twitter from "./svg/Twitter";
 import DiscordFilled from "./svg/DiscordFilled";
 import { Link } from "react-router-dom";
-import ConnectWalletBtn from "components/ConnectWalletBtn";
 
 interface INavbar {
 	connectWalletBtn?: React.ReactNode;
@@ -81,7 +85,9 @@ export default function Navbar({ connectWalletBtn, sx = {} }: INavbar) {
 						<DiscordFilled />
 					</a>
 				</Box>
-				<ConnectWalletBtn></ConnectWalletBtn>
+				<a href={OPENSEA_COLLECTION}>
+					<Button variant="contained">Buy on OS</Button>
+				</a>
 			</Stack>
 		</Stack>
 	);
