@@ -8,11 +8,12 @@ import {
 	useTheme,
 } from "@mui/material";
 import assets from "data/assets";
+import { OPENSEA_COLLECTION } from "data/constants";
 import { useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 export default function MintInfo() {
-	let navigate = useNavigate();
+	// let navigate = useNavigate();
 	return (
 		<Stack
 			justifyContent="space-between"
@@ -65,29 +66,27 @@ export default function MintInfo() {
 				</Grid>
 				<Grid sx={{ position: "relative" }} xs={12} item>
 					<GrassHorizontal />
-					<Button
-						sx={{
-							mx: "auto",
-							fontSize: "17px",
-							width: "min(95%, 245px)",
-							zIndex: 900,
-							left: "50%",
-							bottom: "10%",
-							// top: "100%",
-							transform: "translateX(-50%) translateY(-50%)",
-							position: "absolute",
-							height: "45px",
-							display: { md: "none", xs: "flex" },
-						}}
-						onClick={() => {
-							// setAppData((d) => ({ ...d, mintBtnPressed: true }));
-							navigate("/new-mint");
-						}}
-						startIcon={<img src={assets.medicalKit} alt="Medical kit" />}
-						variant="contained"
-					>
-						Minting page
-					</Button>
+					<a href={OPENSEA_COLLECTION}>
+						<Button
+							sx={{
+								mx: "auto",
+								fontSize: "17px",
+								width: "min(95%, 245px)",
+								zIndex: 900,
+								left: "50%",
+								bottom: "10%",
+								// top: "100%",
+								transform: "translateX(-50%) translateY(-50%)",
+								position: "absolute",
+								height: "45px",
+								display: { md: "none", xs: "flex" },
+							}}
+							// startIcon={<img src={assets.medicalKit} alt="Medical kit" />}
+							variant="contained"
+						>
+							BUY ON OPENSEA
+						</Button>
+					</a>
 				</Grid>
 			</Grid>
 			<Grass sx={{ display: { xs: "none", md: "block" } }} />
@@ -197,7 +196,7 @@ function Star() {
 
 function MintInfoDetails() {
 	const { palette } = useTheme();
-	let navigate = useNavigate();
+	// let navigate = useNavigate();
 
 	return (
 		<Stack
@@ -215,7 +214,7 @@ function MintInfoDetails() {
 			<Grid
 				sx={{
 					width: { xs: "min-content", md: "auto" },
-					transform: { md: "translateX(10%)" },
+					transform: { md: "translateX(8%)", lg: "translateX(10%)" },
 				}}
 				justifyContent="center"
 				container
@@ -276,7 +275,10 @@ function MintInfoDetails() {
 								>
 									{item.icon}
 								</Box>
-								<Typography sx={{ fontSize: "20px" }} color="white">
+								<Typography
+									sx={{ fontSize: { xs: "19px", md: "17px", lg: "20px" } }}
+									color="white"
+								>
 									{item.text}
 								</Typography>
 							</Stack>
@@ -284,22 +286,21 @@ function MintInfoDetails() {
 					);
 				})}
 			</Grid>
-			<Button
-				sx={{
-					mx: "auto",
-					fontSize: "17px",
-					width: "275px",
-					height: "54px",
-					display: { xs: "none", md: "inline-flex" },
-				}}
-				onClick={() => {
-					navigate("/new-mint");
-				}}
-				startIcon={<img src={assets.medicalKit} alt="Medical kit" />}
-				variant="contained"
-			>
-				Minting page
-			</Button>
+			<a href={OPENSEA_COLLECTION}>
+				<Button
+					sx={{
+						mx: "auto",
+						fontSize: "17px",
+						width: "275px",
+						height: "54px",
+						display: { xs: "none", md: "inline-flex" },
+					}}
+					// startIcon={<img src={assets.medicalKit} alt="Medical kit" />}
+					variant="contained"
+				>
+					Buy on Opensea
+				</Button>
+			</a>
 		</Stack>
 	);
 }
