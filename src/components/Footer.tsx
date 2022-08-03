@@ -91,8 +91,12 @@ export default function Footer({ sx = {} }: IFooter) {
 						sx={{ display: { sm: "none !important", xs: "inline-flex" } }}
 					>
 						<a href={OPENSEA_COLLECTION}>
-							<Button startIcon={<OpenseaIcon />} variant="contained">
-								Buy on OS
+							<Button
+								sx={{ ".MuiButton-endIcon": { ml: "2px" } }}
+								endIcon={<OpenseaIcon />}
+								variant="contained"
+							>
+								View on
 							</Button>
 						</a>
 					</Box>
@@ -119,11 +123,12 @@ export default function Footer({ sx = {} }: IFooter) {
 					>
 						<a href={OPENSEA_COLLECTION}>
 							<Button
+								sx={{ ".MuiButton-endIcon": { ml: "2px" } }}
 								// startIcon={<img alt="" src={assets.wallet} />}
-								startIcon={<OpenseaIcon />}
+								endIcon={<OpenseaIcon />}
 								variant="contained"
 							>
-								Buy on OS
+								View on
 							</Button>
 						</a>
 					</Box>

@@ -81,12 +81,16 @@ export default function MintInfo() {
 								position: "absolute",
 								height: "45px",
 								display: { md: "none", xs: "flex" },
+								".MuiButton-endIcon": { ml: "2px" },
+								svg: {
+									transform: "none !important",
+								},
 							}}
 							// startIcon={<img src={assets.wallet} alt="Medical kit" />}
-							startIcon={<OpenseaIcon />}
+							endIcon={<OpenseaIcon />}
 							variant="contained"
 						>
-							BUY ON OPENSEA
+							View on
 						</Button>
 					</a>
 				</Grid>
@@ -296,11 +300,15 @@ function MintInfoDetails() {
 						width: "275px",
 						height: "54px",
 						display: { xs: "none", md: "inline-flex" },
+						".MuiButton-endIcon": { ml: "2px" },
+						svg: {
+							transform: "none !important",
+						},
 					}}
-					startIcon={<OpenseaIcon />}
+					endIcon={<OpenseaIcon />}
 					variant="contained"
 				>
-					Buy on Opensea
+					View on
 				</Button>
 			</a>
 		</Stack>

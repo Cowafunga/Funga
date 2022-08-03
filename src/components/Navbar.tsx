@@ -89,10 +89,11 @@ export default function Navbar({ connectWalletBtn, sx = {} }: INavbar) {
 				<a href={OPENSEA_COLLECTION}>
 					<Button
 						// startIcon={<img alt="" src={assets.wallet} />}
-						startIcon={<OpenseaIcon />}
+						sx={{ ".MuiButton-endIcon": { ml: "2px" } }}
+						endIcon={<OpenseaIcon />}
 						variant="contained"
 					>
-						Buy on OS
+						View on
 					</Button>
 				</a>
 			</Stack>
