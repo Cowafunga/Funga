@@ -43,7 +43,15 @@ function HomeCompoenent() {
 				alignItems="center"
 				maxWidth="1440px"
 				width="min(100%, 1440px)"
-				sx={{ zIndex: 0, mx: "auto", overflow: "hidden", position: "relative" }}
+				sx={{
+					zIndex: 0,
+					mx: "auto",
+					overflow: "hidden",
+					position: "relative",
+					a: {
+						textDecoration: "none",
+					},
+				}}
 			>
 				<Layout sx={{ mx: "auto" }}>
 					<Box

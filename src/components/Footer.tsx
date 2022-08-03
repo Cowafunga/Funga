@@ -90,7 +90,12 @@ export default function Footer({ sx = {} }: IFooter) {
 						sx={{ display: { sm: "none !important", xs: "inline-flex" } }}
 					>
 						<a href={OPENSEA_COLLECTION}>
-							<Button variant="contained">Buy on OS</Button>
+							<Button
+								startIcon={<img alt="" src={assets.wallet} />}
+								variant="contained"
+							>
+								Buy on OS
+							</Button>
 						</a>
 					</Box>
 					<Box
@@ -115,7 +120,12 @@ export default function Footer({ sx = {} }: IFooter) {
 						className="connect-wallet-button"
 					>
 						<a href={OPENSEA_COLLECTION}>
-							<Button variant="contained">Buy on OS</Button>
+							<Button
+								startIcon={<img alt="" src={assets.wallet} />}
+								variant="contained"
+							>
+								Buy on OS
+							</Button>
 						</a>
 					</Box>
 				</Stack>

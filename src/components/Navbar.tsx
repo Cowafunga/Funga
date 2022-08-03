@@ -86,7 +86,12 @@ export default function Navbar({ connectWalletBtn, sx = {} }: INavbar) {
 					</a>
 				</Box>
 				<a href={OPENSEA_COLLECTION}>
-					<Button variant="contained">Buy on OS</Button>
+					<Button
+						startIcon={<img alt="" src={assets.wallet} />}
+						variant="contained"
+					>
+						Buy on OS
+					</Button>
 				</a>
 			</Stack>
 		</Stack>
