@@ -81,7 +81,7 @@ export default function MintInfo() {
 								height: "45px",
 								display: { md: "none", xs: "flex" },
 							}}
-							startIcon={<img src={assets.medicalKit} alt="Medical kit" />}
+							startIcon={<img src={assets.wallet} alt="Medical kit" />}
 							variant="contained"
 						>
 							BUY ON OPENSEA
